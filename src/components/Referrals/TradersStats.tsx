@@ -2,8 +2,7 @@ import { Trans, t } from "@lingui/macro";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import Pagination from "components/Pagination/Pagination";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
-import { ARBITRUM, AVALANCHE, AVALANCHE_FUJI, getExplorerUrl } from "config/chains";
-import { isDevelopment } from "config/env";
+import { ARBITRUM, getExplorerUrl } from "config/chains";
 import { getNativeToken, getToken } from "config/tokens";
 import { TotalReferralsStats, useTiers } from "domain/referrals";
 import { BigNumber } from "ethers";
@@ -51,8 +50,6 @@ function TradersStats({
   const {
     [chainId]: currentReferralsData,
     [ARBITRUM]: arbitrumData,
-    [AVALANCHE]: avalancheData,
-    [AVALANCHE_FUJI]: fujiData,
   } = chains || {};
 
   const { getCurrentData, currentPage, setCurrentPage, pageCount } = usePagination(
@@ -116,30 +113,13 @@ function TradersStats({
                 label={t`V1 Arbitrum`}
                 value={getUSDValue(arbitrumData?.traderReferralTotalStats.v1Data.volume)}
               />
-              <StatsTooltipRow
-                label={t`V1 Avalanche`}
-                value={getUSDValue(avalancheData?.traderReferralTotalStats.v1Data.volume)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V1 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.traderReferralTotalStats.v1Data.volume)}
-                />
-              )}
+             
               <StatsTooltipRow
                 label={t`V2 Arbitrum`}
                 value={getUSDValue(arbitrumData?.traderReferralTotalStats.v2Data.volume)}
               />
-              <StatsTooltipRow
-                label={t`V2 Avalanche`}
-                value={getUSDValue(avalancheData?.traderReferralTotalStats.v2Data.volume)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V2 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.traderReferralTotalStats.v2Data.volume)}
-                />
-              )}
+             
+
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={getUSDValue(total?.traderVolume)} />
             </>
@@ -156,29 +136,9 @@ function TradersStats({
                 value={getUSDValue(arbitrumData?.traderReferralTotalStats.v1Data.discountUsd)}
               />
               <StatsTooltipRow
-                label={t`V1 Avalanche`}
-                value={getUSDValue(avalancheData?.traderReferralTotalStats.v1Data.discountUsd)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V1 Avalanche Fuji`}
-                  value={getUSDValue(avalancheData?.traderReferralTotalStats.v1Data.discountUsd)}
-                />
-              )}
-              <StatsTooltipRow
                 label={t`V2 Arbitrum`}
                 value={getUSDValue(arbitrumData?.traderReferralTotalStats.v2Data.discountUsd)}
               />
-              <StatsTooltipRow
-                label={t`V2 Avalanche`}
-                value={getUSDValue(avalancheData?.traderReferralTotalStats.v2Data.discountUsd)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V2 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.traderReferralTotalStats.v2Data.discountUsd)}
-                />
-              )}
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={getUSDValue(total?.discountUsd)} />
             </>

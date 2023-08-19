@@ -1,5 +1,5 @@
 import { GMX_STATS_API_URL } from "config/backend";
-import { ARBITRUM, AVALANCHE } from "config/chains";
+import { ARBITRUM } from "config/chains";
 import { bigNumberify } from "lib/numbers";
 import useSWR from "swr";
 
@@ -13,7 +13,6 @@ export function useVolumeInfo() {
       const json = await res.json();
       return {
         [ARBITRUM]: bigNumberify(json[ARBITRUM]),
-        [AVALANCHE]: bigNumberify(json[AVALANCHE]),
         total: bigNumberify(json.total),
       };
     },

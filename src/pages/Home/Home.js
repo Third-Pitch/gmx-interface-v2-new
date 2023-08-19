@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "components/Footer/Footer";
 import "./Home.css";
 
@@ -22,7 +21,7 @@ import avaxIcon from "img/ic_avalanche_96.svg";
 import TokenCard from "components/TokenCard/TokenCard";
 import { Trans } from "@lingui/macro";
 import { HeaderLink } from "components/Header/HeaderLink";
-import { ARBITRUM, AVALANCHE } from "config/chains";
+import { ARBITRUM } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
 
@@ -66,27 +65,16 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
-  // AVALANCHE
+ 
 
-  const avalanchePositionStatsUrl = getServerUrl(AVALANCHE, "/position_stats");
-  const { data: avalanchePositionStats } = useSWR([avalanchePositionStatsUrl], {
-    fetcher: (...args) => fetch(...args).then((res) => res.json()),
-  });
-
-  const avalancheTotalVolumeUrl = getServerUrl(AVALANCHE, "/total_volume");
-  const { data: avalancheTotalVolume } = useSWR([avalancheTotalVolumeUrl], {
-    fetcher: (...args) => fetch(...args).then((res) => res.json()),
-  });
 
   // Total Volume
 
   const arbitrumTotalVolumeSum = getTotalVolumeSum(arbitrumTotalVolume);
-  const avalancheTotalVolumeSum = getTotalVolumeSum(avalancheTotalVolume);
 
   let totalVolumeSum = bigNumberify(0);
-  if (arbitrumTotalVolumeSum && avalancheTotalVolumeSum) {
+  if (arbitrumTotalVolumeSum ) {
     totalVolumeSum = totalVolumeSum.add(arbitrumTotalVolumeSum);
-    totalVolumeSum = totalVolumeSum.add(avalancheTotalVolumeSum);
   }
 
   // Open Interest
@@ -101,27 +89,15 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
     openInterest = openInterest.add(arbitrumPositionStats.totalShortPositionSizes);
   }
 
-  if (
-    avalanchePositionStats &&
-    avalanchePositionStats.totalLongPositionSizes &&
-    avalanchePositionStats.totalShortPositionSizes
-  ) {
-    openInterest = openInterest.add(avalanchePositionStats.totalLongPositionSizes);
-    openInterest = openInterest.add(avalanchePositionStats.totalShortPositionSizes);
-  }
 
   // user stat
   const arbitrumUserStats = useUserStat(ARBITRUM);
-  const avalancheUserStats = useUserStat(AVALANCHE);
   let totalUsers = 0;
 
   if (arbitrumUserStats && arbitrumUserStats.uniqueCount) {
     totalUsers += arbitrumUserStats.uniqueCount;
   }
 
-  if (avalancheUserStats && avalancheUserStats.uniqueCount) {
-    totalUsers += avalancheUserStats.uniqueCount;
-  }
 
   const LaunchExchangeButton = () => {
     return (

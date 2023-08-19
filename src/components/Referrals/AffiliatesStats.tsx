@@ -4,8 +4,7 @@ import ExternalLink from "components/ExternalLink/ExternalLink";
 import Pagination from "components/Pagination/Pagination";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import Tooltip from "components/Tooltip/Tooltip";
-import { ARBITRUM, AVALANCHE, AVALANCHE_FUJI, getExplorerUrl } from "config/chains";
-import { isDevelopment } from "config/env";
+import { ARBITRUM, getExplorerUrl } from "config/chains";
 import { getNativeToken, getToken, getTokenBySymbol } from "config/tokens";
 import { RebateDistributionType, ReferralCodeStats, TotalReferralsStats, useTiers } from "domain/referrals";
 import { useMarketsInfo } from "domain/synthetics/markets";
@@ -73,8 +72,6 @@ function AffiliatesStats({
   const {
     [chainId]: currentReferralsData,
     [ARBITRUM]: arbitrumData,
-    [AVALANCHE]: avalancheData,
-    [AVALANCHE_FUJI]: fujiData,
   } = chains || {};
 
   const { affiliateDistributions, affiliateTierInfo, affiliateReferralCodesStats } = currentReferralsData || {};
@@ -134,18 +131,6 @@ function AffiliatesStats({
                 value={arbitrumData.affiliateTotalStats.registeredReferralsCount}
                 showDollar={false}
               />
-              <StatsTooltipRow
-                label={t`Traders Referred on Avalanche`}
-                value={avalancheData.affiliateTotalStats.registeredReferralsCount}
-                showDollar={false}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`Traders Referred on Avalanche Fuji`}
-                  value={fujiData.affiliateTotalStats.registeredReferralsCount}
-                  showDollar={false}
-                />
-              )}
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={total?.registeredReferralsCount} showDollar={false} />
             </>
@@ -161,30 +146,12 @@ function AffiliatesStats({
                 label={t`V1 Arbitrum`}
                 value={getUSDValue(arbitrumData?.affiliateTotalStats.v1Data.volume)}
               />
-              <StatsTooltipRow
-                label={t`V1 Avalanche`}
-                value={getUSDValue(avalancheData?.affiliateTotalStats.v1Data.volume)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V1 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.affiliateTotalStats.v1Data.volume)}
-                />
-              )}
+              
               <StatsTooltipRow
                 label={t`V2 Arbitrum`}
                 value={getUSDValue(arbitrumData?.affiliateTotalStats.v2Data.volume)}
               />
-              <StatsTooltipRow
-                label={t`V2 Avalanche`}
-                value={getUSDValue(avalancheData?.affiliateTotalStats.v2Data.volume)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V2 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.affiliateTotalStats.v2Data.volume)}
-                />
-              )}
+             
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={getUSDValue(total?.affiliateVolume)} />
             </>
@@ -200,30 +167,13 @@ function AffiliatesStats({
                 label={t`V1 Arbitrum`}
                 value={getUSDValue(arbitrumData?.affiliateTotalStats.v1Data.affiliateRebateUsd)}
               />
-              <StatsTooltipRow
-                label={t`V1 Avalanche`}
-                value={getUSDValue(avalancheData?.affiliateTotalStats.v1Data.affiliateRebateUsd)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V1 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.affiliateTotalStats.v1Data.affiliateRebateUsd)}
-                />
-              )}
+            
               <StatsTooltipRow
                 label={t`V2 Arbitrum`}
                 value={getUSDValue(arbitrumData?.affiliateTotalStats.v2Data.affiliateRebateUsd)}
               />
-              <StatsTooltipRow
-                label={t`V2 Avalanche`}
-                value={getUSDValue(avalancheData?.affiliateTotalStats.v2Data.affiliateRebateUsd)}
-              />
-              {isDevelopment() && (
-                <StatsTooltipRow
-                  label={t`V2 Avalanche Fuji`}
-                  value={getUSDValue(fujiData?.affiliateTotalStats.v2Data.affiliateRebateUsd)}
-                />
-              )}
+          
+
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={getUSDValue(total?.affiliateRebateUsd)} />
             </>
@@ -331,12 +281,12 @@ function AffiliatesStats({
                                   <div>
                                     <Trans>
                                       This code is not yet registered on{" "}
-                                      {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}, you will not receive rebates
+                                      {"Arbitrum"}, you will not receive rebates
                                       there.
                                       <br />
                                       <br />
                                       Switch your network to create this code on{" "}
-                                      {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}.
+                                      {"Arbitrum"}.
                                     </Trans>
                                   </div>
                                 )}
@@ -352,8 +302,8 @@ function AffiliatesStats({
                                   <div>
                                     <Trans>
                                       This code has been taken by someone else on{" "}
-                                      {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}, you will not receive rebates
-                                      from traders using this code on {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}
+                                      {"Arbitrum"}, you will not receive rebates
+                                      from traders using this code on {"Arbitrum"}
                                       .
                                     </Trans>
                                   </div>

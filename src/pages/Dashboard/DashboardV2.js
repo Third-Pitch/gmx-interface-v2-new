@@ -35,7 +35,7 @@ import ChainsStatsTooltipRow from "components/StatsTooltip/ChainsStatsTooltipRow
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import { MarketsList } from "components/Synthetics/MarketsList/MarketsList";
 import { getServerUrl } from "config/backend";
-import { ARBITRUM, AVALANCHE, getChainName } from "config/chains";
+import { ARBITRUM, getChainName } from "config/chains";
 import { getIsSyntheticsSupported } from "config/features";
 import { getIcons } from "config/icons";
 import { GLP_POOL_COLORS, getTokenBySymbol, getWhitelistedV1Tokens } from "config/tokens";
@@ -48,7 +48,7 @@ import { formatDate } from "lib/dates";
 import { arrayURLFetcher } from "lib/fetcher";
 import { bigNumberify, expandDecimals, formatAmount, formatKeyAmount, numberWithCommas } from "lib/numbers";
 import AssetDropdown from "./AssetDropdown";
-const ACTIVE_CHAIN_IDS = [ARBITRUM, AVALANCHE];
+const ACTIVE_CHAIN_IDS = [ARBITRUM];
 
 const { AddressZero } = ethers.constants;
 
@@ -154,10 +154,9 @@ export default function DashboardV2() {
 
   const { infoTokens } = useInfoTokens(library, chainId, active, undefined, undefined);
   const { infoTokens: infoTokensArbitrum } = useInfoTokens(null, ARBITRUM, active, undefined, undefined);
-  const { infoTokens: infoTokensAvax } = useInfoTokens(null, AVALANCHE, active, undefined, undefined);
 
   const { data: currentFees } = useSWR(
-    infoTokensArbitrum[AddressZero].contractMinPrice && infoTokensAvax[AddressZero].contractMinPrice
+    infoTokensArbitrum[AddressZero].contractMinPrice
       ? "Dashboard:currentFees"
       : null,
     {
@@ -178,7 +177,7 @@ export default function DashboardV2() {
               const feeUSD = getCurrentFeesUsd(
                 getWhitelistedTokenAddresses(ACTIVE_CHAIN_IDS[i]),
                 cv,
-                ACTIVE_CHAIN_IDS[i] === ARBITRUM ? infoTokensArbitrum : infoTokensAvax
+                ACTIVE_CHAIN_IDS[i] === infoTokensArbitrum
               );
               acc[ACTIVE_CHAIN_IDS[i]] = feeUSD;
               acc.total = acc.total.add(feeUSD);
@@ -398,7 +397,7 @@ export default function DashboardV2() {
     },
   ];
 
-  const totalStatsStartDate = chainId === AVALANCHE ? t`06 Jan 2022` : t`01 Sep 2021`;
+  const totalStatsStartDate = t`01 Sep 2021`;
 
   let stableGlp = 0;
   let totalGlp = 0;
@@ -483,7 +482,6 @@ export default function DashboardV2() {
                 {chainName} Total Stats start from {totalStatsStartDate}.<br /> For detailed stats:
               </Trans>{" "}
               {chainId === ARBITRUM && <ExternalLink href="https://stats.gmx.io">V1</ExternalLink>}
-              {chainId === AVALANCHE && <ExternalLink href="https://stats.gmx.io/avalanche">V1</ExternalLink>} |{" "}
               <ExternalLink href="https://dune.com/gmx-io/gmx-analytics">V2</ExternalLink>.
             </div>
           </div>
@@ -543,7 +541,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Volume`}
                           arbitrumValue={currentVolumeInfo?.[ARBITRUM]}
-                          avaxValue={currentVolumeInfo?.[AVALANCHE]}
                           total={currentVolumeInfo?.total}
                         />
                       )}
@@ -563,7 +560,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Open Interest`}
                           arbitrumValue={positionStatsInfo?.[ARBITRUM].openInterest}
-                          avaxValue={positionStatsInfo?.[AVALANCHE].openInterest}
                           total={positionStatsInfo?.totalOpenInterest}
                         />
                       )}
@@ -588,7 +584,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Long Positions`}
                           arbitrumValue={positionStatsInfo?.[ARBITRUM].totalLongPositionSizes}
-                          avaxValue={positionStatsInfo?.[AVALANCHE].totalLongPositionSizes}
                           total={positionStatsInfo?.totalLongPositionSizes}
                         />
                       )}
@@ -613,7 +608,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Short Positions`}
                           arbitrumValue={positionStatsInfo?.[ARBITRUM].totalShortPositionSizes}
-                          avaxValue={positionStatsInfo?.[AVALANCHE].totalShortPositionSizes}
                           total={positionStatsInfo?.totalShortPositionSizes}
                         />
                       )}
@@ -634,7 +628,6 @@ export default function DashboardV2() {
                           <ChainsStatsTooltipRow
                             title={t`Fees`}
                             arbitrumValue={currentFees?.[ARBITRUM]}
-                            avaxValue={currentFees?.[AVALANCHE]}
                             total={currentFees?.total}
                           />
                         )}
@@ -663,7 +656,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Total Fees`}
                           arbitrumValue={totalFees?.[ARBITRUM]}
-                          avaxValue={totalFees?.[AVALANCHE]}
                           total={totalFees?.total}
                           decimalsForConversion={0}
                         />
@@ -684,7 +676,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Total Volume`}
                           arbitrumValue={totalVolume?.[ARBITRUM]}
-                          avaxValue={totalVolume?.[AVALANCHE]}
                           total={totalVolume?.total}
                         />
                       )}
@@ -704,7 +695,6 @@ export default function DashboardV2() {
                         <ChainsStatsTooltipRow
                           title={t`Total Users`}
                           arbitrumValue={uniqueUsers?.[ARBITRUM]}
-                          avaxValue={uniqueUsers?.[AVALANCHE]}
                           total={uniqueUsers?.total}
                           showDollar={false}
                           shouldFormat={false}

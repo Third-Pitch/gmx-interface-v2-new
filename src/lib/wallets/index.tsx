@@ -2,13 +2,9 @@ import { useEffect, useState } from "react";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import {
   ARBITRUM,
-  ARBITRUM_GOERLI,
-  AVALANCHE,
-  AVALANCHE_FUJI,
   DEFAULT_CHAIN_ID,
   getChainName,
   getRpcUrl,
-  BCS_MAINNET,
   NETWORK_METADATA,
   SUPPORTED_CHAIN_IDS,
 } from "config/chains";
@@ -89,10 +85,7 @@ export const getWalletConnectConnector = () => {
   const chainId = Number(localStorage.getItem(SELECTED_NETWORK_LOCAL_STORAGE_KEY)) || DEFAULT_CHAIN_ID;
   return new WalletConnectConnector({
     rpcMap: {
-      [AVALANCHE]: getRpcUrl(AVALANCHE)!,
       [ARBITRUM]: getRpcUrl(ARBITRUM)!,
-      [ARBITRUM_GOERLI]: getRpcUrl(ARBITRUM_GOERLI)!,
-      [AVALANCHE_FUJI]: getRpcUrl(AVALANCHE_FUJI)!,
     },
     showQrModal: true,
     chainId,
@@ -223,10 +216,6 @@ export function useInactiveListener(suppress = false) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, error, suppress, activate]);
 }
-
-export const addBscNetwork = async () => {
-  return addNetwork(NETWORK_METADATA[BCS_MAINNET]);
-};
 
 export const addNetwork = async (metadata: NetworkMetadata) => {
   await window.ethereum.request({ method: "wallet_addEthereumChain", params: [metadata] }).catch();

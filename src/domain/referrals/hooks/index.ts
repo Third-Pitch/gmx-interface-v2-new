@@ -7,7 +7,7 @@ import { Web3Provider } from "@ethersproject/providers";
 import ReferralStorage from "abis/ReferralStorage.json";
 import Timelock from "abis/Timelock.json";
 import { REGEX_VERIFY_BYTES32 } from "components/Referrals/referralsHelper";
-import { ARBITRUM, AVALANCHE, SUPPORTED_CHAIN_IDS } from "config/chains";
+import { ARBITRUM, SUPPORTED_CHAIN_IDS } from "config/chains";
 import { getContract } from "config/contracts";
 import { REFERRAL_CODE_KEY } from "config/localStorage";
 import { isAddress } from "ethers/lib/utils";
@@ -138,7 +138,7 @@ export function useUserCodesOnAllChain(account) {
   `;
   useEffect(() => {
     async function main() {
-      const [arbitrumCodes, avalancheCodes] = await Promise.all(
+      const [arbitrumCodes] = await Promise.all(
         SUPPORTED_CHAIN_IDS.map(async (chainId) => {
           try {
             const client = getReferralsGraphClient(chainId);
@@ -149,20 +149,16 @@ export function useUserCodesOnAllChain(account) {
           }
         })
       );
-      const [codeOwnersOnAvax = [], codeOwnersOnArbitrum = []] = await Promise.all([
-        getCodeOwnersData(AVALANCHE, account, arbitrumCodes),
-        getCodeOwnersData(ARBITRUM, account, avalancheCodes),
+      const [codeOwnersOnArbitrum = []] = await Promise.all([
+        getCodeOwnersData(ARBITRUM, account, arbitrumCodes),
       ]);
 
       setData({
-        [ARBITRUM]: codeOwnersOnAvax.reduce((acc, cv) => {
+        [ARBITRUM]: codeOwnersOnArbitrum.reduce((acc, cv) => {
           acc[cv.code] = cv;
           return acc;
         }, {} as any),
-        [AVALANCHE]: codeOwnersOnArbitrum.reduce((acc, cv) => {
-          acc[cv.code] = cv;
-          return acc;
-        }, {} as any),
+
       });
     }
 
