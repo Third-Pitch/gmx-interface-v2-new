@@ -24,15 +24,15 @@ export type DayPriceCandle = {
 
 export type OracleKeeperFetcher = ReturnType<typeof useOracleKeeperFetcher>;
 
-function parseOracleCandle(rawCandle: number[]): Bar {
-  const [timestamp, open, high, low, close] = rawCandle;
+function parseOracleCandle(rawCandle: Record<string, number>): Bar {
+  // const [timestamp, open, high, low, close] = rawCandle;
 
   return {
-    time: timestamp + timezoneOffset,
-    open,
-    high,
-    low,
-    close,
+    time: rawCandle.t + timezoneOffset,
+    open: rawCandle.o,
+    high: rawCandle.h,
+    low: rawCandle.l,
+    close: rawCandle.c,
   };
 }
 

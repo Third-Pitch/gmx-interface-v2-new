@@ -830,6 +830,10 @@ msgstr ""
 msgid "Code already taken"
 msgstr ""
 
+#: src/pages/Slt/index.tsx
+msgid "Coin"
+msgstr ""
+
 #: src/App/App.js
 msgid "Coinbase Wallet"
 msgstr ""
@@ -3467,6 +3471,7 @@ msgstr ""
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
+#: src/pages/Slt/index.tsx
 msgid "Receive"
 msgstr ""
 
@@ -5536,4 +5541,8 @@ msgstr ""
 
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
+msgstr ""
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "水龙头"
 msgstr ""

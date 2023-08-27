@@ -830,6 +830,10 @@ msgstr "Closing..."
 msgid "Code already taken"
 msgstr "Code already taken"
 
+#: src/pages/Slt/index.tsx
+msgid "Coin"
+msgstr "Coin"
+
 #: src/App/App.js
 msgid "Coinbase Wallet"
 msgstr "Coinbase Wallet"
@@ -3470,6 +3474,7 @@ msgstr "Rebates on V2"
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
+#: src/pages/Slt/index.tsx
 msgid "Receive"
 msgstr "Receive"
 
@@ -5549,3 +5554,7 @@ msgstr "{positionText} {sizeDeltaText}, Price: {0}, Market: {1}"
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
 msgstr "{title} on Base:"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "水龙头"
+msgstr "水龙头"

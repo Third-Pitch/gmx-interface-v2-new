@@ -830,6 +830,10 @@ msgstr ""
 msgid "Code already taken"
 msgstr "そのコードは既に使用されています"
 
+#: src/pages/Slt/index.tsx
+msgid "Coin"
+msgstr ""
+
 #: src/App/App.js
 msgid "Coinbase Wallet"
 msgstr "コインベースウォレット"
@@ -3470,6 +3474,7 @@ msgstr ""
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
+#: src/pages/Slt/index.tsx
 msgid "Receive"
 msgstr "受け取る"
 
@@ -5543,3 +5548,7 @@ msgstr ""
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
 msgstr "Base上の{title}"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "水龙头"
+msgstr ""
