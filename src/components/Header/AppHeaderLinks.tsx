@@ -7,7 +7,7 @@ import { HeaderLink } from "./HeaderLink";
 import "./Header.css";
 import { isHomeSite } from "lib/legacy";
 import ExternalLink from "components/ExternalLink/ExternalLink";
-import logoImg from "img/logo_GMX.svg";
+import logoImg from "img/logo_EDDX.svg";
 
 type Props = {
   small?: boolean;
@@ -29,7 +29,7 @@ export function AppHeaderLinks({
       {small && (
         <div className="App-header-links-header">
           <Link className="App-header-link-main" to="/">
-            <img src={logoImg} alt="GMX Logo" />
+            <img src={logoImg} alt="EDDX Logo" />
           </Link>
           <div
             className="App-header-menu-icon-block mobile-cross-menu"
@@ -77,7 +77,7 @@ export function AppHeaderLinks({
         </HeaderLink>
       </div>
       <div className="App-header-link-container">
-        <ExternalLink href="https://docs.gmx.io/">
+        <ExternalLink href="https://docs.eddx.io/">
           <Trans>Docs</Trans>
         </ExternalLink>
       </div>
@@ -89,6 +89,15 @@ export function AppHeaderLinks({
           </a>
         </div>
       )}
+      <div className="App-header-link-container">
+        <HeaderLink
+          to="/slt"
+          redirectPopupTimestamp={redirectPopupTimestamp}
+          showRedirectModal={showRedirectModal}
+        >
+          <Trans>水龙头</Trans>
+        </HeaderLink>
+      </div>
     </div>
   );
 }

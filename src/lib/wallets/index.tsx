@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import {
-  ARBITRUM,
+  BASE,
   DEFAULT_CHAIN_ID,
   getChainName,
   getRpcUrl,
@@ -85,7 +85,7 @@ export const getWalletConnectConnector = () => {
   const chainId = Number(localStorage.getItem(SELECTED_NETWORK_LOCAL_STORAGE_KEY)) || DEFAULT_CHAIN_ID;
   return new WalletConnectConnector({
     rpcMap: {
-      [ARBITRUM]: getRpcUrl(ARBITRUM)!,
+      [BASE]: getRpcUrl(BASE)!,
     },
     showQrModal: true,
     chainId,
@@ -262,7 +262,7 @@ export const getWalletConnectHandler = (
     setActivatingConnector(walletConnect);
     activate(walletConnect, (ex) => {
       if (ex instanceof UnsupportedChainIdError) {
-        helperToast.error(t`Unsupported chain. Switch to Arbitrum network on your wallet and try again`);
+        helperToast.error(t`Unsupported chain. Switch to Base network on your wallet and try again`);
         // eslint-disable-next-line no-console
         console.warn(ex);
       } else if (!(ex instanceof UserRejectedRequestError)) {

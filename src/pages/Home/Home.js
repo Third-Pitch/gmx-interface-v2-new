@@ -15,13 +15,13 @@ import { USD_DECIMALS, getTotalVolumeSum } from "lib/legacy";
 
 import { useUserStat } from "domain/legacy";
 
-import arbitrumIcon from "img/ic_arbitrum_96.svg";
+import baseIcon from "img/ic_base_96.svg";
 import avaxIcon from "img/ic_avalanche_96.svg";
 
 import TokenCard from "components/TokenCard/TokenCard";
 import { Trans } from "@lingui/macro";
 import { HeaderLink } from "components/Header/HeaderLink";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
 
@@ -29,20 +29,20 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   // const [openedFAQIndex, setOpenedFAQIndex] = useState(null)
   // const faqContent = [{
   //   id: 1,
-  //   question: "What is GMX?",
-  //   answer: "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades.<br><br>Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations), and asset rebalancing.<br><br>Dynamic pricing is supported by Chainlink Oracles along with TWAP pricing from leading volume DEXs."
+  //   question: "What is EDDX?",
+  //   answer: "EDDX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades.<br><br>Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations), and asset rebalancing.<br><br>Dynamic pricing is supported by Chainlink Oracles along with TWAP pricing from leading volume DEXs."
   // }, {
   //   id: 2,
-  //   question: "What is the GMX Governance Token? ",
-  //   answer: "The GMX token is the governance token of the GMX ecosystem, it provides the token owner voting rights on the direction of the GMX platform.<br><br>Additionally, when GMX is staked you will earn 30% of the platform-generated fees, you will also earn Escrowed GMX tokens and Multiplier Points."
+  //   question: "What is the EDDX Governance Token? ",
+  //   answer: "The EDDX token is the governance token of the EDDX ecosystem, it provides the token owner voting rights on the direction of the EDDX platform.<br><br>Additionally, when EDDX is staked you will earn 30% of the platform-generated fees, you will also earn Escrowed EDDX tokens and Multiplier Points."
   // }, {
   //   id: 3,
-  //   question: "What is the GLP Token? ",
-  //   answer: "The GLP token represents the liquidity users provide to the GMX platform for Swaps and Margin Trading.<br><br>To provide liquidity to GLP you <a href='https://gmx.io/buy_glp' target='_blank'>trade</a> your crypto asset BTC, ETH, LINK, UNI, USDC, USDT, MIM, or FRAX to the liquidity pool, in exchange, you gain exposure to a diversified index of tokens while earning 50% of the platform trading fees and esGMX."
+  //   question: "What is the ELP Token? ",
+  //   answer: "The ELP token represents the liquidity users provide to the EDDX platform for Swaps and Margin Trading.<br><br>To provide liquidity to ELP you <a href='https://eddx.io/buy_elp' target='_blank'>trade</a> your crypto asset BTC, ETH, LINK, UNI, USDC, USDT, MIM, or FRAX to the liquidity pool, in exchange, you gain exposure to a diversified index of tokens while earning 50% of the platform trading fees and esEDDX."
   // }, {
   //   id: 4,
-  //   question: "What can I trade on GMX? ",
-  //   answer: "On GMX you can swap or margin trade any of the following assets: ETH, BTC, LINK, UNI, USDC, USDT, MIM, FRAX, with others to be added. "
+  //   question: "What can I trade on EDDX? ",
+  //   answer: "On EDDX you can swap or margin trade any of the following assets: ETH, BTC, LINK, UNI, USDC, USDT, MIM, FRAX, with others to be added. "
   // }]
 
   // const toggleFAQContent = function(index) {
@@ -53,15 +53,15 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   //   }
   // }
 
-  // ARBITRUM
+  // BASE
 
-  const arbitrumPositionStatsUrl = getServerUrl(ARBITRUM, "/position_stats");
-  const { data: arbitrumPositionStats } = useSWR([arbitrumPositionStatsUrl], {
+  const basePositionStatsUrl = getServerUrl(BASE, "/position_stats");
+  const { data: basePositionStats } = useSWR([basePositionStatsUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
-  const arbitrumTotalVolumeUrl = getServerUrl(ARBITRUM, "/total_volume");
-  const { data: arbitrumTotalVolume } = useSWR([arbitrumTotalVolumeUrl], {
+  const baseTotalVolumeUrl = getServerUrl(BASE, "/total_volume");
+  const { data: baseTotalVolume } = useSWR([baseTotalVolumeUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
@@ -70,32 +70,32 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
 
   // Total Volume
 
-  const arbitrumTotalVolumeSum = getTotalVolumeSum(arbitrumTotalVolume);
+  const baseTotalVolumeSum = getTotalVolumeSum(baseTotalVolume);
 
   let totalVolumeSum = bigNumberify(0);
-  if (arbitrumTotalVolumeSum ) {
-    totalVolumeSum = totalVolumeSum.add(arbitrumTotalVolumeSum);
+  if (baseTotalVolumeSum ) {
+    totalVolumeSum = totalVolumeSum.add(baseTotalVolumeSum);
   }
 
   // Open Interest
 
   let openInterest = bigNumberify(0);
   if (
-    arbitrumPositionStats &&
-    arbitrumPositionStats.totalLongPositionSizes &&
-    arbitrumPositionStats.totalShortPositionSizes
+    basePositionStats &&
+    basePositionStats.totalLongPositionSizes &&
+    basePositionStats.totalShortPositionSizes
   ) {
-    openInterest = openInterest.add(arbitrumPositionStats.totalLongPositionSizes);
-    openInterest = openInterest.add(arbitrumPositionStats.totalShortPositionSizes);
+    openInterest = openInterest.add(basePositionStats.totalLongPositionSizes);
+    openInterest = openInterest.add(basePositionStats.totalShortPositionSizes);
   }
 
 
   // user stat
-  const arbitrumUserStats = useUserStat(ARBITRUM);
+  const baseUserStats = useUserStat(BASE);
   let totalUsers = 0;
 
-  if (arbitrumUserStats && arbitrumUserStats.uniqueCount) {
-    totalUsers += arbitrumUserStats.uniqueCount;
+  if (baseUserStats && baseUserStats.uniqueCount) {
+    totalUsers += baseUserStats.uniqueCount;
   }
 
 
@@ -216,16 +216,16 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
               <Trans>Available on your preferred network</Trans>
             </div>
             <div className="Home-cta-info__description">
-              <Trans>GMX is currently live on Arbitrum and Avalanche.</Trans>
+              <Trans>EDDX is currently live on Base and Avalanche.</Trans>
             </div>
           </div>
           <div className="Home-cta-options">
-            <div className="Home-cta-option Home-cta-option-arbitrum">
+            <div className="Home-cta-option Home-cta-option-base">
               <div className="Home-cta-option-icon">
-                <img src={arbitrumIcon} width="96" alt="Arbitrum Icon" />
+                <img src={baseIcon} width="96" alt="Base Icon" />
               </div>
               <div className="Home-cta-option-info">
-                <div className="Home-cta-option-title">Arbitrum</div>
+                <div className="Home-cta-option-title">Base</div>
                 <div className="Home-cta-option-action">
                   <LaunchExchangeButton />
                 </div>
@@ -259,7 +259,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
       {/* <div className="Home-video-section">
         <div className="Home-video-container default-container">
           <div className="Home-video-block">
-            <img src={gmxBigIcon} alt="gmxbig" />
+            <img src={eddxBigIcon} alt="eddxbig" />
           </div>
         </div>
       </div> */}
@@ -268,7 +268,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
           <div className="Home-faqs-introduction">
             <div className="Home-faqs-introduction__title">FAQs</div>
             <div className="Home-faqs-introduction__description">Most asked questions. If you wish to learn more, please head to our Documentation page.</div>
-            <a href="https://gmxio.gitbook.io/gmx/" className="default-btn Home-faqs-documentation">Documentation</a>
+            <a href="https://eddxio.gitbook.io/eddx/" className="default-btn Home-faqs-documentation">Documentation</a>
           </div>
           <div className="Home-faqs-content-block">
             {

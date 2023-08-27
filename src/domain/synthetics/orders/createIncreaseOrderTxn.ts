@@ -45,7 +45,6 @@ export async function createIncreaseOrderTxn(chainId: number, library: Web3Provi
     ExchangeRouter.abi,
     library.getSigner()
   );
-
   const orderVaultAddress = getContract(chainId, "OrderVault");
 
   const isNativePayment = p.initialCollateralAddress === NATIVE_TOKEN_ADDRESS;

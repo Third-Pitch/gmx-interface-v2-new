@@ -1,8 +1,8 @@
 import { sample, random } from "lodash";
-import { ARBITRUM } from "./chains";
+import { BASE } from "./chains";
 
 const ORACLE_KEEPER_URLS = {
-  [ARBITRUM]: ["https://arbitrum.gmx-oracle.io", "https://arbitrum-2.gmx-oracle.io"],
+  [BASE]: ["http://192.168.1.118:3123/api", "http://192.168.1.118:3123/api"],
 
 };
 

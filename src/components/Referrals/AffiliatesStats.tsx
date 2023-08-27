@@ -4,7 +4,7 @@ import ExternalLink from "components/ExternalLink/ExternalLink";
 import Pagination from "components/Pagination/Pagination";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import Tooltip from "components/Tooltip/Tooltip";
-import { ARBITRUM, getExplorerUrl } from "config/chains";
+import { BASE, getExplorerUrl } from "config/chains";
 import { getNativeToken, getToken, getTokenBySymbol } from "config/tokens";
 import { RebateDistributionType, ReferralCodeStats, TotalReferralsStats, useTiers } from "domain/referrals";
 import { useMarketsInfo } from "domain/synthetics/markets";
@@ -61,7 +61,7 @@ function AffiliatesStats({
   const { marketsInfoData } = useMarketsInfo(chainId);
   const { affiliateRewardsData } = useAffiliateRewards(chainId);
 
-  const esGmxAddress = getTokenBySymbol(chainId, "esGMX").address;
+  const esEddxAddress = getTokenBySymbol(chainId, "esEDDX").address;
 
   const [isClaiming, setIsClaiming] = useState(false);
   const [, copyToClipboard] = useCopyToClipboard();
@@ -71,7 +71,7 @@ function AffiliatesStats({
   const { total, chains } = referralsData || {};
   const {
     [chainId]: currentReferralsData,
-    [ARBITRUM]: arbitrumData,
+    [BASE]: baseData,
   } = chains || {};
 
   const { affiliateDistributions, affiliateTierInfo, affiliateReferralCodesStats } = currentReferralsData || {};
@@ -127,8 +127,8 @@ function AffiliatesStats({
           tooltipContent={
             <>
               <StatsTooltipRow
-                label={t`Traders Referred on Arbitrum`}
-                value={arbitrumData.affiliateTotalStats.registeredReferralsCount}
+                label={t`Traders Referred on Base`}
+                value={baseData.affiliateTotalStats.registeredReferralsCount}
                 showDollar={false}
               />
               <div className="Tooltip-divider" />
@@ -143,13 +143,13 @@ function AffiliatesStats({
           tooltipContent={
             <>
               <StatsTooltipRow
-                label={t`V1 Arbitrum`}
-                value={getUSDValue(arbitrumData?.affiliateTotalStats.v1Data.volume)}
+                label={t`V1 Base`}
+                value={getUSDValue(baseData?.affiliateTotalStats.v1Data.volume)}
               />
               
               <StatsTooltipRow
-                label={t`V2 Arbitrum`}
-                value={getUSDValue(arbitrumData?.affiliateTotalStats.v2Data.volume)}
+                label={t`V2 Base`}
+                value={getUSDValue(baseData?.affiliateTotalStats.v2Data.volume)}
               />
              
               <div className="Tooltip-divider" />
@@ -164,13 +164,13 @@ function AffiliatesStats({
           tooltipContent={
             <>
               <StatsTooltipRow
-                label={t`V1 Arbitrum`}
-                value={getUSDValue(arbitrumData?.affiliateTotalStats.v1Data.affiliateRebateUsd)}
+                label={t`V1 Base`}
+                value={getUSDValue(baseData?.affiliateTotalStats.v1Data.affiliateRebateUsd)}
               />
             
               <StatsTooltipRow
-                label={t`V2 Arbitrum`}
-                value={getUSDValue(arbitrumData?.affiliateTotalStats.v2Data.affiliateRebateUsd)}
+                label={t`V2 Base`}
+                value={getUSDValue(baseData?.affiliateTotalStats.v2Data.affiliateRebateUsd)}
               />
           
 
@@ -281,12 +281,12 @@ function AffiliatesStats({
                                   <div>
                                     <Trans>
                                       This code is not yet registered on{" "}
-                                      {"Arbitrum"}, you will not receive rebates
+                                      {"Base"}, you will not receive rebates
                                       there.
                                       <br />
                                       <br />
                                       Switch your network to create this code on{" "}
-                                      {"Arbitrum"}.
+                                      {"Base"}.
                                     </Trans>
                                   </div>
                                 )}
@@ -302,8 +302,8 @@ function AffiliatesStats({
                                   <div>
                                     <Trans>
                                       This code has been taken by someone else on{" "}
-                                      {"Arbitrum"}, you will not receive rebates
-                                      from traders using this code on {"Arbitrum"}
+                                      {"Base"}, you will not receive rebates
+                                      from traders using this code on {"Base"}
                                       .
                                     </Trans>
                                   </div>
@@ -361,7 +361,7 @@ function AffiliatesStats({
         <div className="reward-history">
           <Card
             title={t`Rebates Distribution History`}
-            tooltipText={t`V1 Rebates and V1/V2 esGMX are airdropped weekly. V2 Rebates are claimed manually.`}
+            tooltipText={t`V1 Rebates and V1/V2 esEDDX are airdropped weekly. V2 Rebates are claimed manually.`}
           >
             <div className="table-wrapper">
               <table className="referral-table">
@@ -386,8 +386,8 @@ function AffiliatesStats({
                     let rebateType = "-";
 
                     if (rebate.typeId === RebateDistributionType.Rebate) {
-                      if (rebate.tokens[0] === esGmxAddress) {
-                        rebateType = t`V1 esGMX`;
+                      if (rebate.tokens[0] === esEddxAddress) {
+                        rebateType = t`V1 esEDDX`;
                       } else {
                         rebateType = t`V1 Airdrop`;
                       }

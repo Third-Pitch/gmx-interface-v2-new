@@ -7,237 +7,237 @@ import { getPageTitle } from "lib/legacy";
 
 import "./Ecosystem.css";
 import ExternalLink from "components/ExternalLink/ExternalLink";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { t } from "@lingui/macro";
 import { getIcon } from "config/icons";
 
 const NETWORK_ICONS = {
-  [ARBITRUM]: getIcon(ARBITRUM, "network"),
+  [BASE]: getIcon(BASE, "network"),
 };
 
 const NETWORK_ICON_ALTS = {
-  [ARBITRUM]: "Arbitrum Icon",
+  [BASE]: "Base Icon",
 };
 
 export default function Ecosystem() {
-  const gmxPages = [
+  const eddxPages = [
     {
-      title: "GMX Governance",
-      link: "https://gov.gmx.io/",
-      linkLabel: "gov.gmx.io",
-      about: t`GMX Governance Page`,
-      chainIds: [ARBITRUM],
+      title: "EDDX Governance",
+      link: "https://gov.eddx.io/",
+      linkLabel: "gov.eddx.io",
+      about: t`EDDX Governance Page`,
+      chainIds: [BASE],
     },
     {
-      title: "GMX Stats",
-      link: "https://stats.gmx.io/",
-      linkLabel: "stats.gmx.io",
-      about: t`GMX Stats Page`,
-      chainIds: [ARBITRUM],
+      title: "EDDX Stats",
+      link: "https://stats.eddx.io/",
+      linkLabel: "stats.eddx.io",
+      about: t`EDDX Stats Page`,
+      chainIds: [BASE],
     },
     {
-      title: "GMX Proposals",
-      link: "https://snapshot.org/#/gmx.eth",
+      title: "EDDX Proposals",
+      link: "https://snapshot.org/#/eddx.eth",
       linkLabel: "snapshot.org",
-      about: t`GMX Proposals Voting page`,
-      chainIds: [ARBITRUM],
+      about: t`EDDX Proposals Voting page`,
+      chainIds: [BASE],
     },
     {
-      title: "GMX Announcements",
-      link: "https://t.me/GMX_Announcements",
+      title: "EDDX Announcements",
+      link: "https://t.me/EDDX_Announcements",
       linkLabel: "t.me",
-      about: t`GMX Announcements and Updates`,
-      chainIds: [ARBITRUM],
+      about: t`EDDX Announcements and Updates`,
+      chainIds: [BASE],
     },
   ];
 
   const communityProjects = [
     {
-      title: "GMX Blueberry Club",
+      title: "EDDX Blueberry Club",
       link: "https://www.blueberry.club/",
       linkLabel: "blueberry.club",
-      about: t`GMX Blueberry NFTs`,
+      about: t`EDDX Blueberry NFTs`,
       creatorLabel: "@xm92boi",
       creatorLink: "https://t.me/xm92boi",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Leaderboard",
-      link: "https://www.gmx.house/",
-      linkLabel: "gmx.house",
-      about: t`Leaderboard for GMX traders`,
+      title: "EDDX Leaderboard",
+      link: "https://www.eddx.house/",
+      linkLabel: "eddx.house",
+      about: t`Leaderboard for EDDX traders`,
       creatorLabel: "@Itburnz",
       creatorLink: "https://t.me/Itburnz",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Positions Bot",
-      link: "https://t.me/GMXPositions",
+      title: "EDDX Positions Bot",
+      link: "https://t.me/EDDXPositions",
       linkLabel: "t.me",
-      about: t`Telegram bot for GMX position updates`,
+      about: t`Telegram bot for EDDX position updates`,
       creatorLabel: "@zhongfu",
       creatorLink: "https://t.me/zhongfu",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Blueberry Pulse",
       link: "https://blueberrypulse.substack.com/",
       linkLabel: "substack.com",
-      about: t`GMX Weekly Updates`,
+      about: t`EDDX Weekly Updates`,
       creatorLabel: "@puroscohiba",
       creatorLink: "https://t.me/puroscohiba",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "DegenClip",
-      link: "https://degenclip.com/gmx",
+      link: "https://degenclip.com/eddx",
       linkLabel: "degenclip.com",
       about: t`Community curated tweet collection`,
       creatorLabel: "@ox21l",
       creatorLink: "https://t.me/ox21l",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Yield Simulator",
-      link: "https://gmx.defisims.com/",
+      title: "EDDX Yield Simulator",
+      link: "https://eddx.defisims.com/",
       linkLabel: "defisims.com",
-      about: t`Yield simulator for GMX`,
+      about: t`Yield simulator for EDDX`,
       creatorLabel: "@kyzoeth",
       creatorLink: "https://twitter.com/kyzoeth",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Returns Calculator",
+      title: "EDDX Returns Calculator",
       link: "https://docs.google.com/spreadsheets/u/4/d/1mQZlztz_NpTg5qQiYIzc_Ls1OTLfMOUtmEQN-WW8jj4/copy",
       linkLabel: "docs.google.com",
-      about: t`Returns calculator for GMX and GLP`,
+      about: t`Returns calculator for EDDX and ELP`,
       creatorLabel: "@AStoicTrader1",
       creatorLink: "https://twitter.com/AStoicTrader1",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Trading Stats",
-      link: "https://t.me/GMXTradingStats",
+      title: "EDDX Trading Stats",
+      link: "https://t.me/EDDXTradingStats",
       linkLabel: "t.me",
-      about: t`Telegram bot for Open Interest on GMX`,
+      about: t`Telegram bot for Open Interest on EDDX`,
       creatorLabel: "@SniperMonke01",
       creatorLink: "https://twitter.com/SniperMonke01",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Staking Bot",
-      link: "https://t.me/GMX_Staking_bot",
+      title: "EDDX Staking Bot",
+      link: "https://t.me/EDDX_Staking_bot",
       linkLabel: "t.me",
-      about: t`GMX staking rewards updates and insights`,
-      creatorLabel: "@GMX_Staking_bot",
-      creatorLink: "https://twitter.com/GMX_Staking_bot",
-      chainIds: [ARBITRUM],
+      about: t`EDDX staking rewards updates and insights`,
+      creatorLabel: "@EDDX_Staking_bot",
+      creatorLink: "https://twitter.com/EDDX_Staking_bot",
+      chainIds: [BASE],
     },
     {
-      title: "GMX Staking Calculator",
-      link: "https://gmxstaking.com",
-      linkLabel: "gmxstaking.com",
-      about: t`GMX staking calculator`,
+      title: "EDDX Staking Calculator",
+      link: "https://eddxstaking.com",
+      linkLabel: "eddxstaking.com",
+      about: t`EDDX staking calculator`,
       creatorLabel: "@n1njawtf",
       creatorLink: "https://t.me/n1njawtf",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Hedging Simulator",
-      link: "https://www.gmxhedge.com/",
-      linkLabel: "gmxhedge.com",
+      title: "EDDX Hedging Simulator",
+      link: "https://www.eddxhedge.com/",
+      linkLabel: "eddxhedge.com",
       about: t`Simulate your hedge strategy`,
       creatorLabel: "@kyzoeth",
       creatorLink: "https://twitter.com/kyzoeth",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Swaps",
-      link: "https://t.me/GMXSwaps",
+      title: "EDDX Swaps",
+      link: "https://t.me/EDDXSwaps",
       linkLabel: "t.me",
-      about: t`Telegram bot for GMX Swaps monitoring`,
+      about: t`Telegram bot for EDDX Swaps monitoring`,
       creatorLabel: "@snipermonke01",
       creatorLink: "https://twitter.com/snipermonke01",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Position Calculator",
+      title: "EDDX Position Calculator",
       link: "https://docs.google.com/spreadsheets/d/1OKCeRGU7l-xGx33-siBw_l8x7vP97y4KKKjA2x5LqhQ/edit#gid=0",
       linkLabel: "docs.google.com",
       about: t`Spreadsheet for position calculations`,
       creatorLabel: "@barryfried1",
       creatorLink: "https://twitter.com/barryfried1",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "SNTL esGMX Market",
+      title: "SNTL esEDDX Market",
       link: "https://sntl.market/",
       linkLabel: "sntl.market",
-      about: t`esGMX OTC Market`,
+      about: t`esEDDX OTC Market`,
       creatorLabel: "@sntlai",
       creatorLink: "https://twitter.com/sntlai",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
   ];
 
   const dashboardProjects = [
     {
-      title: "GMX Referrals Dashboard",
-      link: "https://www.gmxreferrals.com/",
-      linkLabel: "gmxreferrals.com",
-      about: t`Dashboard for GMX referral stats`,
+      title: "EDDX Referrals Dashboard",
+      link: "https://www.eddxreferrals.com/",
+      linkLabel: "eddxreferrals.com",
+      about: t`Dashboard for EDDX referral stats`,
       creatorLabel: "@kyzoeth",
       creatorLink: "https://twitter.com/kyzoeth",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Terminal",
-      link: "https://gmxterminal.com",
-      linkLabel: "gmxterminal.com",
-      about: t`GMX explorer for stats and traders`,
+      title: "EDDX Terminal",
+      link: "https://eddxterminal.com",
+      linkLabel: "eddxterminal.com",
+      about: t`EDDX explorer for stats and traders`,
       creatorLabel: "@vipineth",
       creatorLink: "https://t.me/vipineth",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Analytics",
-      link: "https://gmxstats.info/",
-      linkLabel: "gmxstats.info",
+      title: "EDDX Analytics",
+      link: "https://eddxstats.info/",
+      linkLabel: "eddxstats.info",
       about: t`Financial reports and protocol analytics`,
       creatorLabel: "@sliux",
       creatorLink: "https://twitter.com/sliux",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "TokenTerminal",
-      link: "https://tokenterminal.com/terminal/projects/gmx",
+      link: "https://tokenterminal.com/terminal/projects/eddx",
       linkLabel: "tokenterminal.com",
-      about: t`GMX fundamentals`,
+      about: t`EDDX fundamentals`,
       creatorLabel: "@tokenterminal",
       creatorLink: "https://twitter.com/tokenterminal",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "CryptoFees",
       link: "https://cryptofees.info",
       linkLabel: "cryptofees.info",
-      about: t`Fees generated by GMX`,
+      about: t`Fees generated by EDDX`,
       creatorLabel: "@CryptoFeesInfo",
       creatorLink: "https://twitter.com/CryptoFeesInfo",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "Shogun Dashboard (Dune Arbitrum)",
-      link: "https://dune.com/shogun/gmx-analytics-arbitrum",
+      title: "Shogun Dashboard (Dune Base)",
+      link: "https://dune.com/shogun/eddx-analytics-base",
       linkLabel: "dune.com",
       about: t`Protocol analytics`,
       creatorLabel: "@JamesCliffyz",
       creatorLink: "https://twitter.com/JamesCliffyz",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Shogun Dashboard (Dune Avalanche)",
-      link: "https://dune.com/shogun/gmx-analytics-avalanche",
+      link: "https://dune.com/shogun/eddx-analytics-avalanche",
       linkLabel: "dune.com",
       about: t`Protocol analytics`,
       creatorLabel: "@JamesCliffyz",
@@ -245,58 +245,58 @@ export default function Ecosystem() {
       chainIds: [],
     },
     {
-      title: "GMX Perpetuals Data",
-      link: "https://app.laevitas.ch/altsderivs/GMX/perpetualswaps",
+      title: "EDDX Perpetuals Data",
+      link: "https://app.laevitas.ch/altsderivs/EDDX/perpetualswaps",
       linkLabel: "laevitas.ch",
-      about: t`GMX Perpetuals Data`,
+      about: t`EDDX Perpetuals Data`,
       creatorLabel: "@laevitas1",
       creatorLink: "https://twitter.com/laevitas1",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Blueberry Leaderboard",
+      title: "EDDX Blueberry Leaderboard",
       link: "https://www.blueberryboard.com",
       linkLabel: "blueberryboard.com",
       about: t`GBC NFTs APR tracker and rewards`,
       creatorLabel: "@kyzoeth",
       creatorLink: "https://twitter.com/kyzoeth",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Open Trades Ranking and Stats",
-      link: "https://dune.com/HanSolar/gmx-open-trade-ranking-and-stats",
+      title: "EDDX Open Trades Ranking and Stats",
+      link: "https://dune.com/HanSolar/eddx-open-trade-ranking-and-stats",
       linkLabel: "dune.com",
       about: t`Open trades ranking and stats`,
       creatorLabel: "@hansolar21",
       creatorLink: "https://twitter.com/hansolar21",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Everything Dashboard",
-      link: "https://dune.com/gmxtrader/gmx-dashboard-insights",
+      title: "EDDX Everything Dashboard",
+      link: "https://dune.com/eddxtrader/eddx-dashboard-insights",
       linkLabel: "dune.com",
       about: t`Overall protocol analytics`,
-      creatorLabel: "@gmxtrader",
-      creatorLink: "https://twitter.com/gmxtrader",
-      chainIds: [ARBITRUM],
+      creatorLabel: "@eddxtrader",
+      creatorLink: "https://twitter.com/eddxtrader",
+      chainIds: [BASE],
     },
     {
       title: "Staking Rewards Calculator",
-      link: "https://www.stakingrewards.com/earn/gmx/",
+      link: "https://www.stakingrewards.com/earn/eddx/",
       linkLabel: "stakingrewards.com",
-      about: t`GMX staking calculator and guide`,
+      about: t`EDDX staking calculator and guide`,
       creatorLabel: "@stakingrewards",
       creatorLink: "https://twitter.com/stakingrewards",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
-      title: "GMX Risk Monitoring",
-      link: "https://community.chaoslabs.xyz/gmx-arbitrum/ccar-perps/overview",
+      title: "EDDX Risk Monitoring",
+      link: "https://community.chaoslabs.xyz/eddx-base/ccar-perps/overview",
       linkLabel: "chaoslabs.xyz",
       about: t`Protocol risk explorer and stats`,
       creatorLabel: "@chaos_labs",
       creatorLink: "https://twitter.com/chaos_labs",
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
   ];
 
@@ -307,7 +307,7 @@ export default function Ecosystem() {
       linkLabe: "debank.com",
       about: t`DeFi Portfolio Tracker`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Defi Llama",
@@ -315,7 +315,7 @@ export default function Ecosystem() {
       linkLabel: "defillama.com",
       about: t`Decentralized Finance Dashboard`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Dopex",
@@ -323,7 +323,7 @@ export default function Ecosystem() {
       linkLabel: "dopex.io",
       about: t`Decentralized Options Protocol`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Rook",
@@ -331,7 +331,7 @@ export default function Ecosystem() {
       linkLabel: "rook.fi",
       about: t`MEV Optimizer`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Jones DAO",
@@ -339,7 +339,7 @@ export default function Ecosystem() {
       linkLabel: "jonesdao.io",
       about: t`Decentralized Options Strategies`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Yield Yak Optimizer",
@@ -355,7 +355,7 @@ export default function Ecosystem() {
       linkLabel: "vovo.finance",
       about: t`Structured Products`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Stabilize Protocol",
@@ -363,7 +363,7 @@ export default function Ecosystem() {
       linkLabel: "stabilize.finance",
       about: t`Yield Vaults`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "DODO",
@@ -371,7 +371,7 @@ export default function Ecosystem() {
       linkLabel: "dodoex.io",
       about: t`Decentralized Trading Protocol`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Open Ocean",
@@ -379,7 +379,7 @@ export default function Ecosystem() {
       linkLabel: "openocean.finance",
       about: t`DEX Aggregator`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Paraswap",
@@ -387,7 +387,7 @@ export default function Ecosystem() {
       linkLabel: "paraswap.io",
       about: t`DEX Aggregator`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "1inch",
@@ -395,7 +395,7 @@ export default function Ecosystem() {
       linkLabel: "1inch.io",
       about: t`DEX Aggregator`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Firebird Finance",
@@ -417,17 +417,17 @@ export default function Ecosystem() {
       title: "Plutus",
       link: "https://plutusdao.io/vaults",
       linkLabel: "plutusdao.io",
-      about: t`GLP autocompounding vaults`,
+      about: t`ELP autocompounding vaults`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Beefy.com",
       link: "https://app.beefy.com/",
       linkLabel: "beefy.com",
-      about: t`GLP and GMX autocompounding vaults`,
+      about: t`ELP and EDDX autocompounding vaults`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Pendle Finance",
@@ -435,7 +435,7 @@ export default function Ecosystem() {
       linkLabel: "pendle.finance",
       about: t`Yield Trading`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "ODOS",
@@ -443,7 +443,7 @@ export default function Ecosystem() {
       linkLabel: "odos.xyz",
       about: t`DEX Aggregator`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
     {
       title: "Dolomite",
@@ -451,34 +451,34 @@ export default function Ecosystem() {
       linkLabel: "dolomite.io",
       about: t`Decentralized Money Market`,
 
-      chainIds: [ARBITRUM],
+      chainIds: [BASE],
     },
   ];
 
   const telegramGroups = [
     {
-      title: "GMX",
-      link: "https://t.me/GMX_IO",
+      title: "EDDX",
+      link: "https://t.me/EDDX_IO",
       linkLabel: "t.me",
       about: t`Telegram Group`,
     },
     {
-      title: "GMX (Chinese)",
-      link: "https://t.me/gmxch",
+      title: "EDDX (Chinese)",
+      link: "https://t.me/eddxch",
       linkLabel: "t.me",
       about: t`Telegram Group (Chinese)`,
     },
     {
-      title: "GMX (Portuguese)",
-      link: "https://t.me/GMX_Portuguese",
+      title: "EDDX (Portuguese)",
+      link: "https://t.me/EDDX_Portuguese",
       linkLabel: "t.me",
       about: t`Telegram Group (Portuguese)`,
     },
     {
-      title: "GMX Trading Chat",
+      title: "EDDX Trading Chat",
       link: "https://t.me/gambittradingchat",
       linkLabel: "t.me",
-      about: t`GMX community discussion`,
+      about: t`EDDX community discussion`,
     },
   ];
 
@@ -490,15 +490,15 @@ export default function Ecosystem() {
             <div className="section-title-icon" />
             <div className="section-title-content">
               <div className="Page-title">
-                <Trans>GMX Pages</Trans>
+                <Trans>EDDX Pages</Trans>
               </div>
               <div className="Page-description">
-                <Trans>GMX ecosystem pages.</Trans>
+                <Trans>EDDX ecosystem pages.</Trans>
               </div>
             </div>
           </div>
           <div className="Ecosystem-projects">
-            {gmxPages.map((item) => {
+            {eddxPages.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;
               return (
                 <div className="App-card" key={item.title}>
@@ -537,7 +537,7 @@ export default function Ecosystem() {
             </div>
             <div className="Page-description">
               <Trans>
-                Projects developed by the GMX community. <br />
+                Projects developed by the EDDX community. <br />
                 Please exercise caution when interacting with any app, apps are fully maintained by community
                 developers.
               </Trans>
@@ -590,7 +590,7 @@ export default function Ecosystem() {
               <Trans>Dashboards</Trans>
             </div>
             <div className="Page-description">
-              <Trans>GMX dashboards and analytics.</Trans>
+              <Trans>EDDX dashboards and analytics.</Trans>
             </div>
           </div>
           <div className="Ecosystem-projects">
@@ -641,7 +641,7 @@ export default function Ecosystem() {
               <Trans>Partnerships and Integrations</Trans>
             </div>
             <div className="Page-description">
-              <Trans>Projects integrated with GMX.</Trans>
+              <Trans>Projects integrated with EDDX.</Trans>
             </div>
           </div>
           <div className="Ecosystem-projects">

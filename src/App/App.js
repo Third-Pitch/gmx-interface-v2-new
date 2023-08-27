@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import useScrollToTop from "lib/useScrollToTop";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { SWRConfig } from "swr";
+import Slt from "pages/Slt";
 
 import { Redirect, Route, HashRouter as Router, Switch, useHistory, useLocation } from "react-router-dom";
 
@@ -14,9 +15,9 @@ import { decodeReferralCode, encodeReferralCode } from "domain/referrals";
 import Actions from "pages/Actions/Actions";
 import BeginAccountTransfer from "pages/BeginAccountTransfer/BeginAccountTransfer";
 import Buy from "pages/Buy/Buy";
-import BuyGlp from "pages/BuyGlp/BuyGlp";
-import BuyGMX from "pages/BuyGMX/BuyGMX";
-import ClaimEsGmx from "pages/ClaimEsGmx/ClaimEsGmx";
+import BuyElp from "pages/BuyElp/BuyElp";
+import BuyEDDX from "pages/BuyEDDX/BuyEDDX";
+import ClaimEsEddx from "pages/ClaimEsEddx/ClaimEsEddx";
 import CompleteAccountTransfer from "pages/CompleteAccountTransfer/CompleteAccountTransfer";
 import Dashboard from "pages/Dashboard/Dashboard";
 import Ecosystem from "pages/Ecosystem/Ecosystem";
@@ -42,7 +43,6 @@ import "./App.scss";
 
 import SEO from "components/Common/SEO";
 import EventToastContainer from "components/EventToast/EventToastContainer";
-import useEventToast from "components/EventToast/useEventToast";
 import Tooltip from "components/Tooltip/Tooltip";
 import coinbaseImg from "img/coinbaseWallet.png";
 import metamaskImg from "img/metamask.png";
@@ -67,7 +67,7 @@ import { I18nProvider } from "@lingui/react";
 import Button from "components/Button/Button";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import { Header } from "components/Header/Header";
-import { ARBITRUM, EXECUTION_FEE_CONFIG_V2, getExplorerUrl } from "config/chains";
+import { BASE, EXECUTION_FEE_CONFIG_V2, getExplorerUrl } from "config/chains";
 import { isDevelopment } from "config/env";
 import { getIsSyntheticsSupported, getIsV1Supported } from "config/features";
 import {
@@ -132,7 +132,7 @@ function FullApp() {
   const { chainId } = useChainId();
   const location = useLocation();
   const history = useHistory();
-  useEventToast();
+  // useEventToast();
   const [activatingConnector, setActivatingConnector] = useState();
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
@@ -200,12 +200,12 @@ function FullApp() {
           <br />
           {userOnMobileDevice ? (
             <Trans>
-              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink>, and use GMX with its built-in
+              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink>, and use EDDX with its built-in
               browser.
             </Trans>
           ) : (
             <Trans>
-              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using GMX.
+              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using EDDX.
             </Trans>
           )}
         </div>
@@ -223,13 +223,13 @@ function FullApp() {
           <br />
           {userOnMobileDevice ? (
             <Trans>
-              <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink>, and use GMX
+              <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink>, and use EDDX
               with its built-in browser.
             </Trans>
           ) : (
             <Trans>
               <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink> to start using
-              GMX.
+              EDDX.
             </Trans>
           )}
         </div>
@@ -445,7 +445,7 @@ function FullApp() {
   const positionRouterAddress = getContract(chainId, "PositionRouter");
 
   useEffect(() => {
-    const wsVaultAbi = chainId === ARBITRUM ? VaultV2.abi : VaultV2b.abi;
+    const wsVaultAbi = chainId === BASE ? VaultV2.abi : VaultV2b.abi;
     if (!wsProvider) {
       return;
     }
@@ -589,8 +589,8 @@ function FullApp() {
                   <SyntheticsFallbackPage />
                 )}
               </Route>
-              <Route exact path="/buy_glp">
-                <BuyGlp
+              <Route exact path="/buy_elp">
+                <BuyElp
                   savedSlippageAmount={settings.savedAllowedSlippage}
                   setPendingTxns={setPendingTxns}
                   connectWallet={connectWallet}
@@ -600,8 +600,11 @@ function FullApp() {
               <Route exact path="/jobs">
                 <Jobs />
               </Route>
-              <Route exact path="/buy_gmx">
-                <BuyGMX />
+              <Route exact path="/slt">
+                <Slt />
+              </Route>
+              <Route exact path="/buy_eddx">
+                <BuyEDDX />
               </Route>
               <Route exact path="/ecosystem">
                 <Ecosystem />
@@ -615,8 +618,8 @@ function FullApp() {
               <Route exact path="/nft_wallet">
                 <NftWallet />
               </Route>
-              <Route exact path="/claim_es_gmx">
-                <ClaimEsGmx setPendingTxns={setPendingTxns} />
+              <Route exact path="/claim_es_eddx">
+                <ClaimEsEddx setPendingTxns={setPendingTxns} />
               </Route>
               <Route exact path="/actions/v2">
                 <SyntheticsActions
@@ -737,11 +740,11 @@ function FullApp() {
                     <Trans>
                       The Max Execution Fee is set to a higher value to handle potential increases in gas price during
                       order execution. Any excess execution fee will be refunded to your account when the order is
-                      executed. Only applicable to GMX V2.
+                      executed. Only applicable to EDDX V2.
                     </Trans>
                     <br />
                     <br />
-                    <ExternalLink href="https://docs.gmx.io/docs/trading/v2#execution-fee">Read more</ExternalLink>
+                    <ExternalLink href="https://docs.eddx.io/docs/trading/v2#execution-fee">Read more</ExternalLink>
                   </div>
                 )}
               />

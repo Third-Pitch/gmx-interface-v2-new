@@ -67,22 +67,22 @@ export function MarketSelector({
         const indexName = getMarketIndexName(marketInfo);
         const marketToken = getByKey(marketTokensData, marketInfo.marketTokenAddress);
 
-        const gmBalance = marketToken?.balance;
-        const gmBalanceUsd = convertToUsd(marketToken?.balance, marketToken?.decimals, marketToken?.prices.minPrice);
+        const emBalance = marketToken?.balance;
+        const emBalanceUsd = convertToUsd(marketToken?.balance, marketToken?.decimals, marketToken?.prices.minPrice);
         const state = getMarketState?.(marketInfo);
 
         const option = optionsByIndexName[indexName];
 
         if (option) {
-          option.balance = option.balance.add(gmBalance || BigNumber.from(0));
-          option.balanceUsd = option.balanceUsd.add(gmBalanceUsd || BigNumber.from(0));
+          option.balance = option.balance.add(emBalance || BigNumber.from(0));
+          option.balanceUsd = option.balanceUsd.add(emBalanceUsd || BigNumber.from(0));
         }
 
         optionsByIndexName[indexName] = optionsByIndexName[indexName] || {
           indexName,
           marketInfo,
-          balance: gmBalance || BigNumber.from(0),
-          balanceUsd: gmBalanceUsd || BigNumber.from(0),
+          balance: emBalance || BigNumber.from(0),
+          balanceUsd: emBalanceUsd || BigNumber.from(0),
           state,
         };
       });

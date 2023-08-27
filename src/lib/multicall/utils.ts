@@ -1,20 +1,19 @@
 import { Web3Provider } from "@ethersproject/providers";
 import CustomErrors from "abis/CustomErrors.json";
-import { ARBITRUM, getFallbackRpcUrl, getRpcUrl } from "config/chains";
-import { PublicClient, createPublicClient, http } from "viem";
-import { arbitrum } from "viem/chains";
+import { BASE, getFallbackRpcUrl, getRpcUrl } from "config/chains";
+import { createPublicClient, http } from "viem";
+import { baseGoerli } from "viem/chains";
 import { MulticallRequestConfig, MulticallResult } from "./types";
 
 import { sleep } from "lib/sleep";
 
 export const MAX_TIMEOUT = 2000;
-
 const CHAIN_BY_CHAIN_ID = {
-  [ARBITRUM]: arbitrum,
+  [BASE]: baseGoerli,
 };
 
 const BATCH_CONFIGS = {
-  [ARBITRUM]: {
+  [BASE]: {
     http: {
       batchSize: 0, // disable batches, here batchSize is the number of eth_calls in a batch
       wait: 0, // keep this setting in case batches are enabled in future
@@ -74,7 +73,7 @@ export class Multicall {
     });
   }
 
-  viemClient: PublicClient;
+  viemClient: any;
 
   constructor(public chainId: number, public rpcUrl: string) {
     this.viemClient = Multicall.getViemClient(chainId, rpcUrl);
@@ -125,7 +124,6 @@ export class Multicall {
         });
       });
     });
-
     const response: any = await Promise.race([
       this.viemClient.multicall({ contracts: encodedPayload as any }),
       sleep(maxTimeout).then(() => Promise.reject("multicall timeout")),
@@ -144,7 +142,7 @@ export class Multicall {
           throw e;
         }
 
-        const fallbackClient = Multicall.getViemClient(this.chainId, rpcUrl);
+        const fallbackClient = Multicall.getViemClient(this.chainId, rpcUrl) as any;
 
         // eslint-disable-next-line no-console
         console.log(`using multicall fallback for chain ${this.chainId}`);

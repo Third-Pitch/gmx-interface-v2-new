@@ -47,14 +47,14 @@ export function MarketStats(p: Props) {
       <div className="MarketStats-title">
         <div className="App-card-title-mark">
           <div className="App-card-title-mark-icon">
-            <img className="MarketStats-gm-icon" src={getIcon(chainId, "gm")} alt="GM" />
+            <img className="MarketStats-em-icon" src={getIcon(chainId, "em")} alt="EM" />
           </div>
           <div className="App-card-title-mark-info">
-            <div className="App-card-title-mark-title">GM{marketInfo && `: ${marketInfo.name}`}</div>
-            <div className="App-card-title-mark-subtitle">GMX Market Tokens</div>
+            <div className="App-card-title-mark-title">EM{marketInfo && `: ${marketInfo.name}`}</div>
+            <div className="App-card-title-mark-subtitle">EDDX Market Tokens</div>
           </div>
           <div>
-            <AssetDropdown assetSymbol={"GM"} token={marketToken} />
+            <AssetDropdown assetSymbol={"EM"} token={marketToken} />
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@ export function MarketStats(p: Props) {
               renderContent={() => {
                 return (
                   <div>
-                    <Trans>GM Token pricing includes positions' Pending PnL, Impact Pool Amount and Borrow Fees.</Trans>
+                    <Trans>EM Token pricing includes positions' Pending PnL, Impact Pool Amount and Borrow Fees.</Trans>
                   </div>
                 );
               }}
@@ -85,7 +85,7 @@ export function MarketStats(p: Props) {
           label={t`Wallet`}
           value={
             marketBalance && marketBalanceUsd
-              ? formatTokenAmountWithUsd(marketBalance, marketBalanceUsd, "GM", marketToken.decimals)
+              ? formatTokenAmountWithUsd(marketBalance, marketBalanceUsd, "EM", marketToken.decimals)
               : "..."
           }
         />
@@ -96,7 +96,7 @@ export function MarketStats(p: Props) {
           label={t`Total Supply`}
           value={
             marketTotalSupply && marketTotalSupplyUsd
-              ? formatTokenAmountWithUsd(marketTotalSupply, marketTotalSupplyUsd, "GM", marketToken.decimals)
+              ? formatTokenAmountWithUsd(marketTotalSupply, marketTotalSupplyUsd, "EM", marketToken.decimals)
               : "..."
           }
         />
@@ -109,7 +109,7 @@ export function MarketStats(p: Props) {
                 handle={formatTokenAmountWithUsd(
                   mintableInfo.mintableAmount,
                   mintableInfo.mintableUsd,
-                  "GM",
+                  "EM",
                   marketToken.decimals
                 )}
                 position="right-bottom"
@@ -118,12 +118,12 @@ export function MarketStats(p: Props) {
                     <div>
                       {marketInfo?.isSameCollaterals ? (
                         <Trans>
-                          {marketInfo?.longToken.symbol} can be used to mint GM for this market up to the specified
+                          {marketInfo?.longToken.symbol} can be used to mint EM for this market up to the specified
                           minting caps.
                         </Trans>
                       ) : (
                         <Trans>
-                          {marketInfo?.longToken.symbol} and {marketInfo?.shortToken.symbol} can be used to mint GM for
+                          {marketInfo?.longToken.symbol} and {marketInfo?.shortToken.symbol} can be used to mint EM for
                           this market up to the specified minting caps.
                         </Trans>
                       )}

@@ -1,13 +1,15 @@
-import { ARBITRUM, ETH_MAINNET } from "./chains";
+import { BASE, ETH_MAINNET } from "./chains";
 import { isDevelopment } from "./env";
 import { getSubgraphUrlKey } from "./localStorage";
 
 const SUBGRAPH_URLS = {
-  [ARBITRUM]: {
-    stats: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/gmx/gmx-arbitrum-stats/api",
-    referrals: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/gmx/gmx-arbitrum-referrals/api",
-    nissohVault: "https://api.thegraph.com/subgraphs/name/nissoh/gmx-vault",
-    syntheticsStats: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/gmx/synthetics-arbitrum-stats/api",
+  [BASE]: {
+    stats: "https://api.studio.thegraph.com/query/45535/test-stats/version/latest",
+    referrals: "https://api.studio.thegraph.com/query/45535/test-referrals/version/latest",
+    // stats: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/eddx/eddx-base-stats/api",
+    // referrals: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/eddx/eddx-base-referrals/api",
+    nissohVault: "https://api.thegraph.com/subgraphs/name/nissoh/eddx-vault",
+    syntheticsStats: "https://api.studio.thegraph.com/query/45535/test-synthetics-stat/version/latest",
   },
 
   common: {

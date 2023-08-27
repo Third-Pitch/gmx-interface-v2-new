@@ -7,16 +7,16 @@ import { isHomeSite } from "lib/legacy";
 import { useWeb3React } from "@web3-react/core";
 
 import ExternalLink from "components/ExternalLink/ExternalLink";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { getIcon } from "config/icons";
 import { useChainId } from "lib/chains";
 import { switchNetwork } from "lib/wallets";
 import APRLabel from "../APRLabel/APRLabel";
 import { HeaderLink } from "../Header/HeaderLink";
 
-const glpIcon = getIcon("common", "glp");
-const gmxIcon = getIcon("common", "gmx");
-const gmIcon = getIcon("common", "gm");
+const elpIcon = getIcon("common", "elp");
+const eddxIcon = getIcon("common", "eddx");
+const emIcon = getIcon("common", "em");
 
 export default function TokenCard({ showRedirectModal, redirectPopupTimestamp }) {
   const isHome = isHomeSite();
@@ -64,22 +64,22 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
     <div className="Home-token-card-options">
       <div className="Home-token-card-option">
         <div className="Home-token-card-option-icon">
-          <img src={gmxIcon} width="40" alt="GMX Icons" /> GMX
+          <img src={eddxIcon} width="40" alt="EDDX Icons" /> EDDX
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
-            <Trans>GMX is the utility and governance token. Accrues 30% of the platform's generated fees.</Trans>
+            <Trans>EDDX is the utility and governance token. Accrues 30% of the platform's generated fees.</Trans>
           </div>
           <div className="Home-token-card-option-apr">
-            <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="gmxAprTotal" />,{" "}
+            <Trans>Base APR:</Trans> <APRLabel chainId={BASE} label="eddxAprTotal" />,{" "}
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              <BuyLink to="/buy_gmx" className="default-btn" network={ARBITRUM}>
-                <Trans>Buy on Arbitrum</Trans>
+              <BuyLink to="/buy_eddx" className="default-btn" network={BASE}>
+                <Trans>Buy on Base</Trans>
               </BuyLink>
             </div>
-            <ExternalLink href="https://docs.gmx.io/docs/category/tokenomics" className="default-btn read-more">
+            <ExternalLink href="https://docs.eddx.io/docs/category/tokenomics" className="default-btn read-more">
               <Trans>Read more</Trans>
             </ExternalLink>
           </div>
@@ -87,25 +87,25 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
       </div>
       <div className="Home-token-card-option">
         <div className="Home-token-card-option-icon">
-          <img src={glpIcon} width="40" alt="GLP Icon" /> GLP
+          <img src={elpIcon} width="40" alt="ELP Icon" /> ELP
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
             <Trans>
-              GLP is the liquidity provider token for GMX V1 markets. Accrues 70% of the V1 markets generated fees.
+              ELP is the liquidity provider token for EDDX V1 markets. Accrues 70% of the V1 markets generated fees.
             </Trans>
           </div>
           <div className="Home-token-card-option-apr">
-            <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="glpAprTotal" key="ARBITRUM" />,{" "}
+            <Trans>Base APR:</Trans> <APRLabel chainId={BASE} label="elpAprTotal" key="BASE" />,{" "}
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              <BuyLink to="/buy_glp" className="default-btn" network={ARBITRUM}>
-                <Trans>Buy on Arbitrum</Trans>
+              <BuyLink to="/buy_elp" className="default-btn" network={BASE}>
+                <Trans>Buy on Base</Trans>
               </BuyLink>
             </div>
             <a
-              href="https://docs.gmx.io/docs/providing-liquidity/v1"
+              href="https://docs.eddx.io/docs/providing-liquidity/v1"
               target="_blank"
               rel="noreferrer"
               className="default-btn read-more"
@@ -118,23 +118,23 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
 
       <div className="Home-token-card-option">
         <div className="Home-token-card-option-icon">
-          <img src={gmIcon} alt="gmxBigIcon" /> GM
+          <img src={emIcon} alt="eddxBigIcon" /> EM
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
             <Trans>
-              GM is the liquidity provider token for GMX V2 markets. Accrues 63% of the V2 markets generated fees.
+              EM is the liquidity provider token for EDDX V2 markets. Accrues 63% of the V2 markets generated fees.
             </Trans>
           </div>
 
           <div className="Home-token-card-option-action Token-card-buy">
             <div className="buy">
-              <BuyLink to="/pools" className="default-btn" network={ARBITRUM}>
-                <Trans>Buy on Arbitrum</Trans>
+              <BuyLink to="/pools" className="default-btn" network={BASE}>
+                <Trans>Buy on Base</Trans>
               </BuyLink>
             </div>
             <a
-              href="https://docs.gmx.io/docs/providing-liquidity/v2"
+              href="https://docs.eddx.io/docs/providing-liquidity/v2"
               target="_blank"
               rel="noreferrer"
               className="default-btn read-more"

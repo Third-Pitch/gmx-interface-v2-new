@@ -5,41 +5,41 @@ import { sample } from "lodash";
 const { parseEther } = ethers.utils;
 
 export const ETH_MAINNET = 1;
-export const ARBITRUM = 84531;
+export const BASE = 84531;
 export const FEES_HIGH_BPS = 50;
 
 // TODO take it from web3
-export const DEFAULT_CHAIN_ID = ARBITRUM;
+export const DEFAULT_CHAIN_ID = BASE;
 export const CHAIN_ID = DEFAULT_CHAIN_ID;
 
-export const SUPPORTED_CHAIN_IDS = [ARBITRUM];
+export const SUPPORTED_CHAIN_IDS = [BASE];
 
 
 export const IS_NETWORK_DISABLED = {
-  [ARBITRUM]: false,
+  [BASE]: false,
 };
 
 export const CHAIN_NAMES_MAP = {
-  [ARBITRUM]: "Base",
+  [BASE]: "Base",
 };
 
 export const GAS_PRICE_ADJUSTMENT_MAP = {
-  [ARBITRUM]: "0",
+  [BASE]: "6000000",
 };
 
 export const MAX_GAS_PRICE_MAP = {
 };
 
 export const HIGH_EXECUTION_FEES_MAP = {
-  [ARBITRUM]: 3, // 3 USD
+  [BASE]: 3, // 3 USD
 };
 
 export const EXECUTION_FEE_MULTIPLIER_MAP = {
-  // if gas prices on Arbitrum are high, the main transaction costs would come from the L2 gas usage
+  // if gas prices on Base are high, the main transaction costs would come from the L2 gas usage
   // for executing positions this is around 65,000 gas
   // if gas prices on Ethereum are high, than the gas usage might be higher, this calculation doesn't deal with that
   // case yet
-  [ARBITRUM]: 65000,
+  [BASE]: 65000,
   // multiplier for Avalanche is just the average gas usage
 };
 
@@ -49,61 +49,61 @@ export const EXECUTION_FEE_CONFIG_V2: {
     defaultBufferBps?: number;
   };
 } = {
-  [ARBITRUM]: {
+  [BASE]: {
     shouldUseMaxPriorityFeePerGas: false,
     defaultBufferBps: 1000, // 10%
   },
- 
+
 };
 
 const constants = {
- 
 
 
 
-  [ARBITRUM]: {
+
+  [BASE]: {
     nativeTokenSymbol: "ETH",
     wrappedTokenSymbol: "WETH",
-    defaultCollateralSymbol: "USDC.e",
+    defaultCollateralSymbol: "ETH",
     defaultFlagOrdersEnabled: false,
     positionReaderPropsLength: 9,
     v2: true,
 
-    SWAP_ORDER_EXECUTION_GAS_FEE: parseEther("0.0003"),
-    INCREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.0003"),
+    SWAP_ORDER_EXECUTION_GAS_FEE: parseEther("0.01"),
+    INCREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.01"),
     // contract requires that execution fee be strictly greater than instead of gte
-    DECREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.000300001"),
+    DECREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.0100001"),
   },
 
 
 };
 
-const ALCHEMY_WHITELISTED_DOMAINS = ["gmx.io", "app.gmx.io"];
+const ALCHEMY_WHITELISTED_DOMAINS = ["eddx.io", "app.eddx.io"];
 
 export const RPC_PROVIDERS = {
   [ETH_MAINNET]: ["https://rpc.ankr.com/eth"],
-  
-  [ARBITRUM]: ["https://goerli.base.org"],
+
+  [BASE]: ["https://goerli.base.org"],
 
 };
 
 export const FALLBACK_PROVIDERS = {
-  [ARBITRUM]: [getAlchemyHttpUrl()],
+  [BASE]: [getAlchemyHttpUrl()],
 };
 
 export const NETWORK_METADATA: { [chainId: number]: NetworkMetadata } = {
-  
 
-  [ARBITRUM]: {
-    chainId: "0x" + ARBITRUM.toString(16),
-    chainName: "Arbitrum",
+
+  [BASE]: {
+    chainId: "0x" + BASE.toString(16),
+    chainName: "Base",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
-    rpcUrls: RPC_PROVIDERS[ARBITRUM],
-    blockExplorerUrls: [getExplorerUrl(ARBITRUM)],
+    rpcUrls: RPC_PROVIDERS[BASE],
+    blockExplorerUrls: [getExplorerUrl(BASE)],
   },
 };
 
@@ -133,7 +133,7 @@ export function getFallbackRpcUrl(chainId: number): string | undefined {
 
 export function getAlchemyHttpUrl() {
   // if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
-    return "https://arb-mainnet.g.alchemy.com/v2/RcaXYTizJs51m-w9SnRyDrxSZhE5H9Mf";
+  return "https://arb-mainnet.g.alchemy.com/v2/RcaXYTizJs51m-w9SnRyDrxSZhE5H9Mf";
   // }
   // return "https://arb-mainnet.g.alchemy.com/v2/hxBqIr-vfpJ105JPYLei_ibbJLe66k46";
 }
@@ -150,9 +150,9 @@ export function getExplorerUrl(chainId) {
     return "https://ropsten.etherscan.io/";
   } else if (chainId === 42) {
     return "https://kovan.etherscan.io/";
-  } else if (chainId === ARBITRUM) {
-    return "https://arbiscan.io/";
-  } 
+  } else if (chainId === BASE) {
+    return "https://goerli.basescan.org/";
+  }
   return "https://etherscan.io/";
 }
 

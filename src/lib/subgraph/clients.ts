@@ -1,32 +1,32 @@
 import { createClient } from "./utils";
-import { ARBITRUM,   ETH_MAINNET } from "config/chains";
+import { BASE,   ETH_MAINNET } from "config/chains";
 
 export const chainlinkClient = createClient(ETH_MAINNET, "chainLink");
 
-export const arbitrumGraphClient = createClient(ARBITRUM, "stats");
-export const arbitrumReferralsGraphClient = createClient(ARBITRUM, "referrals");
-export const nissohGraphClient = createClient(ARBITRUM, "nissohVault");
+export const baseGraphClient = createClient(BASE, "stats");
+export const baseReferralsGraphClient = createClient(BASE, "referrals");
+export const nissohGraphClient = createClient(BASE, "nissohVault");
 
 
-export const arbitrumSyntheticsStatsClient = createClient(ARBITRUM, "syntheticsStats");
+export const baseSyntheticsStatsClient = createClient(BASE, "syntheticsStats");
 
 export function getSyntheticsGraphClient(chainId: number) {
-  if (chainId === ARBITRUM) {
-    return arbitrumSyntheticsStatsClient;
+  if (chainId === BASE) {
+    return baseSyntheticsStatsClient;
   }
   return null;
 }
 
-export function getGmxGraphClient(chainId: number) {
-  if (chainId === ARBITRUM) {
-    return arbitrumGraphClient;
+export function getEddxGraphClient(chainId: number) {
+  if (chainId === BASE) {
+    return baseGraphClient;
   }
   throw new Error(`Unsupported chain ${chainId}`);
 }
 
 export function getReferralsGraphClient(chainId) {
-  if (chainId === ARBITRUM) {
-    return arbitrumReferralsGraphClient;
+  if (chainId === BASE) {
+    return baseReferralsGraphClient;
   } 
   throw new Error(`Unsupported chain ${chainId}`);
 }

@@ -8,7 +8,7 @@ import { getIsEquivalentTokens } from "domain/tokens";
 import { BigNumber, ethers } from "ethers";
 import { DUST_USD, USD_DECIMALS, isAddressZero } from "lib/legacy";
 import { expandDecimals, formatAmount, formatUsd } from "lib/numbers";
-import { GmSwapFees, NextPositionValues, SwapPathStats, TradeFees, TriggerThresholdType } from "../types";
+import { EmSwapFees, NextPositionValues, SwapPathStats, TradeFees, TriggerThresholdType } from "../types";
 import { getMinCollateralUsdForLeverage } from "./decrease";
 
 export function getCommonError(p: { chainId: number; isConnected: boolean; hasOutdatedUi: boolean }) {
@@ -397,7 +397,7 @@ export function getEditCollateralError(p: {
   return [undefined];
 }
 
-export function getGmSwapError(p: {
+export function getEmSwapError(p: {
   isDeposit: boolean;
   marketInfo: MarketInfo | undefined;
   marketToken: TokenData | undefined;
@@ -411,7 +411,7 @@ export function getGmSwapError(p: {
   marketTokenUsd: BigNumber | undefined;
   longTokenLiquidityUsd: BigNumber | undefined;
   shortTokenLiquidityUsd: BigNumber | undefined;
-  fees: GmSwapFees | undefined;
+  fees: EmSwapFees | undefined;
   isHighPriceImpact: boolean;
   isHighPriceImpactAccepted: boolean;
 }) {

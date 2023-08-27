@@ -14,13 +14,13 @@ import Token from "abis/Token.json";
 import PositionRouter from "abis/PositionRouter.json";
 
 import { getContract } from "config/contracts";
-import { ARBITRUM, getConstant, getHighExecutionFee } from "config/chains";
+import { BASE, getConstant, getHighExecutionFee } from "config/chains";
 import { DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
 
 import { groupBy } from "lodash";
 import { UI_VERSION, isDevelopment } from "config/env";
 import { getServerBaseUrl, getServerUrl } from "config/backend";
-import { getGmxGraphClient, nissohGraphClient } from "lib/subgraph/clients";
+import { getEddxGraphClient, nissohGraphClient } from "lib/subgraph/clients";
 import { callContract, contractFetcher } from "lib/contracts";
 import { replaceNativeTokenAddress } from "./tokens";
 import { getUsd } from "./tokens/utils";
@@ -53,7 +53,7 @@ export function useAllOrdersStats(chainId) {
   const [res, setRes] = useState<any>();
 
   useEffect(() => {
-    const graphClient = getGmxGraphClient(chainId);
+    const graphClient = getEddxGraphClient(chainId);
     if (graphClient) {
       // eslint-disable-next-line no-console
       graphClient.query({ query }).then(setRes).catch(console.warn);
@@ -75,7 +75,7 @@ export function useUserStat(chainId) {
 
   useEffect(() => {
     // eslint-disable-next-line no-console
-    getGmxGraphClient(chainId)?.query({ query }).then(setRes).catch(console.warn);
+    getEddxGraphClient(chainId)?.query({ query }).then(setRes).catch(console.warn);
   }, [setRes, query, chainId]);
 
   return res ? res.data.userStat : null;
@@ -102,7 +102,7 @@ export function useLiquidationsData(chainId, account) {
            type
          }
       }`);
-      const graphClient = getGmxGraphClient(chainId);
+      const graphClient = getEddxGraphClient(chainId);
       if (!graphClient) {
         return;
       }
@@ -215,7 +215,7 @@ export function useAllOrders(chainId, library) {
   const [res, setRes] = useState<any>();
 
   useEffect(() => {
-    getGmxGraphClient(chainId)?.query({ query }).then(setRes);
+    getEddxGraphClient(chainId)?.query({ query }).then(setRes);
   }, [setRes, query, chainId]);
 
   const key = res ? res.data.orders.map((order) => `${order.type}-${order.account}-${order.index}`) : null;
@@ -383,7 +383,7 @@ export function useExecutionFee(library, active, chainId, infoTokens) {
 
   let multiplier;
 
-  if (chainId === ARBITRUM) {
+  if (chainId === BASE) {
     multiplier = 2150000;
   }
 
@@ -412,7 +412,7 @@ export function useExecutionFee(library, active, chainId, infoTokens) {
 export function useHasOutdatedUi() {
   const { active } = useWeb3React();
 
-  const url = getServerUrl(ARBITRUM, `/ui_version?client_version=${UI_VERSION}&active=${active}`);
+  const url = getServerUrl(BASE, `/ui_version?client_version=${UI_VERSION}&active=${active}`);
   const { data, mutate } = useSWR([url], {
     // @ts-ignore
     fetcher: (...args) => fetch(...args).then((res) => res.text()),
@@ -432,49 +432,48 @@ export function useHasOutdatedUi() {
   return { data: hasOutdatedUi, mutate };
 }
 
-export function useGmxPrice(_chanid, libraries, active) {
+export function useEddxPrice(_chanid, libraries, active) {
 
-  console.log("12312331", libraries)
-  const arbitrumLibrary = libraries && libraries.arbitrum ? libraries.arbitrum : undefined;
-  const { data: gmxPriceFromBase, mutate: mutateFromBase } = useGmxPriceFromArbitrum(arbitrumLibrary, active);
+  const baseLibrary = libraries && libraries.base ? libraries.base : undefined;
+  const { data: eddxPriceFromBase, mutate: mutateFromBase } = useEddxPriceFromBase(baseLibrary, active);
 
-  const gmxPrice = gmxPriceFromBase;
+  const eddxPrice = eddxPriceFromBase;
   const mutate = useCallback(() => {
     mutateFromBase();
   }, [mutateFromBase]);
 
   return {
-    gmxPrice,
-    gmxPriceFromArbitrum: gmxPriceFromBase,
+    eddxPrice,
+    eddxPriceFromBase: eddxPriceFromBase,
     mutate,
   };
 }
 
-// use only the supply endpoint on arbitrum, it includes the supply on avalanche
-export function useTotalGmxSupply() {
-  const gmxSupplyUrlArbitrum = getServerUrl(ARBITRUM, "/gmx_supply");
+// use only the supply endpoint on base, it includes the supply on avalanche
+export function useTotalEddxSupply() {
+  const eddxSupplyUrlBase = getServerUrl(BASE, "/eddx_supply");
 
-  const { data: gmxSupply, mutate: updateGmxSupply } = useSWR([gmxSupplyUrlArbitrum], {
+  const { data: eddxSupply, mutate: updateEddxSupply } = useSWR([eddxSupplyUrlBase], {
     // @ts-ignore
     fetcher: (...args) => fetch(...args).then((res) => res.text()),
   });
 
   return {
-    total: gmxSupply ? bigNumberify(gmxSupply) : undefined,
-    mutate: updateGmxSupply,
+    total: eddxSupply ? bigNumberify(eddxSupply) : undefined,
+    mutate: updateEddxSupply,
   };
 }
 
-export function useTotalGmxStaked() {
-  const stakedGmxTrackerAddressBase = getContract(ARBITRUM, "StakedGmxTracker");
-  let totalStakedGmx = useRef(bigNumberify(0));
-  const { data: stakedGmxSupplyArbitrum, mutate: updateStakedGmxSupplyBase } = useSWR<BigNumber>(
+export function useTotalEddxStaked() {
+  const stakedEddxTrackerAddressBase = getContract(BASE, "StakedEddxTracker");
+  let totalStakedEddx = useRef(bigNumberify(0));
+  const { data: stakedEddxSupplyBase, mutate: updateStakedEddxSupplyBase } = useSWR<BigNumber>(
     [
-      `StakeV2:stakedGmxSupply:${ARBITRUM}`,
-      ARBITRUM,
-      getContract(ARBITRUM, "GMX"),
+      `StakeV2:stakedEddxSupply:${BASE}`,
+      BASE,
+      getContract(BASE, "EDDX"),
       "balanceOf",
-      stakedGmxTrackerAddressBase,
+      stakedEddxTrackerAddressBase,
     ],
     {
       fetcher: contractFetcher(undefined, Token),
@@ -482,72 +481,72 @@ export function useTotalGmxStaked() {
   );
 
   const mutate = useCallback(() => {
-    updateStakedGmxSupplyBase();
-  }, [updateStakedGmxSupplyBase]);
+    updateStakedEddxSupplyBase();
+  }, [updateStakedEddxSupplyBase]);
 
-  if (stakedGmxSupplyArbitrum) {
-    let total = bigNumberify(stakedGmxSupplyArbitrum);
-    totalStakedGmx.current = total;
+  if (stakedEddxSupplyBase) {
+    let total = bigNumberify(stakedEddxSupplyBase);
+    totalStakedEddx.current = total;
   }
 
   return {
-    arbitrum: stakedGmxSupplyArbitrum,
-    total: totalStakedGmx.current,
+    base: stakedEddxSupplyBase,
+    total: totalStakedEddx.current,
     mutate,
   };
 }
 
-export function useTotalGmxInLiquidity() {
-  let poolAddressArbitrum = getContract(ARBITRUM, "UniswapGmxEthPool");
-  let totalGMX = useRef(bigNumberify(0));
+export function useTotalEddxInLiquidity() {
+  let poolAddressBase = getContract(BASE, "UniswapEddxEthPool");
+  let totalEDDX = useRef(bigNumberify(0));
 
-  const { data: gmxInLiquidityOnBase, mutate: mutateGMXInLiquidityOnBase } = useSWR<any>(
-    [`StakeV2:gmxInLiquidity:${ARBITRUM}`, ARBITRUM, getContract(ARBITRUM, "GMX"), "balanceOf", poolAddressArbitrum],
+  const { data: eddxInLiquidityOnBase, mutate: mutateEDDXInLiquidityOnBase } = useSWR<any>(
+    [`StakeV2:eddxInLiquidity:${BASE}`, BASE, getContract(BASE, "EDDX"), "balanceOf", poolAddressBase],
     {
       fetcher: contractFetcher(undefined, Token),
     }
   );
 
   const mutate = useCallback(() => {
-    mutateGMXInLiquidityOnBase();
-  }, [mutateGMXInLiquidityOnBase]);
+    mutateEDDXInLiquidityOnBase();
+  }, [mutateEDDXInLiquidityOnBase]);
 
-  if (gmxInLiquidityOnBase) {
-    let total = bigNumberify(gmxInLiquidityOnBase)!
-    totalGMX.current = total;
+  if (eddxInLiquidityOnBase) {
+    let total = bigNumberify(eddxInLiquidityOnBase)!
+    totalEDDX.current = total;
   }
   return {
-    arbitrum: gmxInLiquidityOnBase,
-    total: totalGMX.current,
+    base: eddxInLiquidityOnBase,
+    total: totalEDDX.current,
     mutate,
   };
 }
 
 
-function useGmxPriceFromArbitrum(library, active) {
-  const poolAddress = getContract(ARBITRUM, "UniswapGmxEthPool");
+function useEddxPriceFromBase(library, active) {
+  const poolAddress = getContract(BASE, "UniswapEddxEthPool");
   const { data: uniPoolSlot0, mutate: updateUniPoolSlot0 } = useSWR<any>(
-    [`StakeV2:uniPoolSlot0:${active}`, ARBITRUM, poolAddress, "slot0"],
+    [`StakeV2:uniPoolSlot0:${active}`, BASE, poolAddress, "slot0"],
     {
       fetcher: contractFetcher(library, UniPool),
     }
   );
 
-  const vaultAddress = getContract(ARBITRUM, "Vault");
-  const ethAddress = getTokenBySymbol(ARBITRUM, "WETH").address;
+  const vaultAddress = getContract(BASE, "Vault");
+  const ethAddress = getTokenBySymbol(BASE, "WETH").address;
   const { data: ethPrice, mutate: updateEthPrice } = useSWR<BigNumber>(
-    [`StakeV2:ethPrice:${active}`, ARBITRUM, vaultAddress, "getMinPrice", ethAddress],
+    [`StakeV2:ethPrice:${active}`, BASE, vaultAddress, "getMinPrice", ethAddress],
     {
       fetcher: contractFetcher(library, Vault),
     }
   );
 
-  const gmxPrice = useMemo(() => {
+  const eddxPrice = useMemo(() => {
     if (uniPoolSlot0 && ethPrice) {
-      const tokenA = new UniToken(ARBITRUM, ethAddress, 18, "SYMBOL", "NAME");
+      const tokenA = new UniToken(BASE, ethAddress, 18, "SYMBOL", "NAME");
 
-      const gmxAddress = getContract(ARBITRUM, "GMX");
-      const tokenB = new UniToken(ARBITRUM, gmxAddress, 18, "SYMBOL", "NAME");
+      const eddxAddress = getContract(BASE, "EDDX");
+      const tokenB = new UniToken(BASE, eddxAddress, 18, "SYMBOL", "NAME");
 
       const pool = new Pool(
         tokenA, // tokenA
@@ -570,7 +569,7 @@ function useGmxPriceFromArbitrum(library, active) {
     updateEthPrice(undefined, true);
   }, [updateEthPrice, updateUniPoolSlot0]);
 
-  return { data: gmxPrice, mutate };
+  return { data: eddxPrice, mutate };
 }
 
 export async function approvePlugin(chainId, pluginAddress, { library, setPendingTxns, sentMsg, failMsg }) {

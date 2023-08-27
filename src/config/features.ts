@@ -1,9 +1,9 @@
-import { ARBITRUM } from "./chains";
+import { BASE } from "./chains";
 
 export function getIsSyntheticsSupported(chainId: number) {
   return true;
 }
 
 export function getIsV1Supported(chainId: number) {
-  return [ARBITRUM].includes(chainId);
+  return [BASE].includes(chainId);
 }

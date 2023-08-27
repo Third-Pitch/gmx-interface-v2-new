@@ -22,27 +22,23 @@ msgid "01 Sep 2021"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "06 Jan 2022"
-msgstr ""
-
-#: src/pages/Dashboard/DashboardV2.js
 msgid "24h Volume"
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0> to start using GMX."
+msgid "<0>Install Coinbase Wallet</0> to start using EDDX."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
+msgid "<0>Install Coinbase Wallet</0>, and use EDDX with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0> to start using GMX."
+msgid "<0>Install MetaMask</0> to start using EDDX."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0>, and use GMX with its built-in browser."
+msgid "<0>Install MetaMask</0>, and use EDDX with its built-in browser."
 msgstr ""
 
 #: src/components/Exchange/OrdersToa.js
@@ -65,8 +61,8 @@ msgstr ""
 msgid "<0>The order will be executed when the oracle price is {0} {1}.</0><1>Note that there may be rare cases where the order cannot be executed, for example, if the chain is down and no oracle reports are produced or if the price impact exceeds your acceptable price.</1>"
 msgstr ""
 
-#: src/components/Glp/SwapErrorModal.tsx
-msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy GLP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
+#: src/components/Elp/SwapErrorModal.tsx
+msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy ELP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
 msgstr ""
 
 #: src/components/Exchange/OrdersList.js
@@ -74,11 +70,11 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esGMX tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esEDDX tokens that have been converted to EDDX will remain as EDDX tokens.<3/><4/>To claim EDDX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "<0>Total value of tokens in GLP pool ({chainName}).</0><1>This value may be higher on other websites due to the collateral of positions being included in the calculation.</1>"
+msgid "<0>Total value of tokens in ELP pool ({chainName}).</0><1>This value may be higher on other websites due to the collateral of positions being included in the calculation.</1>"
 msgstr ""
 
 #: src/lib/contracts/transactionErrors.tsx
@@ -107,9 +103,9 @@ msgstr ""
 msgid "A snapshot of the USD value of your {0} collateral is taken when the position is opened."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -121,20 +117,20 @@ msgstr ""
 msgid "APR"
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week. <0/><1/>Historical GLP APRs can be checked in this <2>community dashboard</2>."
+msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week. <0/><1/>Historical ELP APRs can be checked in this <2>community dashboard</2>."
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "AUM"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "AVAILABLE"
 msgstr ""
 
@@ -203,8 +199,8 @@ msgid "Accrued Positive Funding Fee"
 msgstr ""
 
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 msgid "Acknowledge high Price Impact"
 msgstr ""
@@ -256,12 +252,12 @@ msgstr ""
 msgid "Affiliates"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "After claiming you will be able to vest a maximum of {0} esEDDX at a ratio of {1} {stakingToken} to 1 esEDDX."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming, the esGMX tokens will be airdropped to your account on the selected network within 7 days."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "After claiming, the esEDDX tokens will be airdropped to your account on the selected network within 7 days."
 msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
@@ -302,7 +298,7 @@ msgstr ""
 msgid "Amount should be greater than zero"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "Amount to claim"
 msgstr ""
 
@@ -332,12 +328,12 @@ msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 #: src/pages/Stake/StakeV2.js
-msgid "Approve GMX"
+msgid "Approve EDDX"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 msgid "Approve {0}"
 msgstr ""
@@ -348,12 +344,12 @@ msgid "Approve {stakingTokenSymbol}"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Approving GMX..."
+msgid "Approving EDDX..."
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 msgid "Approving {0}..."
 msgstr ""
 
@@ -367,22 +363,17 @@ msgstr ""
 msgid "Approving..."
 msgstr ""
 
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-msgid "Arbitrum APR:"
-msgstr ""
-
 #: src/components/Exchange/NoLiquidityErrorModal.tsx
-msgid "As there is not enough liquidity in GLP to swap {0} to {swapTokenSymbol}, you can use the option below to do so:"
+msgid "As there is not enough liquidity in ELP to swap {0} to {swapTokenSymbol}, you can use the option below to do so:"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "Assets Under Management: GMX staked (All chains) + GLP pool ({chainName})."
+msgid "Assets Under Management: EDDX staked (All chains) + ELP pool ({chainName})."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Available"
 msgstr ""
 
@@ -396,41 +387,41 @@ msgstr ""
 msgid "Available Liquidity"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-msgid "Available amount to deposit into GLP."
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+msgid "Available amount to deposit into ELP."
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
-msgid "Available amount to deposit into the specific GM pool."
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+msgid "Available amount to deposit into the specific EM pool."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-msgid "Available amount to withdraw from GLP. Funds not utilized by current open positions."
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+msgid "Available amount to withdraw from ELP. Funds not utilized by current open positions."
 msgstr ""
 
 #: src/pages/Home/Home.js
 msgid "Available on your preferred network"
 msgstr ""
 
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-msgid "Avalanche APR:"
-msgstr ""
-
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 msgid "Balance"
+msgstr ""
+
+#: src/components/TokenCard/TokenCard.js
+#: src/components/TokenCard/TokenCard.js
+msgid "Base APR:"
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
@@ -473,135 +464,125 @@ msgid "Borrow Fee Rate"
 msgstr ""
 
 #: src/components/Header/AppHeaderLinks.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
 msgid "Buy"
 msgstr ""
 
-#: src/pages/BuyGlp/BuyGlp.js
-msgid "Buy / Sell GLP"
+#: src/pages/BuyElp/BuyElp.js
+msgid "Buy / Sell ELP"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
+#: src/pages/BuyEDDX/BuyEDDX.tsx
 msgid "Buy AVAX directly to Avalanche or transfer it there."
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy ETH directly on Arbitrum or transfer it there."
-msgstr ""
-
-#: src/components/Synthetics/GmSwap/GmFees/GmFees.tsx
-msgid "Buy Fee"
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
 #: src/pages/Stake/StakeV2.js
-msgid "Buy GLP"
+msgid "Buy EDDX"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX from Uniswap (make sure to select Base):"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX from centralized exchanges:"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX from centralized services"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX from decentralized exchanges"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX on {0}"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX using Decentralized Exchange Aggregators:"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX using FIAT gateways:"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy EDDX using any token from any network:"
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/pages/Stake/StakeV2.js
+msgid "Buy ELP"
 msgstr ""
 
 #: src/pages/Buy/Buy.js
-msgid "Buy GLP or GMX"
+msgid "Buy ELP or EDDX"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-msgid "Buy GM"
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+msgid "Buy EM"
 msgstr ""
 
-#: src/pages/Stake/StakeV2.js
-msgid "Buy GMX"
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy ETH directly on Base or transfer it there."
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from Traderjoe:"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from Uniswap (make sure to select Arbitrum):"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized exchanges:"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized services"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from decentralized exchanges"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX on {0}"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using Decentralized Exchange Aggregators:"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using FIAT gateways:"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using any token from any network:"
+#: src/components/Synthetics/EmSwap/EmFees/EmFees.tsx
+msgid "Buy Fee"
 msgstr ""
 
 #: src/pages/Buy/Buy.js
 msgid "Buy Protocol Tokens"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Buy failed."
 msgstr ""
 
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
 #: src/components/TokenCard/TokenCard.js
-msgid "Buy on Arbitrum"
+msgid "Buy on Base"
 msgstr ""
 
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-msgid "Buy on Avalanche"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
+#: src/pages/BuyEDDX/BuyEDDX.tsx
 msgid "Buy or Transfer AVAX to Avalanche"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy or Transfer ETH to Arbitrum"
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "Buy or Transfer ETH to Base"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Buy order cancelled"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Buy order executed"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Buy request sent"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Buy submitted."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Buy with {0}"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
+#: src/pages/BuyEDDX/BuyEDDX.tsx
 msgid "Buy {nativeTokenSymbol}"
 msgstr ""
 
@@ -609,15 +590,15 @@ msgstr ""
 msgid "Buy {swapTokenSymbol} on 1inch"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
-msgid "Buying GM ({indexName}) with {tokensText}"
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
+msgid "Buying EM ({indexName}) with {tokensText}"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-msgid "Buying GM..."
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+msgid "Buying EM..."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Buying..."
 msgstr ""
 
@@ -667,8 +648,8 @@ msgstr ""
 msgid "Chart positions"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Check the \"Save on Fees\" section below to get the lowest fee percentages."
 msgstr ""
 
@@ -677,14 +658,14 @@ msgstr ""
 msgid "Checking code..."
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
+#: src/pages/BuyEDDX/BuyEDDX.tsx
 msgid "Choose to buy from decentralized or centralized exchanges."
 msgstr ""
 
 #: src/components/Referrals/ClaimAffiliatesModal/ClaimAffiliatesModal.tsx
 #: src/components/Synthetics/ClaimModal/ClaimModal.tsx
 #: src/components/Synthetics/ClaimableCard/ClaimableCard.tsx
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -695,13 +676,13 @@ msgstr ""
 msgid "Claim"
 msgstr ""
 
-#: src/components/Synthetics/ClaimHistoryRow/ClaimHistoryRow.tsx
-msgid "Claim Funding Fees"
+#: src/pages/Stake/StakeV2.js
+#: src/pages/Stake/StakeV2.js
+msgid "Claim EDDX Rewards"
 msgstr ""
 
-#: src/pages/Stake/StakeV2.js
-#: src/pages/Stake/StakeV2.js
-msgid "Claim GMX Rewards"
+#: src/components/Synthetics/ClaimHistoryRow/ClaimHistoryRow.tsx
+msgid "Claim Funding Fees"
 msgstr ""
 
 #: src/components/Synthetics/ClaimHistoryRow/ClaimHistoryRow.tsx
@@ -716,30 +697,30 @@ msgstr ""
 msgid "Claim V2 Rebates from your referred Traders."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/Stake/StakeV2.js
 msgid "Claim completed!"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Claim esGMX"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Claim esEDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "Claim esGMX Rewards"
+msgid "Claim esEDDX Rewards"
 msgstr ""
 
 #: src/pages/Stake/StakeV1.js
 msgid "Claim failed"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/Stake/StakeV2.js
 msgid "Claim failed."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "Claim submitted!"
 msgstr ""
 
@@ -776,7 +757,7 @@ msgstr ""
 
 #: src/components/Referrals/ClaimAffiliatesModal/ClaimAffiliatesModal.tsx
 #: src/components/Synthetics/ClaimModal/ClaimModal.tsx
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/Stake/StakeV2.js
 msgid "Claiming..."
 msgstr ""
@@ -983,8 +964,8 @@ msgstr ""
 msgid "Confirm Trigger Order"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
 msgid "Confirm {operationText}"
 msgstr ""
 
@@ -993,13 +974,13 @@ msgid "Connect"
 msgstr ""
 
 #: src/App/App.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Header/AppHeaderUser.tsx
 #: src/components/Migration/Migration.js
 #: src/components/Referrals/AddAffiliateCode.js
 #: src/components/Referrals/JoinReferralCode.js
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/domain/synthetics/trade/utils/validation.ts
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -1017,7 +998,7 @@ msgstr ""
 msgid "Connected to {0}"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 msgid "Consider selecting and using the \"Pair\" option to reduce the Price Impact."
 msgstr ""
 
@@ -1027,7 +1008,7 @@ msgid "Continue"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Convert esGMX tokens to GMX tokens.<0/>Please read the <1>vesting details</1> before using the vaults."
+msgid "Convert esEDDX tokens to EDDX tokens.<0/>Please read the <1>vesting details</1> before using the vaults."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -1139,7 +1120,7 @@ msgstr ""
 msgid "Current Funding Fee / Day"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Current Pool Amount"
 msgstr ""
 
@@ -1178,7 +1159,7 @@ msgid "Dashboard"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Dashboard for GMX referral stats"
+msgid "Dashboard for EDDX referral stats"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
@@ -1216,7 +1197,7 @@ msgid "Decentralized Options Strategies"
 msgstr ""
 
 #: src/lib/legacy.ts
-msgid "Decentralized Perpetual Exchange | GMX"
+msgid "Decentralized Perpetual Exchange | EDDX"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
@@ -1365,6 +1346,149 @@ msgstr ""
 
 #: src/components/Exchange/PositionShare.js
 msgid "Download"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Announcements and Updates"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Blueberry NFTs"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Governance Page"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Pages"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Perpetuals Data"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Proposals Voting page"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Stats Page"
+msgstr ""
+
+#: src/pages/Stake/StakeV2.js
+#: src/pages/Stake/StakeV2.js
+msgid "EDDX Vault"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX Weekly Updates"
+msgstr ""
+
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "EDDX bonds can be bought on Bond Protocol with a discount and a small vesting period:"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX community discussion"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX dashboards and analytics."
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX ecosystem pages."
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX explorer for stats and traders"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX fundamentals"
+msgstr ""
+
+#: src/pages/Home/Home.js
+msgid "EDDX is currently live on Base and Avalanche."
+msgstr ""
+
+#: src/pages/Jobs/Jobs.js
+msgid "EDDX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@eddx.io</0>."
+msgstr ""
+
+#: src/components/TokenCard/TokenCard.js
+msgid "EDDX is the utility and governance token. Accrues 30% of the platform's generated fees."
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX staking calculator"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX staking calculator and guide"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "EDDX staking rewards updates and insights"
+msgstr ""
+
+#: src/pages/Stake/StakeV2.js
+#: src/pages/Stake/StakeV2.js
+msgid "EDDX transfers not yet enabled"
+msgstr ""
+
+#: src/components/Common/SEO.js
+msgid "EDDX | Decentralized Perpetual Exchange"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV2.js
+#: src/pages/Dashboard/DashboardV2.js
+msgid "ELP Index Composition"
+msgstr ""
+
+#: src/pages/Dashboard/DashboardV2.js
+msgid "ELP Pool"
+msgstr ""
+
+#: src/pages/Stake/StakeV2.js
+#: src/pages/Stake/StakeV2.js
+msgid "ELP Vault"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "ELP and EDDX autocompounding vaults"
+msgstr ""
+
+#: src/pages/Ecosystem/Ecosystem.js
+msgid "ELP autocompounding vaults"
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "ELP buy disabled, pending {0} upgrade"
+msgstr ""
+
+#: src/components/TokenCard/TokenCard.js
+msgid "ELP is the liquidity provider token for EDDX V1 markets. Accrues 70% of the V1 markets generated fees."
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "ELP sell disabled, pending {0} upgrade"
+msgstr ""
+
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/MarketsList/MarketsList.tsx
+#: src/components/Synthetics/MarketsList/MarketsList.tsx
+msgid "EM Pools"
+msgstr ""
+
+#: src/components/Synthetics/MarketStats/MarketStats.tsx
+msgid "EM Token pricing includes positions' Pending PnL, Impact Pool Amount and Borrow Fees."
+msgstr ""
+
+#: src/components/TokenCard/TokenCard.js
+msgid "EM is the liquidity provider token for EDDX V2 markets. Accrues 63% of the V2 markets generated fees."
 msgstr ""
 
 #: src/components/Header/AppHeaderLinks.tsx
@@ -1539,6 +1663,8 @@ msgstr ""
 msgid "Enter a trigger price"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/PositionSeller.js
@@ -1546,8 +1672,6 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 #: src/components/Synthetics/OrderEditor/OrderEditor.tsx
 #: src/domain/synthetics/trade/utils/validation.ts
@@ -1556,7 +1680,7 @@ msgstr ""
 #: src/domain/synthetics/trade/utils/validation.ts
 #: src/domain/synthetics/trade/utils/validation.ts
 #: src/domain/synthetics/trade/utils/validation.ts
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV2.js
@@ -1603,12 +1727,12 @@ msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "Escrowed GMX"
+msgid "Escrowed EDDX"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Stake/GMXAprTooltip.tsx
-msgid "Escrowed GMX APR"
+#: src/components/Elp/ElpSwap.js
+#: src/components/Stake/EDDXAprTooltip.tsx
+msgid "Escrowed EDDX APR"
 msgstr ""
 
 #: src/components/Synthetics/TradeHistoryRow/TradeHistoryRow.tsx
@@ -1637,7 +1761,7 @@ msgstr ""
 msgid "Exit Price"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "FEES"
 msgstr ""
 
@@ -1653,6 +1777,9 @@ msgstr ""
 msgid "Failed to update order"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/ConfirmationBox.js
 #: src/components/Exchange/ConfirmationBox.js
 #: src/components/Exchange/ConfirmationBox.js
@@ -1660,16 +1787,13 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
 #: src/components/Synthetics/TradeFeesRow/TradeFeesRow.tsx
 #: src/pages/Dashboard/DashboardV2.js
 msgid "Fees"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmFees/GmFees.tsx
+#: src/components/Synthetics/EmSwap/EmFees/EmFees.tsx
 #: src/components/Synthetics/TradeFeesRow/TradeFeesRow.tsx
 msgid "Fees and Price Impact"
 msgstr ""
@@ -1697,25 +1821,25 @@ msgid "Fees exceed amount"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Fees generated by GMX"
+msgid "Fees generated by EDDX"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "Fees may vary depending on which asset you sell GLP for. <0/>Enter the amount of GLP you want to redeem in the order form, then check here to compare fees."
+#: src/components/Elp/ElpSwap.js
+msgid "Fees may vary depending on which asset you sell ELP for. <0/>Enter the amount of ELP you want to redeem in the order form, then check here to compare fees."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "Fees may vary depending on which asset you use to buy GLP. <0/>Enter the amount of GLP you want to purchase in the order form, then check here to compare fees."
+#: src/components/Elp/ElpSwap.js
+msgid "Fees may vary depending on which asset you use to buy ELP. <0/>Enter the amount of ELP you want to purchase in the order form, then check here to compare fees."
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "Fees since"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Fees will be shown once you have entered an amount in the order form."
 msgstr ""
 
@@ -1756,11 +1880,11 @@ msgstr ""
 msgid "Freeze"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Fulfilling Buy request"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Fulfilling Sell request"
 msgstr ""
 
@@ -1798,149 +1922,6 @@ msgstr ""
 msgid "GBC NFTs APR tracker and rewards"
 msgstr ""
 
-#: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/DashboardV2.js
-msgid "GLP Index Composition"
-msgstr ""
-
-#: src/pages/Dashboard/DashboardV2.js
-msgid "GLP Pool"
-msgstr ""
-
-#: src/pages/Stake/StakeV2.js
-#: src/pages/Stake/StakeV2.js
-msgid "GLP Vault"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GLP and GMX autocompounding vaults"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GLP autocompounding vaults"
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-msgid "GLP buy disabled, pending {0} upgrade"
-msgstr ""
-
-#: src/components/TokenCard/TokenCard.js
-msgid "GLP is the liquidity provider token for GMX V1 markets. Accrues 70% of the V1 markets generated fees."
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-msgid "GLP sell disabled, pending {0} upgrade"
-msgstr ""
-
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/MarketsList/MarketsList.tsx
-#: src/components/Synthetics/MarketsList/MarketsList.tsx
-msgid "GM Pools"
-msgstr ""
-
-#: src/components/Synthetics/MarketStats/MarketStats.tsx
-msgid "GM Token pricing includes positions' Pending PnL, Impact Pool Amount and Borrow Fees."
-msgstr ""
-
-#: src/components/TokenCard/TokenCard.js
-msgid "GM is the liquidity provider token for GMX V2 markets. Accrues 63% of the V2 markets generated fees."
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Announcements and Updates"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Blueberry NFTs"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Governance Page"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Pages"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Perpetuals Data"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Proposals Voting page"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Stats Page"
-msgstr ""
-
-#: src/pages/Stake/StakeV2.js
-#: src/pages/Stake/StakeV2.js
-msgid "GMX Vault"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Weekly Updates"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "GMX bonds can be bought on Bond Protocol with a discount and a small vesting period:"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX community discussion"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX dashboards and analytics."
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX ecosystem pages."
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX explorer for stats and traders"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX fundamentals"
-msgstr ""
-
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr ""
-
-#: src/pages/Jobs/Jobs.js
-msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
-msgstr ""
-
-#: src/components/TokenCard/TokenCard.js
-msgid "GMX is the utility and governance token. Accrues 30% of the platform's generated fees."
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX staking calculator"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX staking calculator and guide"
-msgstr ""
-
-#: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX staking rewards updates and insights"
-msgstr ""
-
-#: src/pages/Stake/StakeV2.js
-#: src/pages/Stake/StakeV2.js
-msgid "GMX transfers not yet enabled"
-msgstr ""
-
-#: src/components/Common/SEO.js
-msgid "GMX | Decentralized Perpetual Exchange"
-msgstr ""
-
 #: src/components/Referrals/AddAffiliateCode.js
 msgid "Generate Referral Code"
 msgstr ""
@@ -1950,7 +1931,7 @@ msgid "Generating shareable image..."
 msgstr ""
 
 #: src/pages/Referrals/Referrals.tsx
-msgid "Get fee discounts and earn rebates through the GMX referral program.<0/>For more information, please read the <1>referral program details</1>."
+msgid "Get fee discounts and earn rebates through the EDDX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr ""
 
 #: src/components/Header/HomeHeaderLinks.tsx
@@ -2074,8 +2055,8 @@ msgstr ""
 msgid "Insufficient Available Liquidity to swap to {0}:"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "Insufficient GLP balance"
+#: src/components/Elp/ElpSwap.js
+msgid "Insufficient ELP balance"
 msgstr ""
 
 #: src/components/Exchange/PositionSeller.js
@@ -2093,8 +2074,8 @@ msgstr ""
 msgid "Insufficient Liquidity"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 #: src/domain/synthetics/trade/utils/validation.ts
 msgid "Insufficient liquidity"
 msgstr ""
@@ -2119,9 +2100,9 @@ msgstr ""
 msgid "Insufficient staked tokens"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 #: src/domain/synthetics/trade/utils/validation.ts
 #: src/domain/synthetics/trade/utils/validation.ts
 #: src/domain/synthetics/trade/utils/validation.ts
@@ -2197,7 +2178,7 @@ msgid "Job Openings"
 msgstr ""
 
 #: src/pages/Jobs/Jobs.js
-msgid "Job openings at GMX."
+msgid "Job openings at EDDX."
 msgstr ""
 
 #: src/pages/Jobs/Jobs.js
@@ -2234,7 +2215,7 @@ msgid "Leaderboard"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Leaderboard for GMX traders"
+msgid "Leaderboard for EDDX traders"
 msgstr ""
 
 #: src/components/Exchange/PositionEditor.js
@@ -2404,7 +2385,7 @@ msgstr ""
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Synthetics/ClaimHistory/ClaimHistory.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
 #: src/components/Synthetics/OrderEditor/OrderEditor.tsx
 #: src/components/Synthetics/OrderEditor/OrderEditor.tsx
 #: src/components/Synthetics/OrderList/OrderList.tsx
@@ -2495,7 +2476,7 @@ msgstr ""
 msgid "Loss"
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 msgid "MARKET"
 msgstr ""
 
@@ -2503,7 +2484,7 @@ msgstr ""
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/InputSection/InputSection.js
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "MAX"
 msgstr ""
 
@@ -2511,7 +2492,7 @@ msgstr ""
 msgid "MEV Optimizer"
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 msgid "MINTABLE"
 msgstr ""
 
@@ -2558,8 +2539,8 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Referrals/ClaimAffiliatesModal/ClaimAffiliatesModal.tsx
 #: src/components/Synthetics/ClaimModal/ClaimModal.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/MarketCard/MarketCard.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 #: src/components/Synthetics/OrderItem/OrderItem.tsx
@@ -2594,6 +2575,7 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
+#: src/pages/Stake/StakeV2.js
 msgid "Max"
 msgstr ""
 
@@ -2601,11 +2583,11 @@ msgstr ""
 msgid "Max Capacity"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Max Capacity for {0} Reached"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmFees/GmFees.tsx
+#: src/components/Synthetics/EmSwap/EmFees/EmFees.tsx
 #: src/components/Synthetics/OrderEditor/OrderEditor.tsx
 #: src/components/Synthetics/TradeFeesRow/TradeFeesRow.tsx
 msgid "Max Execution Fee"
@@ -2623,7 +2605,7 @@ msgstr ""
 msgid "Max Leverage without PnL: 100x"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Max Pool Capacity"
 msgstr ""
 
@@ -2666,12 +2648,12 @@ msgstr ""
 msgid "Max leverage: {0}x"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "Max pool capacity reached for {0}. Please mint GLP using another token"
+#: src/components/Elp/ElpSwap.js
+msgid "Max pool capacity reached for {0}. Please mint ELP using another token"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "Max pool capacity reached for {0}<0/><1/>Please mint GLP using another token"
+#: src/components/Elp/ElpSwap.js
+msgid "Max pool capacity reached for {0}<0/><1/>Please mint ELP using another token"
 msgstr ""
 
 #: src/App/App.js
@@ -2819,9 +2801,13 @@ msgstr ""
 msgid "Minimum received"
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 msgid "Mintable"
+msgstr ""
+
+#: src/components/BuyInputSection/BuyInputSection.tsx
+msgid "Month"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -2899,8 +2885,8 @@ msgstr ""
 msgid "No claims yet"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "No esGMX to claim"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "No esEDDX to claim"
 msgstr ""
 
 #: src/components/Exchange/OrdersList.js
@@ -2922,7 +2908,7 @@ msgid "No open positions"
 msgstr ""
 
 #: src/pages/Jobs/Jobs.js
-msgid "No open positions at GMX currently"
+msgid "No open positions at EDDX currently"
 msgstr ""
 
 #: src/pages/OrdersOverview/OrdersOverview.js
@@ -3111,8 +3097,8 @@ msgstr ""
 msgid "POOLS VALUE"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketsList/MarketsList.tsx
 #: src/pages/Dashboard/DashboardV2.js
 msgid "PRICE"
@@ -3129,7 +3115,7 @@ msgstr ""
 msgid "Page outdated, please refresh"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 msgid "Pair"
 msgstr ""
 
@@ -3145,20 +3131,20 @@ msgstr ""
 msgid "Partnerships and Integrations"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/ConfirmationBox.js
 #: src/components/Exchange/ConfirmationBox.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 msgid "Pay"
@@ -3175,7 +3161,7 @@ msgid "Pending {0} approval"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "Platform, GLP and GM tokens."
+msgid "Platform, ELP and EM tokens."
 msgstr ""
 
 #: src/components/Referrals/JoinReferralCode.js
@@ -3183,11 +3169,11 @@ msgid "Please input a referral code to benefit from fee discounts."
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Please only use this for full account transfers.<0/>This will transfer all your GMX, esGMX, GLP and Multiplier Points to your new account.<1/>Transfers are only supported if the receiving account has not staked GMX or GLP tokens before.<2/>Transfers are one-way, you will not be able to transfer staked tokens back to the sending account."
+msgid "Please only use this for full account transfers.<0/>This will transfer all your EDDX, esEDDX, ELP and Multiplier Points to your new account.<1/>Transfers are only supported if the receiving account has not staked EDDX or ELP tokens before.<2/>Transfers are one-way, you will not be able to transfer staked tokens back to the sending account."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Please switch your network to Arbitrum."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Please switch your network to Base."
 msgstr ""
 
 #: src/components/Exchange/PositionSeller.js
@@ -3212,8 +3198,8 @@ msgstr ""
 msgid "PnL After Fees"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/TradeBox/MarketPoolSelectorRow.tsx
 #: src/components/Synthetics/TradeBox/MarketPoolSelectorRow.tsx
 #: src/components/Synthetics/TradeBox/MarketPoolSelectorRow.tsx
@@ -3273,6 +3259,8 @@ msgstr ""
 msgid "Prev"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/OrderEditor.js
 #: src/components/Exchange/OrderEditor.js
 #: src/components/Exchange/OrderEditor.js
@@ -3284,9 +3272,7 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 #: src/components/Synthetics/MarketsList/MarketsList.tsx
 #: src/components/Synthetics/OrderEditor/OrderEditor.tsx
@@ -3306,7 +3292,7 @@ msgid "Price"
 msgstr ""
 
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmFees/GmFees.tsx
+#: src/components/Synthetics/EmSwap/EmFees/EmFees.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 #: src/components/Synthetics/TradeBox/TradeBox.tsx
 #: src/components/Synthetics/TradeHistoryRow/LiquidationTooltip.tsx
@@ -3373,12 +3359,12 @@ msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "Price on Arbitrum"
+msgid "Price on Avalanche"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "Price on Avalanche"
+msgid "Price on Base"
 msgstr ""
 
 #: src/pages/Actions/Actions.js
@@ -3386,11 +3372,11 @@ msgid "Profit"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Projects developed by the GMX community. <0/>Please exercise caution when interacting with any app, apps are fully maintained by community developers."
+msgid "Projects developed by the EDDX community. <0/>Please exercise caution when interacting with any app, apps are fully maintained by community developers."
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Projects integrated with GMX."
+msgid "Projects integrated with EDDX."
 msgstr ""
 
 #: src/pages/Dashboard/AssetDropdown.tsx
@@ -3410,12 +3396,12 @@ msgstr ""
 msgid "Protocol risk explorer and stats"
 msgstr ""
 
-#: src/pages/BuyGlp/BuyGlp.js
-msgid "Purchase <0>GLP tokens</0> to earn {nativeTokenSymbol} fees from swaps and leverage trading."
+#: src/pages/BuyElp/BuyElp.js
+msgid "Purchase <0>ELP tokens</0> to earn {nativeTokenSymbol} fees from swaps and leverage trading."
 msgstr ""
 
 #: src/pages/MarketPoolsPage/MarketPoolsPage.tsx
-msgid "Purchase <0>GM Tokens</0> to earn fees from swaps and leverage trading."
+msgid "Purchase <0>EM Tokens</0> to earn fees from swaps and leverage trading."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -3462,20 +3448,20 @@ msgstr ""
 msgid "Rebates on V2"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/ConfirmationBox.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 #: src/components/Synthetics/PositionEditor/PositionEditor.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
@@ -3490,14 +3476,14 @@ msgid "Receiver Address"
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Receiver has not staked GLP tokens before"
+msgid "Receiver has not staked EDDX tokens before"
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Receiver has not staked GMX tokens before"
+msgid "Receiver has not staked ELP tokens before"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Redemption time not yet reached"
 msgstr ""
 
@@ -3600,7 +3586,7 @@ msgstr ""
 msgid "Reserve Amount"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Reserved"
 msgstr ""
 
@@ -3610,7 +3596,7 @@ msgid "Reserved for Vesting"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Returns calculator for GMX and GLP"
+msgid "Returns calculator for EDDX and ELP"
 msgstr ""
 
 #: src/components/Referrals/ClaimAffiliatesModal/ClaimAffiliatesModal.tsx
@@ -3637,7 +3623,7 @@ msgstr ""
 msgid "Save on Costs"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Save on Fees"
 msgstr ""
 
@@ -3683,7 +3669,7 @@ msgstr ""
 msgid "Select a token"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "Select an option"
 msgstr ""
 
@@ -3695,7 +3681,7 @@ msgstr ""
 msgid "Select different tokens"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "Select your vesting option below then click \"Claim\"."
 msgstr ""
 
@@ -3703,79 +3689,79 @@ msgstr ""
 msgid "Self-transfer not supported"
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmList/GmList.tsx
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
 msgid "Sell"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmFees/GmFees.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/pages/Stake/StakeV2.js
+msgid "Sell ELP"
+msgstr ""
+
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+msgid "Sell EM"
+msgstr ""
+
+#: src/components/Synthetics/EmSwap/EmFees/EmFees.tsx
 msgid "Sell Fee"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
-#: src/pages/Stake/StakeV2.js
-msgid "Sell GLP"
-msgstr ""
-
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-msgid "Sell GM"
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Sell failed."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Sell for {0}"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Sell order cancelled"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Sell order executed"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Sell request sent"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Sell submitted!"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
-msgid "Selling GM ({indexName})"
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
+msgid "Selling EM ({indexName})"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
-msgid "Selling GM..."
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
+msgid "Selling EM..."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Selling..."
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Sender has withdrawn all tokens from GLP Vesting Vault"
+msgid "Sender has withdrawn all tokens from EDDX Vesting Vault"
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Sender has withdrawn all tokens from GMX Vesting Vault"
+msgid "Sender has withdrawn all tokens from ELP Vesting Vault"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Sending Buy request"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
 msgid "Sending Sell request"
 msgstr ""
 
@@ -3889,7 +3875,7 @@ msgstr ""
 msgid "Since your position's Collateral is {0} with a value larger than the Position Size, the Collateral value will increase to cover any negative PnL."
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 msgid "Single"
 msgstr ""
 
@@ -3940,15 +3926,15 @@ msgid "Stake"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Stake <0>GMX</0> and <1>GLP</1> to earn rewards."
+msgid "Stake <0>EDDX</0> and <1>ELP</1> to earn rewards."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Stake GMX"
+msgid "Stake EDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Stake GMX Rewards"
+msgid "Stake EDDX Rewards"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -3956,11 +3942,11 @@ msgid "Stake Multiplier Points"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Stake esGMX"
+msgid "Stake esEDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Stake esGMX Rewards"
+msgid "Stake esEDDX Rewards"
 msgstr ""
 
 #: src/pages/Stake/StakeV1.js
@@ -3972,6 +3958,10 @@ msgid "Stake failed."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
+msgid "Stake period"
+msgstr ""
+
+#: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
 msgstr ""
 
@@ -3979,7 +3969,7 @@ msgstr ""
 msgid "Stake submitted! <0>View status.</0>"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/pages/Dashboard/DashboardV2.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -4098,7 +4088,7 @@ msgstr ""
 msgid "Swap failed."
 msgstr ""
 
-#: src/components/Glp/SwapErrorModal.tsx
+#: src/components/Elp/SwapErrorModal.tsx
 msgid "Swap on 1inch"
 msgstr ""
 
@@ -4120,7 +4110,7 @@ msgstr ""
 msgid "Swap {0} USDG for {1} {2}"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "Swap {0} on 1inch"
 msgstr ""
 
@@ -4132,7 +4122,7 @@ msgstr ""
 msgid "Swap {0} to {1}"
 msgstr ""
 
-#: src/components/Glp/SwapErrorModal.tsx
+#: src/components/Elp/SwapErrorModal.tsx
 msgid "Swap {0} to {1} on 1inch"
 msgstr ""
 
@@ -4167,13 +4157,13 @@ msgstr ""
 msgid "Swaps disabled, pending {0} upgrade"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Synthetics/MarketsList/MarketsList.tsx
 #: src/pages/Dashboard/DashboardV2.js
 msgid "TOKEN"
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 msgid "TOTAL SUPPLY"
 msgstr ""
 
@@ -4211,15 +4201,15 @@ msgid "Telegram Groups"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Telegram bot for GMX Swaps monitoring"
+msgid "Telegram bot for EDDX Swaps monitoring"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Telegram bot for GMX position updates"
+msgid "Telegram bot for EDDX position updates"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Telegram bot for Open Interest on GMX"
+msgid "Telegram bot for Open Interest on EDDX"
 msgstr ""
 
 #: src/components/Footer/constants.ts
@@ -4228,10 +4218,10 @@ msgid "Terms and Conditions"
 msgstr ""
 
 #: src/pages/Stake/StakeV1.js
-msgid "The <0>GMX migration</0> is in progress, please migrate your GMT, xGMT, GMT-USDG and xGMT-USDG tokens.<1/>USDG tokens will continue to function as before and do not need to be migrated."
+msgid "The <0>EDDX migration</0> is in progress, please migrate your EMT, xEMT, EMT-USDG and xEMT-USDG tokens.<1/>USDG tokens will continue to function as before and do not need to be migrated."
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "The Boosted APR is from your staked Multiplier Points."
 msgstr ""
 
@@ -4240,23 +4230,23 @@ msgid "The Gambit protocol is in beta, please read the <0>staking details</0>be
 msgstr ""
 
 #: src/App/App.js
-msgid "The Max Execution Fee is set to a higher value to handle potential increases in gas price during order execution. Any excess execution fee will be refunded to your account when the order is executed. Only applicable to GMX V2."
+msgid "The Max Execution Fee is set to a higher value to handle potential increases in gas price during order execution. Any excess execution fee will be refunded to your account when the order is executed. Only applicable to EDDX V2."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The address of the esGMX (IOU) token is {esGmxIouAddress}."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "The address of the esEDDX (IOU) token is {esEddxIouAddress}."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "The borrow fee is calculated as (assets borrowed) / (total assets in pool) * 0.01% per hour."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The esGMX (IOU) token is transferrable. You can add the token to your wallet and send it to another address to claim if you'd like."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "The esEDDX (IOU) token is transferrable. You can add the token to your wallet and send it to another address to claim if you'd like."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The esGMX tokens can be staked or vested at any time."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "The esEDDX tokens can be staked or vested at any time."
 msgstr ""
 
 #: src/lib/contracts/transactionErrors.tsx
@@ -4312,7 +4302,7 @@ msgid "The spread is > 1%, please ensure the trade details are acceptable before
 msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "The website is a community deployed and maintained instance of the open source <0>GMX front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
+msgid "The website is a community deployed and maintained instance of the open source <0>EDDX front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -4325,10 +4315,10 @@ msgstr ""
 
 #: src/domain/tokens/approveTokens.tsx
 #: src/lib/contracts/transactionErrors.tsx
-msgid "There is not enough ETH in your account on Arbitrum to send this transaction.<0/><1/><2>Bridge ETH to Arbitrum</2>"
+msgid "There is not enough ETH in your account on Base to send this transaction.<0/><1/><2>Bridge ETH to Base</2>"
 msgstr ""
 
-#: src/components/Glp/SwapErrorModal.tsx
+#: src/components/Elp/SwapErrorModal.tsx
 msgid "There is not enough liquidity in a single token for your size. Please check the Save on Fees section and consider splitting your order into several different ones"
 msgstr ""
 
@@ -4345,11 +4335,11 @@ msgid "There may not be sufficient liquidity to execute your order when the pric
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
-msgid "This code has been taken by someone else on {0}, you will not receive rebates from traders using this code on {1}."
+msgid "This code has been taken by someone else on Base, you will not receive rebates from traders using this code on Base ."
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
-msgid "This code is not yet registered on {0}, you will not receive rebates there.<0/><1/>Switch your network to create this code on {1}."
+msgid "This code is not yet registered on Base, you will not receive rebates there.<0/><1/>Switch your network to create this code on Base."
 msgstr ""
 
 #: src/components/Exchange/TradeHistory.js
@@ -4380,15 +4370,15 @@ msgstr ""
 msgid "To complete the transfer, you must switch your connected account to {receiver}."
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "To purchase GMX on the {0} blockchain, please <0>change your network</0>."
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "To purchase EDDX on the Base blockchain, please <0>change your network</0>."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "To reduce fees, select a different asset to pay with."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "To reduce fees, select a different asset to receive."
 msgstr ""
 
@@ -4447,8 +4437,8 @@ msgstr ""
 msgid "Total Stats"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -4492,11 +4482,11 @@ msgid "Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x levera
 msgstr ""
 
 #: src/components/Exchange/ExchangeBanner.js
-msgid "Trade on GMX and win <0>$250.000</0> in prizes! Live until November 30th, <1>click here</1> to learn more."
+msgid "Trade on EDDX and win <0>$250.000</0> in prizes! Live until November 30th, <1>click here</1> to learn more."
 msgstr ""
 
 #: src/components/Common/SEO.js
-msgid "Trade spot or perpetual BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet on Arbitrum and Avalanche."
+msgid "Trade spot or perpetual BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet on Base and Avalanche."
 msgstr ""
 
 #: src/pages/Referrals/Referrals.tsx
@@ -4509,15 +4499,7 @@ msgid "Traders Referred"
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
-msgid "Traders Referred on Arbitrum"
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-msgid "Traders Referred on Avalanche"
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-msgid "Traders Referred on Avalanche Fuji"
+msgid "Traders Referred on Base"
 msgstr ""
 
 #: src/pages/Exchange/Exchange.js
@@ -4598,7 +4580,7 @@ msgstr ""
 msgid "Transfer submitted!"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
+#: src/pages/BuyEDDX/BuyEDDX.tsx
 msgid "Transfer {nativeTokenSymbol}"
 msgstr ""
 
@@ -4670,16 +4652,16 @@ msgstr ""
 msgid "UTILIZATION"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
-msgid "Unknown buy GM order"
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
+msgid "Unknown buy EM order"
 msgstr ""
 
 #: src/components/Synthetics/StatusNotification/OrderStatusNotification.tsx
 msgid "Unknown order"
 msgstr ""
 
-#: src/components/Synthetics/StatusNotification/GmStatusNotification.tsx
-msgid "Unknown sell GM order"
+#: src/components/Synthetics/StatusNotification/EmStatusNotification.tsx
+msgid "Unknown sell EM order"
 msgstr ""
 
 #: src/pages/Stake/StakeV1.js
@@ -4687,6 +4669,7 @@ msgstr ""
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
+#: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -4695,7 +4678,7 @@ msgid "Unstake"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Unstake GMX"
+msgid "Unstake EDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -4703,7 +4686,7 @@ msgid "Unstake completed!"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Unstake esGMX"
+msgid "Unstake esEDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV1.js
@@ -4732,7 +4715,7 @@ msgid "Unstaking..."
 msgstr ""
 
 #: src/lib/wallets/index.tsx
-msgid "Unsupported chain. Switch to Arbitrum network on your wallet and try again"
+msgid "Unsupported chain. Switch to Base network on your wallet and try again"
 msgstr ""
 
 #: src/components/Exchange/TradeHistory.js
@@ -4798,29 +4781,15 @@ msgstr ""
 #: src/components/Referrals/AffiliatesStats.tsx
 #: src/components/Referrals/TradersStats.tsx
 #: src/components/Referrals/TradersStats.tsx
-msgid "V1 Arbitrum"
+msgid "V1 Base"
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-msgid "V1 Avalanche"
+msgid "V1 Rebates and V1/V2 esEDDX are airdropped weekly. V2 Rebates are claimed manually."
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-msgid "V1 Avalanche Fuji"
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-msgid "V1 Rebates and V1/V2 esGMX are airdropped weekly. V2 Rebates are claimed manually."
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-msgid "V1 esGMX"
+msgid "V1 esEDDX"
 msgstr ""
 
 #: src/components/Referrals/TradersStats.tsx
@@ -4832,21 +4801,7 @@ msgstr ""
 #: src/components/Referrals/AffiliatesStats.tsx
 #: src/components/Referrals/TradersStats.tsx
 #: src/components/Referrals/TradersStats.tsx
-msgid "V2 Arbitrum"
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-msgid "V2 Avalanche"
-msgstr ""
-
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/AffiliatesStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-#: src/components/Referrals/TradersStats.tsx
-msgid "V2 Avalanche Fuji"
+msgid "V2 Base"
 msgstr ""
 
 #: src/components/Referrals/AffiliatesStats.tsx
@@ -4877,28 +4832,28 @@ msgstr ""
 msgid "Vest"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Vest with GLP on Arbitrum"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Vest with EDDX on Avalanche"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Vest with GLP on Avalanche"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Vest with EDDX on Base"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Vest with GMX on Arbitrum"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Vest with ELP on Avalanche"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Vest with GMX on Avalanche"
-msgstr ""
-
-#: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Vested GLP not withdrawn"
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Vest with ELP on Base"
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
-msgid "Vested GMX not withdrawn"
+msgid "Vested EDDX not withdrawn"
+msgstr ""
+
+#: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
+msgid "Vested ELP not withdrawn"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -4914,7 +4869,7 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: src/pages/BuyGlp/BuyGlp.js
+#: src/pages/BuyElp/BuyElp.js
 msgid "View <0>staking</0> page."
 msgstr ""
 
@@ -4950,12 +4905,12 @@ msgstr ""
 msgid "Voting"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Synthetics/EmList/EmList.tsx
 msgid "WALLET"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "WARNING: High Fees"
 msgstr ""
 
@@ -4972,16 +4927,16 @@ msgstr ""
 msgid "WEIGHT"
 msgstr ""
 
+#: src/components/Elp/ElpSwap.js
 #: src/components/Exchange/SwapBox.js
-#: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
 msgid "Waiting for Approval"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
+#: src/components/Elp/ElpSwap.js
 #: src/components/Migration/Migration.js
-#: src/components/Synthetics/GmList/GmList.tsx
+#: src/components/Synthetics/EmList/EmList.tsx
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -5000,7 +4955,7 @@ msgstr ""
 msgid "Wallet is not connected"
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 #: src/pages/NftWallet/NftWallet.js
 msgid "Wallet not connected"
 msgstr ""
@@ -5040,11 +4995,11 @@ msgid "Withdraw failed."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Withdraw from GLP Vault"
+msgid "Withdraw from EDDX Vault"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "Withdraw from GMX Vault"
+msgid "Withdraw from ELP Vault"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -5096,7 +5051,7 @@ msgid "Yield Vaults"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "Yield simulator for GMX"
+msgid "Yield simulator for EDDX"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
@@ -5108,15 +5063,11 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving EDDX.io and will be redirected to a third party, independent website."
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "You can buy AVAX directly on <0>Avalanche</0> using these options:"
-msgstr ""
-
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "You can buy ETH directly on <0>Arbitrum</0> using these options:"
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "You can buy ETH directly on <0>Base</0> using these options:"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -5127,12 +5078,12 @@ msgstr ""
 msgid "You can change this in the settings menu on the top right of the page.<0/><1/>Note that a low allowed slippage, e.g. less than {0}, may result in failed orders if prices are volatile."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "You can check your claim history <0>here</0>."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "You can currently vest a maximum of {0} esGMX tokens at a ratio of {1} {stakingToken} to 1 esGMX."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "You can currently vest a maximum of {0} esEDDX tokens at a ratio of {1} {stakingToken} to 1 esEDDX."
 msgstr ""
 
 #: src/components/Exchange/ConfirmationBox.js
@@ -5145,12 +5096,12 @@ msgstr ""
 msgid "You can get a {0} better execution price in the {1} market pool.<0>Switch to {2} market pool.</0>"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "You can transfer AVAX from other networks to Avalanche using any of the below options:"
+#: src/pages/BuyEDDX/BuyEDDX.tsx
+msgid "You can transfer ETH from other networks to Base using any of the below options:"
 msgstr ""
 
-#: src/pages/BuyGMX/BuyGMX.tsx
-msgid "You can transfer ETH from other networks to Arbitrum using any of the below options:"
+#: src/pages/Stake/StakeV2.js
+msgid "You can unstake after {0}."
 msgstr ""
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
@@ -5214,12 +5165,12 @@ msgstr ""
 msgid "You have selected {collateralTokenSymbol} as collateral, the Liquidation Price is higher compared to using a stablecoin as collateral since the worth of the collateral will change with its price. If required, you can change the collateral type using the Collateral In option in the trade box."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "You have {0} esGMX (IOU) tokens."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "You have {0} esEDDX (IOU) tokens."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "You need a total of at least {0} {stakeTokenLabel} to vest {1} esGMX."
+msgid "You need a total of at least {0} {stakeTokenLabel} to vest {1} esEDDX."
 msgstr ""
 
 #: src/components/Exchange/NoLiquidityErrorModal.tsx
@@ -5234,10 +5185,6 @@ msgstr ""
 msgid "You will receive a {currentTierDiscount}% discount on opening and closing fees."
 msgstr ""
 
-#: src/components/Referrals/TradersStats.tsx
-#~ msgid "You will receive a {currentTierDiscount}% discount on your opening and closing fees. This discount on V1 will be airdropped to your account every Wednesday. For trades on V2, discounts are applied automatically and will reduce your fees when you make a trade."
-#~ msgstr ""
-
 #: src/components/Exchange/OrdersList.js
 msgid "You will receive at least {0} {1} if this order is executed. The exact execution price may vary depending on fees at the time the order is executed."
 msgstr ""
@@ -5250,8 +5197,8 @@ msgstr ""
 msgid "You will receive at least {toAmountText} if this order is executed. This price is being updated in real time based on Swap Fees and Price Impact."
 msgstr ""
 
-#: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
+#: src/pages/ClaimEsEddx/ClaimEsEddx.js
+msgid "Your esEDDX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
 msgstr ""
 
 #: src/components/Exchange/ConfirmationBox.js
@@ -5279,12 +5226,16 @@ msgstr ""
 msgid "collateral"
 msgstr ""
 
+#: src/pages/Stake/StakeV2.js
+msgid "days"
+msgstr ""
+
 #: src/components/Synthetics/MarketCard/MarketCard.tsx
 msgid "earn"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "esGMX OTC Market"
+msgid "esEDDX OTC Market"
 msgstr ""
 
 #: src/pages/PositionsOverview/PositionsOverview.js
@@ -5296,8 +5247,16 @@ msgstr ""
 msgid "hide"
 msgstr ""
 
+#: src/pages/Stake/StakeV2.js
+msgid "hours"
+msgstr ""
+
 #: src/pages/Dashboard/DashboardV2.js
 msgid "in liquidity"
+msgstr ""
+
+#: src/pages/Stake/StakeV2.js
+msgid "minutes"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -5330,7 +5289,7 @@ msgstr ""
 msgid "{0, plural, one {Cancel order} other {Cancel # orders}}"
 msgstr ""
 
-#: src/components/Synthetics/GmSwap/GmConfirmationBox/GmConfirmationBox.tsx
+#: src/components/Synthetics/EmSwap/EmConfirmationBox/EmConfirmationBox.tsx
 msgid "{0, plural, one {Pending {symbolsText} approval} other {Pending {symbolsText} approvals}}"
 msgstr ""
 
@@ -5338,29 +5297,29 @@ msgstr ""
 msgid "{0} Approved!"
 msgstr ""
 
-#: src/components/Glp/SwapErrorModal.tsx
+#: src/components/Elp/SwapErrorModal.tsx
 msgid "{0} Capacity Reached"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-msgid "{0} GLP (${1})"
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-msgid "{0} GLP bought with {1} {2}!"
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-msgid "{0} GLP have been reserved for vesting."
-msgstr ""
-
-#: src/components/Glp/GlpSwap.js
-msgid "{0} GLP sold for {1} {2}!"
-msgstr ""
-
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgid "{0} EDDX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "{0} ELP (${1})"
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "{0} ELP bought with {1} {2}!"
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "{0} ELP have been reserved for vesting."
+msgstr ""
+
+#: src/components/Elp/ElpSwap.js
+msgid "{0} ELP sold for {1} {2}!"
 msgstr ""
 
 #: src/components/Exchange/NoLiquidityErrorModal.tsx
@@ -5383,15 +5342,15 @@ msgid "{0} Required"
 msgstr ""
 
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
-msgid "{0} and {1} can be used to mint GM for this market up to the specified minting caps."
+msgid "{0} and {1} can be used to mint EM for this market up to the specified minting caps."
 msgstr ""
 
-#: src/components/Synthetics/GmList/GmList.tsx
-msgid "{0} and {1} can be used to mint GM tokens for this market up to the specified minting caps."
+#: src/components/Synthetics/EmList/EmList.tsx
+msgid "{0} and {1} can be used to mint EM tokens for this market up to the specified minting caps."
 msgstr ""
 
 #: src/components/Synthetics/MarketStats/MarketStats.tsx
-msgid "{0} can be used to mint GM for this market up to the specified minting caps."
+msgid "{0} can be used to mint EM for this market up to the specified minting caps."
 msgstr ""
 
 #: src/domain/synthetics/trade/utils/validation.ts
@@ -5403,14 +5362,14 @@ msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> toke
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
+msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy ELP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "{0} is required for collateral."
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "{0} pool exceeded, try different token"
 msgstr ""
 
@@ -5419,15 +5378,15 @@ msgstr ""
 msgid "{0} price"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
-#: src/components/Synthetics/GmSwap/GmSwapBox/GmSwapBox.tsx
+#: src/components/Elp/ElpSwap.js
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
+#: src/components/Synthetics/EmSwap/EmSwapBox/EmSwapBox.tsx
 msgid "{0} selected in order form"
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} tokens have been converted to GMX from the {1} esGMX deposited for vesting."
+msgid "{0} tokens have been converted to EDDX from the {1} esEDDX deposited for vesting."
 msgstr ""
 
 #: src/components/Synthetics/ConfirmationBox/ConfirmationBox.tsx
@@ -5531,23 +5490,23 @@ msgstr ""
 msgid "{marketsCount, plural, one {# Market} other {# Markets}}"
 msgstr ""
 
-#: src/components/Glp/GlpSwap.js
+#: src/components/Elp/ElpSwap.js
 msgid "{nativeTokenSymbol} ({wrappedTokenSymbol}) APR"
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "{nativeTokenSymbol} APR"
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "{nativeTokenSymbol} Base APR"
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "{nativeTokenSymbol} Boosted APR"
 msgstr ""
 
-#: src/components/Stake/GMXAprTooltip.tsx
+#: src/components/Stake/EDDXAprTooltip.tsx
 msgid "{nativeTokenSymbol} Total APR"
 msgstr ""
 
@@ -5576,9 +5535,5 @@ msgid "{positionText} {sizeDeltaText}, Price: {0}, Market: {1}"
 msgstr ""
 
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
-msgid "{title} on Arbitrum:"
-msgstr ""
-
-#: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
-msgid "{title} on Avalanche:"
+msgid "{title} on Base:"
 msgstr ""

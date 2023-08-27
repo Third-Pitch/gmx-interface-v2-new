@@ -2,7 +2,7 @@ import { Trans, t } from "@lingui/macro";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import Pagination from "components/Pagination/Pagination";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
-import { ARBITRUM, getExplorerUrl } from "config/chains";
+import { BASE, getExplorerUrl } from "config/chains";
 import { getNativeToken, getToken } from "config/tokens";
 import { TotalReferralsStats, useTiers } from "domain/referrals";
 import { BigNumber } from "ethers";
@@ -49,7 +49,7 @@ function TradersStats({
   const { chains, total } = referralsData || {};
   const {
     [chainId]: currentReferralsData,
-    [ARBITRUM]: arbitrumData,
+    [BASE]: baseData,
   } = chains || {};
 
   const { getCurrentData, currentPage, setCurrentPage, pageCount } = usePagination(
@@ -110,13 +110,13 @@ function TradersStats({
           tooltipContent={
             <>
               <StatsTooltipRow
-                label={t`V1 Arbitrum`}
-                value={getUSDValue(arbitrumData?.traderReferralTotalStats.v1Data.volume)}
+                label={t`V1 Base`}
+                value={getUSDValue(baseData?.traderReferralTotalStats.v1Data.volume)}
               />
              
               <StatsTooltipRow
-                label={t`V2 Arbitrum`}
-                value={getUSDValue(arbitrumData?.traderReferralTotalStats.v2Data.volume)}
+                label={t`V2 Base`}
+                value={getUSDValue(baseData?.traderReferralTotalStats.v2Data.volume)}
               />
              
 
@@ -132,12 +132,12 @@ function TradersStats({
           tooltipContent={
             <>
               <StatsTooltipRow
-                label={t`V1 Arbitrum`}
-                value={getUSDValue(arbitrumData?.traderReferralTotalStats.v1Data.discountUsd)}
+                label={t`V1 Base`}
+                value={getUSDValue(baseData?.traderReferralTotalStats.v1Data.discountUsd)}
               />
               <StatsTooltipRow
-                label={t`V2 Arbitrum`}
-                value={getUSDValue(arbitrumData?.traderReferralTotalStats.v2Data.discountUsd)}
+                label={t`V2 Base`}
+                value={getUSDValue(baseData?.traderReferralTotalStats.v2Data.discountUsd)}
               />
               <div className="Tooltip-divider" />
               <StatsTooltipRow label={t`Total`} value={getUSDValue(total?.discountUsd)} />

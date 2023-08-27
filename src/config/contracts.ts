@@ -1,7 +1,7 @@
-import { ARBITRUM } from "./chains";
+import { BASE } from "./chains";
 
 
-export const XGMT_EXCLUDED_ACCOUNTS = [
+export const XEMT_EXCLUDED_ACCOUNTS = [
   "0x330eef6b9b1ea6edd620c825c9919dc8b611d5d5",
   "0xd9b1c23411adbb984b1c4be515fafc47a12898b2",
   "0xa633158288520807f91ccc98aa58e0ea43acb400",
@@ -10,7 +10,7 @@ export const XGMT_EXCLUDED_ACCOUNTS = [
 
 const CONTRACTS = {
 
-  [ARBITRUM]: {
+  [BASE]: {
     Vault: '0x74cCDFcff6CbE68ecD1eb21a23243D217601F4C0',
     Router: '0xf925098c0fb905D7256a61FfA388940f8E8Be853',
     VaultReader: '0xf8B108D0765b6Da8B217eb3495bbE784BA249947',
@@ -42,22 +42,22 @@ const CONTRACTS = {
     PositionManager: '0x8475Fbe5BcCF02c66c386dD8AAf251005e4b0cC8',
 
     
-    UniswapGmxEthPool: "0xeCFE3eb24C91E45C54FF7C7b55B5f7960E773Fc2",
+    UniswapEddxEthPool: "0xeCFE3eb24C91E45C54FF7C7b55B5f7960E773Fc2",
     ReferralStorage: "0x681e4284DaD7Ac26D9a9e32dfed4dc1b9B231580",
     ReferralReader: "0x15ac0392fd77EF200bbb5F4a29008Fc0baAaa060",
 
     // Synthetics
-    DataStore: '0x7Db7179765bfF0f69c14477bEfbA8044C177000B',
-    EventEmitter: '0x7Fd30851948e6BA752b0BC67E615bCD5b8940251',
-    ExchangeRouter: '0xd4b0B1c990657AbD94b212a44e805E04f217e984',
-    DepositVault: '0xb939C6280262ccF4e9a9E1Bf7b473c44A7Df7CFf',
-    WithdrawalVault: '0x256EaD227F11137158576B622F767D450C967F30',
-    OrderVault: '0x75BfBb3059Bc902b920D0F3a6195acD784103f40',
+    DataStore: '0x7EeDd02679062843f374e9697070Bf937Ae77F8a',
+    EventEmitter: '0x0aeEB00C1e4a9811ddcA2c5b789c94af737ed908',
+    ExchangeRouter: '0xFC891CEC03Ab4e7aF3D148b00a915725B912B24d',
+    DepositVault: '0x59A12ed8b69bf40B95b78A0caA105cd5e3d091eE',
+    WithdrawalVault: '0x63109f0F94Cb7Eb81Aef4FF72C0Ee248edfA7dAF',
+    OrderVault: '0xe3fAeBcef1C68F25DD54Eb37d3D7eA0aDe1BC0B4',
     SyntheticsReader: '0xF9e89ad76F7C2D000800Ed082df64871Fa9A3919',
-    SyntheticsRouter: '0xd2329603ac9Dc999020e6f9448b2fE315d46F333',
+    SyntheticsRouter: '0x2794577d8D1e13d8f5cB052F85fE99789B2fDE3d',
     // v2 end
     Timelock: '0xC483851b72f5F0AfD1CC1AF807105Bc818f0072f',
-    Multicall: '0x24Bd45625048E3bFDE61C0B15E2DA027eCB581Ed'
+    Multicall: '0x8c3c6f218431ce8447750ca36f5Af5284A57dDB3'
   },
 
 };

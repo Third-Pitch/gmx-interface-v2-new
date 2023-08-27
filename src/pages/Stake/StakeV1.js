@@ -6,7 +6,7 @@ import { ethers } from "ethers";
 
 import { USD_DECIMALS, PRECISION } from "lib/legacy";
 
-import { getContract, XGMT_EXCLUDED_ACCOUNTS } from "config/contracts";
+import { getContract, XEMT_EXCLUDED_ACCOUNTS } from "config/contracts";
 
 import Reader from "abis/Reader.json";
 import Token from "abis/Token.json";
@@ -40,12 +40,12 @@ function getBalanceAndSupplyData(balances) {
 
   const keys = [
     "usdg",
-    "gmt",
-    "xgmt",
-    "gmtUsdg",
-    "xgmtUsdg",
-    "gmtUsdgFarm",
-    "xgmtUsdgFarm",
+    "emt",
+    "xemt",
+    "emtUsdg",
+    "xemtUsdg",
+    "emtUsdgFarm",
+    "xemtUsdgFarm",
     "autoUsdg",
     "autoUsdgFarm",
   ];
@@ -69,12 +69,12 @@ function getStakingData(stakingInfo) {
 
   const keys = [
     "usdg",
-    "xgmt",
-    "gmtUsdgFarmXgmt",
-    "gmtUsdgFarmNative",
-    "xgmtUsdgFarmXgmt",
-    "xgmtUsdgFarmNative",
-    "autoUsdgFarmXgmt",
+    "xemt",
+    "emtUsdgFarmXemt",
+    "emtUsdgFarmNative",
+    "xemtUsdgFarmXemt",
+    "xemtUsdgFarmNative",
+    "autoUsdgFarmXemt",
     "autoUsdgFarmNative",
   ];
   const data = {};
@@ -96,7 +96,7 @@ function getTotalStakedData(totalStakedInfo) {
     return;
   }
 
-  const keys = ["usdg", "xgmt"];
+  const keys = ["usdg", "xemt"];
   const data = {};
 
   for (let i = 0; i < keys.length; i++) {
@@ -108,7 +108,7 @@ function getTotalStakedData(totalStakedInfo) {
 }
 
 function getPairData(pairInfo) {
-  const keys = ["gmtUsdg", "xgmtUsdg", "bnbBusd", "autoUsdg"];
+  const keys = ["emtUsdg", "xemtUsdg", "bnbBusd", "autoUsdg"];
   if (!pairInfo || pairInfo.length === 0 || pairInfo.length !== keys.length * 2) {
     return;
   }
@@ -127,25 +127,25 @@ function getPairData(pairInfo) {
   return data;
 }
 
-function getProcessedData(balanceData, supplyData, stakingData, totalStakedData, pairData, xgmtSupply) {
-  if (!balanceData || !supplyData || !stakingData || !totalStakedData || !pairData || !xgmtSupply) {
+function getProcessedData(balanceData, supplyData, stakingData, totalStakedData, pairData, xemtSupply) {
+  if (!balanceData || !supplyData || !stakingData || !totalStakedData || !pairData || !xemtSupply) {
     return {};
   }
 
-  if (!supplyData.gmtUsdg || !supplyData.xgmtUsdg || !supplyData.autoUsdg) {
+  if (!supplyData.emtUsdg || !supplyData.xemtUsdg || !supplyData.autoUsdg) {
     return {};
   }
 
-  // const gmtPrice = pairData.gmtUsdg.balance1.mul(PRECISION).div(pairData.gmtUsdg.balance0)
-  const xgmtPrice = pairData.xgmtUsdg.balance0.eq(0)
+  // const emtPrice = pairData.emtUsdg.balance1.mul(PRECISION).div(pairData.emtUsdg.balance0)
+  const xemtPrice = pairData.xemtUsdg.balance0.eq(0)
     ? bigNumberify(0)
-    : pairData.xgmtUsdg.balance1.mul(PRECISION).div(pairData.xgmtUsdg.balance0);
-  const gmtUsdgPrice = supplyData.gmtUsdg.eq(0)
+    : pairData.xemtUsdg.balance1.mul(PRECISION).div(pairData.xemtUsdg.balance0);
+  const emtUsdgPrice = supplyData.emtUsdg.eq(0)
     ? bigNumberify(0)
-    : pairData.gmtUsdg.balance1.mul(PRECISION).mul(2).div(supplyData.gmtUsdg);
-  const xgmtUsdgPrice = supplyData.xgmtUsdg.eq(0)
+    : pairData.emtUsdg.balance1.mul(PRECISION).mul(2).div(supplyData.emtUsdg);
+  const xemtUsdgPrice = supplyData.xemtUsdg.eq(0)
     ? bigNumberify(0)
-    : pairData.xgmtUsdg.balance1.mul(PRECISION).mul(2).div(supplyData.xgmtUsdg);
+    : pairData.xemtUsdg.balance1.mul(PRECISION).mul(2).div(supplyData.xemtUsdg);
   const bnbPrice = pairData.bnbBusd.balance1.mul(PRECISION).div(pairData.bnbBusd.balance0);
   const autoUsdgPrice = supplyData.autoUsdg.eq(0)
     ? bigNumberify(0)
@@ -155,40 +155,40 @@ function getProcessedData(balanceData, supplyData, stakingData, totalStakedData,
     .mul(bnbPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const xgmtAnnualRewardsUsd = stakingData.xgmt.tokensPerInterval
+  const xemtAnnualRewardsUsd = stakingData.xemt.tokensPerInterval
     .mul(bnbPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
 
-  const gmtUsdgAnnualRewardsXmgtUsd = stakingData.gmtUsdgFarmXgmt.tokensPerInterval
-    .mul(xgmtPrice)
+  const emtUsdgAnnualRewardsXmgtUsd = stakingData.emtUsdgFarmXemt.tokensPerInterval
+    .mul(xemtPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const gmtUsdgAnnualRewardsNativeUsd = stakingData.gmtUsdgFarmNative.tokensPerInterval
+  const emtUsdgAnnualRewardsNativeUsd = stakingData.emtUsdgFarmNative.tokensPerInterval
     .mul(bnbPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const gmtUsdgTotalAnnualRewardsUsd = gmtUsdgAnnualRewardsXmgtUsd.add(gmtUsdgAnnualRewardsNativeUsd);
+  const emtUsdgTotalAnnualRewardsUsd = emtUsdgAnnualRewardsXmgtUsd.add(emtUsdgAnnualRewardsNativeUsd);
 
-  const xgmtUsdgAnnualRewardsXmgtUsd = stakingData.xgmtUsdgFarmXgmt.tokensPerInterval
-    .mul(xgmtPrice)
+  const xemtUsdgAnnualRewardsXmgtUsd = stakingData.xemtUsdgFarmXemt.tokensPerInterval
+    .mul(xemtPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const xgmtUsdgAnnualRewardsNativeUsd = stakingData.xgmtUsdgFarmNative.tokensPerInterval
+  const xemtUsdgAnnualRewardsNativeUsd = stakingData.xemtUsdgFarmNative.tokensPerInterval
     .mul(bnbPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const xgmtUsdgTotalAnnualRewardsUsd = xgmtUsdgAnnualRewardsXmgtUsd.add(xgmtUsdgAnnualRewardsNativeUsd);
+  const xemtUsdgTotalAnnualRewardsUsd = xemtUsdgAnnualRewardsXmgtUsd.add(xemtUsdgAnnualRewardsNativeUsd);
 
-  const autoUsdgAnnualRewardsXgmtUsd = stakingData.autoUsdgFarmXgmt.tokensPerInterval
-    .mul(xgmtPrice)
+  const autoUsdgAnnualRewardsXemtUsd = stakingData.autoUsdgFarmXemt.tokensPerInterval
+    .mul(xemtPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
   const autoUsdgAnnualRewardsNativeUsd = stakingData.autoUsdgFarmNative.tokensPerInterval
     .mul(bnbPrice)
     .mul(HOURS_PER_YEAR)
     .div(expandDecimals(1, 18));
-  const autoUsdgTotalAnnualRewardsUsd = autoUsdgAnnualRewardsXgmtUsd.add(autoUsdgAnnualRewardsNativeUsd);
+  const autoUsdgTotalAnnualRewardsUsd = autoUsdgAnnualRewardsXemtUsd.add(autoUsdgAnnualRewardsNativeUsd);
 
   const data = {};
   data.usdgBalance = balanceData.usdg;
@@ -205,53 +205,53 @@ function getProcessedData(balanceData, supplyData, stakingData, totalStakedData,
         .div(PRECISION);
   data.usdgRewards = stakingData.usdg.claimable;
 
-  data.xgmtBalance = balanceData.xgmt;
-  data.xgmtBalanceUsd = balanceData.xgmt.mul(xgmtPrice).div(expandDecimals(1, 18));
-  data.xgmtSupply = xgmtSupply;
-  data.xgmtTotalStaked = totalStakedData.xgmt;
-  data.xgmtTotalStakedUsd = totalStakedData.xgmt.mul(xgmtPrice).div(expandDecimals(1, 18));
-  data.xgmtSupplyUsd = xgmtSupply.mul(xgmtPrice).div(expandDecimals(1, 18));
-  data.xgmtApr = data.xgmtSupplyUsd.eq(0)
+  data.xemtBalance = balanceData.xemt;
+  data.xemtBalanceUsd = balanceData.xemt.mul(xemtPrice).div(expandDecimals(1, 18));
+  data.xemtSupply = xemtSupply;
+  data.xemtTotalStaked = totalStakedData.xemt;
+  data.xemtTotalStakedUsd = totalStakedData.xemt.mul(xemtPrice).div(expandDecimals(1, 18));
+  data.xemtSupplyUsd = xemtSupply.mul(xemtPrice).div(expandDecimals(1, 18));
+  data.xemtApr = data.xemtSupplyUsd.eq(0)
     ? bigNumberify(0)
-    : xgmtAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.xgmtTotalStakedUsd);
-  data.xgmtRewards = stakingData.xgmt.claimable;
+    : xemtAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.xemtTotalStakedUsd);
+  data.xemtRewards = stakingData.xemt.claimable;
 
-  data.gmtUsdgFarmBalance = balanceData.gmtUsdgFarm;
+  data.emtUsdgFarmBalance = balanceData.emtUsdgFarm;
 
-  data.gmtUsdgBalance = balanceData.gmtUsdg;
-  data.gmtUsdgBalanceUsd = balanceData.gmtUsdg.mul(gmtUsdgPrice).div(expandDecimals(1, 18));
-  data.gmtUsdgSupply = supplyData.gmtUsdg;
-  data.gmtUsdgSupplyUsd = supplyData.gmtUsdg.mul(gmtUsdgPrice).div(expandDecimals(1, 18));
-  data.gmtUsdgStaked = balanceData.gmtUsdgFarm;
-  data.gmtUsdgStakedUsd = balanceData.gmtUsdgFarm.mul(gmtUsdgPrice).div(expandDecimals(1, 18));
-  data.gmtUsdgFarmSupplyUsd = supplyData.gmtUsdgFarm.mul(gmtUsdgPrice).div(expandDecimals(1, 18));
-  data.gmtUsdgApr = data.gmtUsdgSupplyUsd.eq(0)
+  data.emtUsdgBalance = balanceData.emtUsdg;
+  data.emtUsdgBalanceUsd = balanceData.emtUsdg.mul(emtUsdgPrice).div(expandDecimals(1, 18));
+  data.emtUsdgSupply = supplyData.emtUsdg;
+  data.emtUsdgSupplyUsd = supplyData.emtUsdg.mul(emtUsdgPrice).div(expandDecimals(1, 18));
+  data.emtUsdgStaked = balanceData.emtUsdgFarm;
+  data.emtUsdgStakedUsd = balanceData.emtUsdgFarm.mul(emtUsdgPrice).div(expandDecimals(1, 18));
+  data.emtUsdgFarmSupplyUsd = supplyData.emtUsdgFarm.mul(emtUsdgPrice).div(expandDecimals(1, 18));
+  data.emtUsdgApr = data.emtUsdgSupplyUsd.eq(0)
     ? bigNumberify(0)
-    : data.gmtUsdgFarmSupplyUsd.eq(0)
+    : data.emtUsdgFarmSupplyUsd.eq(0)
     ? undefined
-    : gmtUsdgTotalAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.gmtUsdgSupplyUsd);
-  data.gmtUsdgXgmtRewards = stakingData.gmtUsdgFarmXgmt.claimable;
-  data.gmtUsdgNativeRewards = stakingData.gmtUsdgFarmNative.claimable;
-  data.gmtUsdgTotalRewards = data.gmtUsdgXgmtRewards.add(data.gmtUsdgNativeRewards);
-  data.gmtUsdgTotalStaked = supplyData.gmtUsdgFarm;
-  data.gmtUsdgTotalStakedUsd = supplyData.gmtUsdgFarm.mul(gmtUsdgPrice).div(expandDecimals(1, 18));
+    : emtUsdgTotalAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.emtUsdgSupplyUsd);
+  data.emtUsdgXemtRewards = stakingData.emtUsdgFarmXemt.claimable;
+  data.emtUsdgNativeRewards = stakingData.emtUsdgFarmNative.claimable;
+  data.emtUsdgTotalRewards = data.emtUsdgXemtRewards.add(data.emtUsdgNativeRewards);
+  data.emtUsdgTotalStaked = supplyData.emtUsdgFarm;
+  data.emtUsdgTotalStakedUsd = supplyData.emtUsdgFarm.mul(emtUsdgPrice).div(expandDecimals(1, 18));
 
-  data.xgmtUsdgBalance = balanceData.xgmtUsdg;
-  data.xgmtUsdgFarmBalance = balanceData.xgmtUsdgFarm;
-  data.xgmtUsdgBalanceUsd = balanceData.xgmtUsdg.mul(xgmtUsdgPrice).div(expandDecimals(1, 18));
-  data.xgmtUsdgSupply = supplyData.xgmtUsdg;
-  data.xgmtUsdgSupplyUsd = supplyData.xgmtUsdg.mul(xgmtUsdgPrice).div(expandDecimals(1, 18));
-  data.xgmtUsdgStaked = balanceData.xgmtUsdgFarm;
-  data.xgmtUsdgStakedUsd = balanceData.xgmtUsdgFarm.mul(xgmtUsdgPrice).div(expandDecimals(1, 18));
-  data.xgmtUsdgFarmSupplyUsd = supplyData.xgmtUsdgFarm.mul(xgmtUsdgPrice).div(expandDecimals(1, 18));
-  data.xgmtUsdgApr = data.xgmtUsdgFarmSupplyUsd.eq(0)
+  data.xemtUsdgBalance = balanceData.xemtUsdg;
+  data.xemtUsdgFarmBalance = balanceData.xemtUsdgFarm;
+  data.xemtUsdgBalanceUsd = balanceData.xemtUsdg.mul(xemtUsdgPrice).div(expandDecimals(1, 18));
+  data.xemtUsdgSupply = supplyData.xemtUsdg;
+  data.xemtUsdgSupplyUsd = supplyData.xemtUsdg.mul(xemtUsdgPrice).div(expandDecimals(1, 18));
+  data.xemtUsdgStaked = balanceData.xemtUsdgFarm;
+  data.xemtUsdgStakedUsd = balanceData.xemtUsdgFarm.mul(xemtUsdgPrice).div(expandDecimals(1, 18));
+  data.xemtUsdgFarmSupplyUsd = supplyData.xemtUsdgFarm.mul(xemtUsdgPrice).div(expandDecimals(1, 18));
+  data.xemtUsdgApr = data.xemtUsdgFarmSupplyUsd.eq(0)
     ? undefined
-    : xgmtUsdgTotalAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.xgmtUsdgFarmSupplyUsd);
-  data.xgmtUsdgXgmtRewards = stakingData.xgmtUsdgFarmXgmt.claimable;
-  data.xgmtUsdgNativeRewards = stakingData.xgmtUsdgFarmNative.claimable;
-  data.xgmtUsdgTotalRewards = data.xgmtUsdgXgmtRewards.add(data.xgmtUsdgNativeRewards);
-  data.xgmtUsdgTotalStaked = supplyData.xgmtUsdgFarm;
-  data.xgmtUsdgTotalStakedUsd = supplyData.xgmtUsdgFarm.mul(xgmtUsdgPrice).div(expandDecimals(1, 18));
+    : xemtUsdgTotalAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.xemtUsdgFarmSupplyUsd);
+  data.xemtUsdgXemtRewards = stakingData.xemtUsdgFarmXemt.claimable;
+  data.xemtUsdgNativeRewards = stakingData.xemtUsdgFarmNative.claimable;
+  data.xemtUsdgTotalRewards = data.xemtUsdgXemtRewards.add(data.xemtUsdgNativeRewards);
+  data.xemtUsdgTotalStaked = supplyData.xemtUsdgFarm;
+  data.xemtUsdgTotalStakedUsd = supplyData.xemtUsdgFarm.mul(xemtUsdgPrice).div(expandDecimals(1, 18));
 
   data.autoUsdgBalance = balanceData.autoUsdg;
   data.autoUsdgFarmBalance = balanceData.autoUsdgFarm;
@@ -262,16 +262,16 @@ function getProcessedData(balanceData, supplyData, stakingData, totalStakedData,
   data.autoUsdgApr = data.autoUsdgFarmSupplyUsd.eq(0)
     ? bigNumberify(0)
     : autoUsdgTotalAnnualRewardsUsd.mul(BASIS_POINTS_DIVISOR).div(data.autoUsdgFarmSupplyUsd);
-  data.autoUsdgXgmtRewards = stakingData.autoUsdgFarmXgmt.claimable;
+  data.autoUsdgXemtRewards = stakingData.autoUsdgFarmXemt.claimable;
   data.autoUsdgNativeRewards = stakingData.autoUsdgFarmNative.claimable;
-  data.autoUsdgTotalRewards = data.autoUsdgXgmtRewards.add(data.autoUsdgNativeRewards);
+  data.autoUsdgTotalRewards = data.autoUsdgXemtRewards.add(data.autoUsdgNativeRewards);
   data.autoUsdgTotalStaked = supplyData.autoUsdgFarm;
   data.autoUsdgTotalStakedUsd = supplyData.autoUsdgFarm.mul(autoUsdgPrice).div(expandDecimals(1, 18));
 
   data.totalStakedUsd = data.usdgTotalStakedUsd
-    .add(data.xgmtTotalStakedUsd)
-    .add(data.gmtUsdgTotalStakedUsd)
-    .add(data.xgmtUsdgTotalStakedUsd)
+    .add(data.xemtTotalStakedUsd)
+    .add(data.emtUsdgTotalStakedUsd)
+    .add(data.xemtUsdgTotalStakedUsd)
     .add(data.autoUsdgTotalStakedUsd);
 
   return data;
@@ -555,55 +555,55 @@ export default function StakeV1() {
   const readerAddress = getContract(CHAIN_ID, "Reader");
   const ammFactoryAddressV2 = getContract(CHAIN_ID, "AmmFactoryV2");
   const usdgAddress = getContract(CHAIN_ID, "USDG");
-  const gmtAddress = getContract(CHAIN_ID, "GMT");
-  const xgmtAddress = getContract(CHAIN_ID, "XGMT");
+  const emtAddress = getContract(CHAIN_ID, "EMT");
+  const xemtAddress = getContract(CHAIN_ID, "XEMT");
   const autoAddress = getContract(CHAIN_ID, "AUTO");
   const nativeTokenAddress = getContract(CHAIN_ID, "NATIVE_TOKEN");
   const busdAddress = getTokenBySymbol(CHAIN_ID, "BUSD").address;
 
-  const gmtUsdgPairAddress = getContract(CHAIN_ID, "GMT_USDG_PAIR");
-  const xgmtUsdgPairAddress = getContract(CHAIN_ID, "XGMT_USDG_PAIR");
+  const emtUsdgPairAddress = getContract(CHAIN_ID, "EMT_USDG_PAIR");
+  const xemtUsdgPairAddress = getContract(CHAIN_ID, "XEMT_USDG_PAIR");
   const autoUsdgPairAddress = getContract(CHAIN_ID, "AUTO_USDG_PAIR");
-  const gmtUsdgFarmAddress = getContract(CHAIN_ID, "GMT_USDG_FARM");
-  const xgmtUsdgFarmAddress = getContract(CHAIN_ID, "XGMT_USDG_FARM");
+  const emtUsdgFarmAddress = getContract(CHAIN_ID, "EMT_USDG_FARM");
+  const xemtUsdgFarmAddress = getContract(CHAIN_ID, "XEMT_USDG_FARM");
   const autoUsdgFarmAddress = getContract(CHAIN_ID, "AUTO_USDG_FARM");
 
   const usdgYieldTracker = getContract(CHAIN_ID, "USDG_YIELD_TRACKER");
-  const xgmtYieldTracker = getContract(CHAIN_ID, "XGMT_YIELD_TRACKER");
-  const gmtUsdgFarmTrackerXgmt = getContract(CHAIN_ID, "GMT_USDG_FARM_TRACKER_XGMT");
-  const gmtUsdgFarmTrackerNative = getContract(CHAIN_ID, "GMT_USDG_FARM_TRACKER_NATIVE");
-  const xgmtUsdgFarmTrackerXgmt = getContract(CHAIN_ID, "XGMT_USDG_FARM_TRACKER_XGMT");
-  const xgmtUsdgFarmTrackerNative = getContract(CHAIN_ID, "XGMT_USDG_FARM_TRACKER_NATIVE");
-  const autoUsdgFarmTrackerXgmt = getContract(CHAIN_ID, "AUTO_USDG_FARM_TRACKER_XGMT");
+  const xemtYieldTracker = getContract(CHAIN_ID, "XEMT_YIELD_TRACKER");
+  const emtUsdgFarmTrackerXemt = getContract(CHAIN_ID, "EMT_USDG_FARM_TRACKER_XEMT");
+  const emtUsdgFarmTrackerNative = getContract(CHAIN_ID, "EMT_USDG_FARM_TRACKER_NATIVE");
+  const xemtUsdgFarmTrackerXemt = getContract(CHAIN_ID, "XEMT_USDG_FARM_TRACKER_XEMT");
+  const xemtUsdgFarmTrackerNative = getContract(CHAIN_ID, "XEMT_USDG_FARM_TRACKER_NATIVE");
+  const autoUsdgFarmTrackerXemt = getContract(CHAIN_ID, "AUTO_USDG_FARM_TRACKER_XEMT");
   const autoUsdgFarmTrackerNative = getContract(CHAIN_ID, "AUTO_USDG_FARM_TRACKER_NATIVE");
 
   const tokens = [
     usdgAddress,
-    gmtAddress,
-    xgmtAddress,
-    gmtUsdgPairAddress,
-    xgmtUsdgPairAddress,
-    gmtUsdgFarmAddress,
-    xgmtUsdgFarmAddress,
+    emtAddress,
+    xemtAddress,
+    emtUsdgPairAddress,
+    xemtUsdgPairAddress,
+    emtUsdgFarmAddress,
+    xemtUsdgFarmAddress,
     autoUsdgPairAddress,
     autoUsdgFarmAddress,
   ];
 
   const yieldTrackers = [
     usdgYieldTracker,
-    xgmtYieldTracker,
-    gmtUsdgFarmTrackerXgmt,
-    gmtUsdgFarmTrackerNative,
-    xgmtUsdgFarmTrackerXgmt,
-    xgmtUsdgFarmTrackerNative,
-    autoUsdgFarmTrackerXgmt,
+    xemtYieldTracker,
+    emtUsdgFarmTrackerXemt,
+    emtUsdgFarmTrackerNative,
+    xemtUsdgFarmTrackerXemt,
+    xemtUsdgFarmTrackerNative,
+    autoUsdgFarmTrackerXemt,
     autoUsdgFarmTrackerNative,
   ];
 
   const pairTokens = [
-    gmtAddress,
+    emtAddress,
     usdgAddress,
-    xgmtAddress,
+    xemtAddress,
     usdgAddress,
     nativeTokenAddress,
     busdAddress,
@@ -611,12 +611,12 @@ export default function StakeV1() {
     usdgAddress,
   ];
 
-  const yieldTokens = [usdgAddress, xgmtAddress];
+  const yieldTokens = [usdgAddress, xemtAddress];
 
-  const { data: xgmtSupply, mutate: updateXgmtSupply } = useSWR(
-    [active, chainId, readerAddress, "getTokenSupply", xgmtAddress],
+  const { data: xemtSupply, mutate: updateXemtSupply } = useSWR(
+    [active, chainId, readerAddress, "getTokenSupply", xemtAddress],
     {
-      fetcher: contractFetcher(library, Reader, [XGMT_EXCLUDED_ACCOUNTS]),
+      fetcher: contractFetcher(library, Reader, [XEMT_EXCLUDED_ACCOUNTS]),
     }
   );
 
@@ -653,13 +653,13 @@ export default function StakeV1() {
   const pairData = getPairData(pairInfo);
   const totalStakedData = getTotalStakedData(totalStakedInfo);
 
-  const processedData = getProcessedData(balanceData, supplyData, stakingData, totalStakedData, pairData, xgmtSupply);
+  const processedData = getProcessedData(balanceData, supplyData, stakingData, totalStakedData, pairData, xemtSupply);
 
-  const buyXgmtUrl = `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${xgmtAddress}&inputCurrency=${usdgAddress}`;
-  const buyGmtUrl = `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${gmtAddress}&inputCurrency=${usdgAddress}`;
+  const buyXemtUrl = `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${xemtAddress}&inputCurrency=${usdgAddress}`;
+  const buyEmtUrl = `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${emtAddress}&inputCurrency=${usdgAddress}`;
 
-  const addGmtUsdgLpUrl = `https://exchange.pancakeswap.finance/#/add/${gmtAddress}/${usdgAddress}`;
-  const addXgmtUsdgLpUrl = `https://exchange.pancakeswap.finance/#/add/${xgmtAddress}/${usdgAddress}`;
+  const addEmtUsdgLpUrl = `https://exchange.pancakeswap.finance/#/add/${emtAddress}/${usdgAddress}`;
+  const addXemtUsdgLpUrl = `https://exchange.pancakeswap.finance/#/add/${xemtAddress}/${usdgAddress}`;
 
   const buyAutoUrl = `https://exchange.pancakeswap.finance/#/swap?outputCurrency=${autoAddress}&inputCurrency=${nativeTokenAddress}`;
   const addAutoUsdgLpUrl = `https://exchange.pancakeswap.finance/#/add/${autoAddress}/${usdgAddress}`;
@@ -667,7 +667,7 @@ export default function StakeV1() {
   useEffect(() => {
     if (active) {
       library.on("block", () => {
-        updateXgmtSupply(undefined, true);
+        updateXemtSupply(undefined, true);
         updateBalances(undefined, true);
         updateStakingInfo(undefined, true);
         updateTotalStakedInfo(undefined, true);
@@ -677,7 +677,7 @@ export default function StakeV1() {
         library.removeAllListeners("block");
       };
     }
-  }, [active, library, updateXgmtSupply, updateBalances, updateStakingInfo, updateTotalStakedInfo, updatePairInfo]);
+  }, [active, library, updateXemtSupply, updateBalances, updateStakingInfo, updateTotalStakedInfo, updatePairInfo]);
 
   const claim = (farmAddress, rewards) => {
     if (!active || !account) {
@@ -714,20 +714,20 @@ export default function StakeV1() {
       });
   };
 
-  const showUnstakeGmtUsdgModal = () => {
+  const showUnstakeEmtUsdgModal = () => {
     setIsUnstakeModalVisible(true);
-    setUnstakeModalTitle("Unstake GMT-USDG");
-    setUnstakeModalMaxAmount(processedData.gmtUsdgFarmBalance);
+    setUnstakeModalTitle("Unstake EMT-USDG");
+    setUnstakeModalMaxAmount(processedData.emtUsdgFarmBalance);
     setUnstakeValue("");
-    setUnstakingFarmAddress(gmtUsdgFarmAddress);
+    setUnstakingFarmAddress(emtUsdgFarmAddress);
   };
 
-  const showUnstakeXgmtUsdgModal = () => {
+  const showUnstakeXemtUsdgModal = () => {
     setIsUnstakeModalVisible(true);
-    setUnstakeModalTitle("Unstake xGMT-USDG");
-    setUnstakeModalMaxAmount(processedData.xgmtUsdgFarmBalance);
+    setUnstakeModalTitle("Unstake xEMT-USDG");
+    setUnstakeModalMaxAmount(processedData.xemtUsdgFarmBalance);
     setUnstakeValue("");
-    setUnstakingFarmAddress(xgmtUsdgFarmAddress);
+    setUnstakingFarmAddress(xemtUsdgFarmAddress);
   };
 
   const showStakeAutoUsdgModal = () => {
@@ -793,8 +793,8 @@ export default function StakeV1() {
       </div>
       <div className="App-warning Stake-warning">
         <Trans>
-          The <Link to="/migrate">GMX migration</Link> is in progress, please migrate your GMT, xGMT, GMT-USDG and
-          xGMT-USDG tokens.
+          The <Link to="/migrate">EDDX migration</Link> is in progress, please migrate your EMT, xEMT, EMT-USDG and
+          xEMT-USDG tokens.
           <br />
           USDG tokens will continue to function as before and do not need to be migrated.
         </Trans>
@@ -878,7 +878,7 @@ export default function StakeV1() {
           </div>
         </div>
         <div className="App-card">
-          <div className="Stake-card-title App-card-title">xGMT</div>
+          <div className="Stake-card-title App-card-title">xEMT</div>
           <div className="Stake-card-bottom App-card-content">
             <div className="Stake-info App-card-row">
               <div className="label">APR</div>
@@ -895,8 +895,8 @@ export default function StakeV1() {
                 <Trans>Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtBalance", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "xgmtBalanceUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "xemtBalance", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "xemtBalanceUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -904,8 +904,8 @@ export default function StakeV1() {
                 <Trans>Wallet</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtBalance", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "xgmtBalanceUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "xemtBalance", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "xemtBalanceUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="App-card-row">
@@ -914,7 +914,7 @@ export default function StakeV1() {
               </div>
               <div>
                 {!hasFeeDistribution && "TBC"}
-                {hasFeeDistribution && `${formatKeyAmount(processedData, "xgmtRewards", 18, 8, true)} WBNB`}
+                {hasFeeDistribution && `${formatKeyAmount(processedData, "xemtRewards", 18, 8, true)} WBNB`}
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -922,8 +922,8 @@ export default function StakeV1() {
                 <Trans>Total Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtTotalStaked", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "xgmtTotalStakedUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "xemtTotalStaked", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "xemtTotalStakedUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -931,18 +931,18 @@ export default function StakeV1() {
                 <Trans>Total Supply</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtSupply", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "xgmtSupplyUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "xemtSupply", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "xemtSupplyUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="App-card-options">
-              <ExternalLink className="App-button-option App-card-option" href={buyXgmtUrl}>
-                Get xGMT
+              <ExternalLink className="App-button-option App-card-option" href={buyXemtUrl}>
+                Get xEMT
               </ExternalLink>
               {active && (
                 <button
                   className="App-button-option App-card-option"
-                  onClick={() => claim(xgmtAddress, processedData.xgmtRewards)}
+                  onClick={() => claim(xemtAddress, processedData.xemtRewards)}
                 >
                   <Trans>Claim</Trans>
                 </button>
@@ -956,7 +956,7 @@ export default function StakeV1() {
           </div>
         </div>
         <div className="App-card">
-          <div className="Stake-card-title App-card-title">GMT-USDG LP</div>
+          <div className="Stake-card-title App-card-title">EMT-USDG LP</div>
           <div className="Stake-card-bottom App-card-content">
             <div className="Stake-info App-card-row">
               <div className="label">
@@ -975,8 +975,8 @@ export default function StakeV1() {
                 <Trans>Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "gmtUsdgStaked", 18, 4, true)} ($
-                {formatKeyAmount(processedData, "gmtUsdgStakedUsd", 30, 2, true)})
+                {formatKeyAmount(processedData, "emtUsdgStaked", 18, 4, true)} ($
+                {formatKeyAmount(processedData, "emtUsdgStakedUsd", 30, 2, true)})
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -984,8 +984,8 @@ export default function StakeV1() {
                 <Trans>Wallet</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "gmtUsdgBalance", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "gmtUsdgBalanceUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "emtUsdgBalance", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "emtUsdgBalanceUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="App-card-row">
@@ -994,10 +994,10 @@ export default function StakeV1() {
               </div>
               <div>
                 {hasFeeDistribution &&
-                  processedData.gmtUsdgNativeRewards &&
-                  processedData.gmtUsdgNativeRewards.gt(0) &&
-                  `${formatKeyAmount(processedData, "gmtUsdgNativeRewards", 18, 8, true)} WBNB, `}
-                {formatKeyAmount(processedData, "gmtUsdgXgmtRewards", 18, 4, true)} xGMT
+                  processedData.emtUsdgNativeRewards &&
+                  processedData.emtUsdgNativeRewards.gt(0) &&
+                  `${formatKeyAmount(processedData, "emtUsdgNativeRewards", 18, 8, true)} WBNB, `}
+                {formatKeyAmount(processedData, "emtUsdgXemtRewards", 18, 4, true)} xEMT
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -1005,26 +1005,26 @@ export default function StakeV1() {
                 <Trans>Total Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "gmtUsdgTotalStaked", 18, 4, true)} ($
-                {formatKeyAmount(processedData, "gmtUsdgTotalStakedUsd", 30, 2, true)})
+                {formatKeyAmount(processedData, "emtUsdgTotalStaked", 18, 4, true)} ($
+                {formatKeyAmount(processedData, "emtUsdgTotalStakedUsd", 30, 2, true)})
               </div>
             </div>
             <div className="App-card-options">
-              <ExternalLink className="App-button-option App-card-option" href={buyGmtUrl}>
-                Get GMT
+              <ExternalLink className="App-button-option App-card-option" href={buyEmtUrl}>
+                Get EMT
               </ExternalLink>
-              <ExternalLink className="App-button-option App-card-option" href={addGmtUsdgLpUrl}>
+              <ExternalLink className="App-button-option App-card-option" href={addEmtUsdgLpUrl}>
                 <Trans>Create</Trans>
               </ExternalLink>
               {active && (
-                <button className="App-button-option App-card-option" onClick={() => showUnstakeGmtUsdgModal()}>
+                <button className="App-button-option App-card-option" onClick={() => showUnstakeEmtUsdgModal()}>
                   <Trans>Unstake</Trans>
                 </button>
               )}
               {active && (
                 <button
                   className="App-button-option App-card-option"
-                  onClick={() => claim(gmtUsdgFarmAddress, processedData.gmtUsdgTotalRewards)}
+                  onClick={() => claim(emtUsdgFarmAddress, processedData.emtUsdgTotalRewards)}
                 >
                   <Trans>Claim</Trans>
                 </button>
@@ -1038,7 +1038,7 @@ export default function StakeV1() {
           </div>
         </div>
         <div className="App-card">
-          <div className="Stake-card-title App-card-title">xGMT-USDG LP</div>
+          <div className="Stake-card-title App-card-title">xEMT-USDG LP</div>
           <div className="Stake-card-bottom App-card-content">
             <div className="Stake-info App-card-row">
               <div className="label">
@@ -1057,8 +1057,8 @@ export default function StakeV1() {
                 <Trans>Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtUsdgStaked", 18, 4, true)} ($
-                {formatKeyAmount(processedData, "xgmtUsdgStakedUsd", 30, 2, true)})
+                {formatKeyAmount(processedData, "xemtUsdgStaked", 18, 4, true)} ($
+                {formatKeyAmount(processedData, "xemtUsdgStakedUsd", 30, 2, true)})
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -1066,8 +1066,8 @@ export default function StakeV1() {
                 <Trans>Wallet</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtUsdgBalance", 18, 2, true)} ($
-                {formatKeyAmount(processedData, "xgmtUsdgBalanceUsd", USD_DECIMALS, 2, true)})
+                {formatKeyAmount(processedData, "xemtUsdgBalance", 18, 2, true)} ($
+                {formatKeyAmount(processedData, "xemtUsdgBalanceUsd", USD_DECIMALS, 2, true)})
               </div>
             </div>
             <div className="App-card-row">
@@ -1076,10 +1076,10 @@ export default function StakeV1() {
               </div>
               <div>
                 {hasFeeDistribution &&
-                  processedData.xgmtUsdgNativeRewards &&
-                  processedData.xgmtUsdgNativeRewards.gt(0) &&
-                  `${formatKeyAmount(processedData, "xgmtUsdgNativeRewards", 18, 8, true)} WBNB, `}
-                {formatKeyAmount(processedData, "xgmtUsdgXgmtRewards", 18, 4, true)} xGMT
+                  processedData.xemtUsdgNativeRewards &&
+                  processedData.xemtUsdgNativeRewards.gt(0) &&
+                  `${formatKeyAmount(processedData, "xemtUsdgNativeRewards", 18, 8, true)} WBNB, `}
+                {formatKeyAmount(processedData, "xemtUsdgXemtRewards", 18, 4, true)} xEMT
               </div>
             </div>
             <div className="Stake-info App-card-row">
@@ -1087,26 +1087,26 @@ export default function StakeV1() {
                 <Trans>Total Staked</Trans>
               </div>
               <div>
-                {formatKeyAmount(processedData, "xgmtUsdgTotalStaked", 18, 4, true)} ($
-                {formatKeyAmount(processedData, "xgmtUsdgTotalStakedUsd", 30, 2, true)})
+                {formatKeyAmount(processedData, "xemtUsdgTotalStaked", 18, 4, true)} ($
+                {formatKeyAmount(processedData, "xemtUsdgTotalStakedUsd", 30, 2, true)})
               </div>
             </div>
             <div className="App-card-options">
-              <ExternalLink className="App-button-option App-card-option" href={buyXgmtUrl}>
-                Get xGMT
+              <ExternalLink className="App-button-option App-card-option" href={buyXemtUrl}>
+                Get xEMT
               </ExternalLink>
-              <ExternalLink className="App-button-option App-card-option" href={addXgmtUsdgLpUrl}>
+              <ExternalLink className="App-button-option App-card-option" href={addXemtUsdgLpUrl}>
                 <Trans>Create</Trans>
               </ExternalLink>
               {active && (
-                <button className="App-button-option App-card-option" onClick={() => showUnstakeXgmtUsdgModal()}>
+                <button className="App-button-option App-card-option" onClick={() => showUnstakeXemtUsdgModal()}>
                   <Trans>Unstake</Trans>
                 </button>
               )}
               {active && (
                 <button
                   className="App-button-option App-card-option"
-                  onClick={() => claim(xgmtUsdgFarmAddress, processedData.xgmtUsdgTotalRewards)}
+                  onClick={() => claim(xemtUsdgFarmAddress, processedData.xemtUsdgTotalRewards)}
                 >
                   <Trans>Claim</Trans>
                 </button>
@@ -1150,7 +1150,7 @@ export default function StakeV1() {
               <div className="label">
                 <Trans>Rewards</Trans>
               </div>
-              <div>{formatKeyAmount(processedData, "autoUsdgXgmtRewards", 18, 4, true)} xGMT</div>
+              <div>{formatKeyAmount(processedData, "autoUsdgXemtRewards", 18, 4, true)} xEMT</div>
             </div>
             <div className="Stake-info App-card-row">
               <div className="label">

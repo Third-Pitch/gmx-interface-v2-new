@@ -7,7 +7,7 @@ import { formatAmount } from "lib/numbers";
 type Props = {
   title: string;
   total: BigNumber;
-  arbitrumValue: BigNumber;
+  baseValue: BigNumber;
   showDollar?: boolean;
   decimalsForConversion?: number;
   symbol?: string;
@@ -17,7 +17,7 @@ type Props = {
 export default function ChainsStatsTooltipRow({
   title,
   total,
-  arbitrumValue,
+  baseValue,
   showDollar = true,
   decimalsForConversion = USD_DECIMALS,
   symbol,
@@ -27,11 +27,11 @@ export default function ChainsStatsTooltipRow({
     <>
       <p className="Tooltip-row">
         <span className="label">
-          <Trans>{title} on Arbitrum:</Trans>
+          <Trans>{title} on Base:</Trans>
         </span>
         <span className="amount">
           {showDollar && "$"}
-          {formatAmount(arbitrumValue, shouldFormat ? decimalsForConversion : 0, 0, true)}
+          {formatAmount(baseValue, shouldFormat ? decimalsForConversion : 0, 0, true)}
           {!showDollar && symbol && " " + symbol}
         </span>
       </p>

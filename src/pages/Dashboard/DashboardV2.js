@@ -5,15 +5,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import useSWR from "swr";
+import BigNumber from "bignumber.js";
 
 import { ethers } from "ethers";
 import hexToRgba from "hex-to-rgba";
 
-import { useGmxPrice, useTotalGmxInLiquidity, useTotalGmxStaked, useTotalGmxSupply } from "domain/legacy";
+import { useEddxPrice, useTotalEddxInLiquidity, useTotalEddxStaked, useTotalEddxSupply } from "domain/legacy";
 import {
   DEFAULT_MAX_USDG_AMOUNT,
-  GLP_DECIMALS,
-  GMX_DECIMALS,
+  ELP_DECIMALS,
+  EDDX_DECIMALS,
   USD_DECIMALS,
   getPageTitle,
   importImage,
@@ -22,7 +23,7 @@ import { BASIS_POINTS_DIVISOR } from "config/factors";
 
 import { getContract } from "config/contracts";
 
-import GlpManager from "abis/GlpManager.json";
+import ElpManager from "abis/ElpManager.json";
 import ReaderV2 from "abis/ReaderV2.json";
 import VaultV2 from "abis/VaultV2.json";
 import Footer from "components/Footer/Footer";
@@ -35,10 +36,10 @@ import ChainsStatsTooltipRow from "components/StatsTooltip/ChainsStatsTooltipRow
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import { MarketsList } from "components/Synthetics/MarketsList/MarketsList";
 import { getServerUrl } from "config/backend";
-import { ARBITRUM, getChainName } from "config/chains";
+import { BASE, getChainName } from "config/chains";
 import { getIsSyntheticsSupported } from "config/features";
 import { getIcons } from "config/icons";
-import { GLP_POOL_COLORS, getTokenBySymbol, getWhitelistedV1Tokens } from "config/tokens";
+import { ELP_POOL_COLORS, getTokenBySymbol, getWhitelistedV1Tokens } from "config/tokens";
 import { useFeesSummary, useTotalVolume, useVolumeInfo } from "domain/stats";
 import useUniqueUsers from "domain/stats/useUniqueUsers";
 import { useInfoTokens } from "domain/tokens";
@@ -48,7 +49,7 @@ import { formatDate } from "lib/dates";
 import { arrayURLFetcher } from "lib/fetcher";
 import { bigNumberify, expandDecimals, formatAmount, formatKeyAmount, numberWithCommas } from "lib/numbers";
 import AssetDropdown from "./AssetDropdown";
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+const ACTIVE_CHAIN_IDS = [BASE];
 
 const { AddressZero } = ethers.constants;
 
@@ -109,7 +110,7 @@ export default function DashboardV2() {
     }
   );
 
-  let { total: totalGmxSupply } = useTotalGmxSupply();
+  let { total: totalEddxSupply } = useTotalEddxSupply();
 
   const currentVolumeInfo = useVolumeInfo();
 
@@ -126,16 +127,16 @@ export default function DashboardV2() {
 
   const readerAddress = getContract(chainId, "Reader");
   const vaultAddress = getContract(chainId, "Vault");
-  const glpManagerAddress = getContract(chainId, "GlpManager");
+  const elpManagerAddress = getContract(chainId, "ElpManager");
 
-  const gmxAddress = getContract(chainId, "GMX");
-  const glpAddress = getContract(chainId, "GLP");
+  const eddxAddress = getContract(chainId, "EDDX");
+  const elpAddress = getContract(chainId, "ELP");
   const usdgAddress = getContract(chainId, "USDG");
 
-  const tokensForSupplyQuery = [gmxAddress, glpAddress, usdgAddress];
+  const tokensForSupplyQuery = [eddxAddress, elpAddress, usdgAddress];
 
-  const { data: aums } = useSWR([`Dashboard:getAums:${active}`, chainId, glpManagerAddress, "getAums"], {
-    fetcher: contractFetcher(library, GlpManager),
+  const { data: aums } = useSWR([`Dashboard:getAums:${active}`, chainId, elpManagerAddress, "getAums"], {
+    fetcher: contractFetcher(library, ElpManager),
   });
 
   const { data: totalSupplies } = useSWR(
@@ -146,17 +147,16 @@ export default function DashboardV2() {
   );
 
   const { data: totalTokenWeights } = useSWR(
-    [`GlpSwap:totalTokenWeights:${active}`, chainId, vaultAddress, "totalTokenWeights"],
+    [`ElpSwap:totalTokenWeights:${active}`, chainId, vaultAddress, "totalTokenWeights"],
     {
       fetcher: contractFetcher(library, VaultV2),
     }
   );
 
   const { infoTokens } = useInfoTokens(library, chainId, active, undefined, undefined);
-  const { infoTokens: infoTokensArbitrum } = useInfoTokens(null, ARBITRUM, active, undefined, undefined);
-
+  const { infoTokens: infoTokensBase } = useInfoTokens(null, BASE, active, undefined, undefined);
   const { data: currentFees } = useSWR(
-    infoTokensArbitrum[AddressZero].contractMinPrice
+    infoTokensBase[AddressZero]?.contractMinPrice
       ? "Dashboard:currentFees"
       : null,
     {
@@ -177,7 +177,7 @@ export default function DashboardV2() {
               const feeUSD = getCurrentFeesUsd(
                 getWhitelistedTokenAddresses(ACTIVE_CHAIN_IDS[i]),
                 cv,
-                ACTIVE_CHAIN_IDS[i] === infoTokensArbitrum
+                ACTIVE_CHAIN_IDS[i] === infoTokensBase
               );
               acc[ACTIVE_CHAIN_IDS[i]] = feeUSD;
               acc.total = acc.total.add(feeUSD);
@@ -208,31 +208,31 @@ export default function DashboardV2() {
     .map((v) => Math.round(v))
     .reduce(
       (acc, cv, i) => {
-        acc[ACTIVE_CHAIN_IDS[i]] = cv;
-        acc.total = acc.total + cv;
+        acc[ACTIVE_CHAIN_IDS[i]] = new BigNumber(cv).div(new BigNumber(1e30)).toFixed(0);
+        acc.total = acc.total + acc[ACTIVE_CHAIN_IDS[i]];
         return acc;
       },
       { total: 0 }
     );
 
-  const { gmxPrice, gmxPriceFromArbitrum, gmxPriceFromAvalanche } = useGmxPrice(
+  const { eddxPrice, eddxPriceFromBase, eddxPriceFromAvalanche } = useEddxPrice(
     chainId,
-    { arbitrum: chainId === ARBITRUM ? library : undefined },
+    { base: chainId === BASE ? library : undefined },
     active
   );
 
-  let { total: totalGmxInLiquidity } = useTotalGmxInLiquidity(chainId, active);
+  let { total: totalEddxInLiquidity } = useTotalEddxInLiquidity(chainId, active);
 
-  let { avax: avaxStakedGmx, arbitrum: arbitrumStakedGmx, total: totalStakedGmx } = useTotalGmxStaked();
+  let { avax: avaxStakedEddx, base: baseStakedEddx, total: totalStakedEddx } = useTotalEddxStaked();
 
-  let gmxMarketCap;
-  if (gmxPrice && totalGmxSupply) {
-    gmxMarketCap = gmxPrice.mul(totalGmxSupply).div(expandDecimals(1, GMX_DECIMALS));
+  let eddxMarketCap;
+  if (eddxPrice && totalEddxSupply) {
+    eddxMarketCap = eddxPrice.mul(totalEddxSupply).div(expandDecimals(1, EDDX_DECIMALS));
   }
 
-  let stakedGmxSupplyUsd;
-  if (gmxPrice && totalStakedGmx) {
-    stakedGmxSupplyUsd = totalStakedGmx.mul(gmxPrice).div(expandDecimals(1, GMX_DECIMALS));
+  let stakedEddxSupplyUsd;
+  if (eddxPrice && totalStakedEddx) {
+    stakedEddxSupplyUsd = totalStakedEddx.mul(eddxPrice).div(expandDecimals(1, EDDX_DECIMALS));
   }
 
   let aum;
@@ -240,34 +240,34 @@ export default function DashboardV2() {
     aum = aums[0].add(aums[1]).div(2);
   }
 
-  let glpPrice;
-  let glpSupply;
-  let glpMarketCap;
+  let elpPrice;
+  let elpSupply;
+  let elpMarketCap;
   if (aum && totalSupplies && totalSupplies[3]) {
-    glpSupply = totalSupplies[3];
-    glpPrice =
-      aum && aum.gt(0) && glpSupply.gt(0)
-        ? aum.mul(expandDecimals(1, GLP_DECIMALS)).div(glpSupply)
+    elpSupply = totalSupplies[3];
+    elpPrice =
+      aum && aum.gt(0) && elpSupply.gt(0)
+        ? aum.mul(expandDecimals(1, ELP_DECIMALS)).div(elpSupply)
         : expandDecimals(1, USD_DECIMALS);
-    glpMarketCap = glpPrice.mul(glpSupply).div(expandDecimals(1, GLP_DECIMALS));
+    elpMarketCap = elpPrice.mul(elpSupply).div(expandDecimals(1, ELP_DECIMALS));
   }
 
   let tvl;
-  if (glpMarketCap && gmxPrice && totalStakedGmx) {
-    tvl = glpMarketCap.add(gmxPrice.mul(totalStakedGmx).div(expandDecimals(1, GMX_DECIMALS)));
+  if (elpMarketCap && eddxPrice && totalStakedEddx) {
+    tvl = elpMarketCap.add(eddxPrice.mul(totalStakedEddx).div(expandDecimals(1, EDDX_DECIMALS)));
   }
 
   const ethFloorPriceFund = expandDecimals(350 + 148 + 384, 18);
-  const glpFloorPriceFund = expandDecimals(660001, 18);
+  const elpFloorPriceFund = expandDecimals(660001, 18);
   const usdcFloorPriceFund = expandDecimals(784598 + 200000, 30);
 
   let totalFloorPriceFundUsd;
 
-  if (eth && eth.contractMinPrice && glpPrice) {
+  if (eth && eth.contractMinPrice && elpPrice) {
     const ethFloorPriceFundUsd = ethFloorPriceFund.mul(eth.contractMinPrice).div(expandDecimals(1, eth.decimals));
-    const glpFloorPriceFundUsd = glpFloorPriceFund.mul(glpPrice).div(expandDecimals(1, 18));
+    const elpFloorPriceFundUsd = elpFloorPriceFund.mul(elpPrice).div(expandDecimals(1, 18));
 
-    totalFloorPriceFundUsd = ethFloorPriceFundUsd.add(glpFloorPriceFundUsd).add(usdcFloorPriceFund);
+    totalFloorPriceFundUsd = ethFloorPriceFundUsd.add(elpFloorPriceFundUsd).add(usdcFloorPriceFund);
   }
 
   let adjustedUsdgSupply = bigNumberify(0);
@@ -327,8 +327,8 @@ export default function DashboardV2() {
                     <br />
                     <br />
                     Get lower fees to{" "}
-                    <Link to="/buy_glp" target="_blank" rel="noopener noreferrer">
-                      buy GLP
+                    <Link to="/buy_elp" target="_blank" rel="noopener noreferrer">
+                      buy ELP
                     </Link>{" "}
                     with {tokenInfo.symbol}, and to{" "}
                     <Link to="/trade" target="_blank" rel="noopener noreferrer">
@@ -354,7 +354,7 @@ export default function DashboardV2() {
               )}
               <br />
               <div>
-                <ExternalLink href="https://docs.gmx.io/docs/providing-liquidity/v1">
+                <ExternalLink href="https://docs.eddx.io/docs/providing-liquidity/v1">
                   <Trans>More Info</Trans>
                 </ExternalLink>
               </div>
@@ -367,19 +367,19 @@ export default function DashboardV2() {
 
   let stakedPercent = 0;
 
-  if (totalGmxSupply && !totalGmxSupply.isZero() && !totalStakedGmx.isZero()) {
-    stakedPercent = totalStakedGmx.mul(100).div(totalGmxSupply).toNumber();
+  if (totalEddxSupply && !totalEddxSupply.isZero() && !totalStakedEddx.isZero()) {
+    stakedPercent = totalStakedEddx.mul(100).div(totalEddxSupply).toNumber();
   }
 
   let liquidityPercent = 0;
 
-  if (totalGmxSupply && !totalGmxSupply.isZero() && totalGmxInLiquidity) {
-    liquidityPercent = totalGmxInLiquidity.mul(100).div(totalGmxSupply).toNumber();
+  if (totalEddxSupply && !totalEddxSupply.isZero() && totalEddxInLiquidity) {
+    liquidityPercent = totalEddxInLiquidity.mul(100).div(totalEddxSupply).toNumber();
   }
 
   let notStakedPercent = 100 - stakedPercent - liquidityPercent;
 
-  let gmxDistributionData = [
+  let eddxDistributionData = [
     {
       name: t`staked`,
       value: stakedPercent,
@@ -399,17 +399,17 @@ export default function DashboardV2() {
 
   const totalStatsStartDate = t`01 Sep 2021`;
 
-  let stableGlp = 0;
-  let totalGlp = 0;
+  let stableElp = 0;
+  let totalElp = 0;
 
-  let glpPool = tokenList.map((token) => {
+  let elpPool = tokenList.map((token) => {
     const tokenInfo = infoTokens[token.address];
     if (tokenInfo.usdgAmount && adjustedUsdgSupply && adjustedUsdgSupply.gt(0)) {
       const currentWeightBps = tokenInfo.usdgAmount.mul(BASIS_POINTS_DIVISOR).div(adjustedUsdgSupply);
       if (tokenInfo.isStable) {
-        stableGlp += parseFloat(`${formatAmount(currentWeightBps, 2, 2, false)}`);
+        stableElp += parseFloat(`${formatAmount(currentWeightBps, 2, 2, false)}`);
       }
-      totalGlp += parseFloat(`${formatAmount(currentWeightBps, 2, 2, false)}`);
+      totalElp += parseFloat(`${formatAmount(currentWeightBps, 2, 2, false)}`);
       return {
         fullname: token.name,
         name: token.symbol,
@@ -419,40 +419,40 @@ export default function DashboardV2() {
     return null;
   });
 
-  let stablePercentage = totalGlp > 0 ? ((stableGlp * 100) / totalGlp).toFixed(2) : "0.0";
+  let stablePercentage = totalElp > 0 ? ((stableElp * 100) / totalElp).toFixed(2) : "0.0";
 
-  glpPool = glpPool.filter(function (element) {
+  elpPool = elpPool.filter(function (element) {
     return element !== null;
   });
 
-  glpPool = glpPool.sort(function (a, b) {
+  elpPool = elpPool.sort(function (a, b) {
     if (a.value < b.value) return 1;
     else return -1;
   });
 
-  gmxDistributionData = gmxDistributionData.sort(function (a, b) {
+  eddxDistributionData = eddxDistributionData.sort(function (a, b) {
     if (a.value < b.value) return 1;
     else return -1;
   });
 
-  const [gmxActiveIndex, setGMXActiveIndex] = useState(null);
+  const [eddxActiveIndex, setEDDXActiveIndex] = useState(null);
 
-  const onGMXDistributionChartEnter = (_, index) => {
-    setGMXActiveIndex(index);
+  const onEDDXDistributionChartEnter = (_, index) => {
+    setEDDXActiveIndex(index);
   };
 
-  const onGMXDistributionChartLeave = (_, index) => {
-    setGMXActiveIndex(null);
+  const onEDDXDistributionChartLeave = (_, index) => {
+    setEDDXActiveIndex(null);
   };
 
-  const [glpActiveIndex, setGLPActiveIndex] = useState(null);
+  const [elpActiveIndex, setELPActiveIndex] = useState(null);
 
-  const onGLPPoolChartEnter = (_, index) => {
-    setGLPActiveIndex(index);
+  const onELPPoolChartEnter = (_, index) => {
+    setELPActiveIndex(index);
   };
 
-  const onGLPPoolChartLeave = (_, index) => {
-    setGLPActiveIndex(null);
+  const onELPPoolChartLeave = (_, index) => {
+    setELPActiveIndex(null);
   };
 
   const CustomTooltip = ({ active, payload }) => {
@@ -481,8 +481,8 @@ export default function DashboardV2() {
               <Trans>
                 {chainName} Total Stats start from {totalStatsStartDate}.<br /> For detailed stats:
               </Trans>{" "}
-              {chainId === ARBITRUM && <ExternalLink href="https://stats.gmx.io">V1</ExternalLink>}
-              <ExternalLink href="https://dune.com/gmx-io/gmx-analytics">V2</ExternalLink>.
+              {chainId === BASE && <ExternalLink href="https://stats.eddx.io">V1</ExternalLink>}
+              <ExternalLink href="https://dune.com/eddx-io/eddx-analytics">V2</ExternalLink>.
             </div>
           </div>
         </div>
@@ -503,14 +503,14 @@ export default function DashboardV2() {
                       handle={`$${formatAmount(tvl, USD_DECIMALS, 0, true)}`}
                       position="right-bottom"
                       renderContent={() => (
-                        <span>{t`Assets Under Management: GMX staked (All chains) + GLP pool (${chainName}).`}</span>
+                        <span>{t`Assets Under Management: EDDX staked (All chains) + ELP pool (${chainName}).`}</span>
                       )}
                     />
                   </div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">
-                    <Trans>GLP Pool</Trans>
+                    <Trans>ELP Pool</Trans>
                   </div>
                   <div>
                     <TooltipComponent
@@ -518,7 +518,7 @@ export default function DashboardV2() {
                       position="right-bottom"
                       renderContent={() => (
                         <Trans>
-                          <p>Total value of tokens in GLP pool ({chainName}).</p>
+                          <p>Total value of tokens in ELP pool ({chainName}).</p>
                           <p>
                             This value may be higher on other websites due to the collateral of positions being included
                             in the calculation.
@@ -540,7 +540,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Volume`}
-                          arbitrumValue={currentVolumeInfo?.[ARBITRUM]}
+                          baseValue={currentVolumeInfo?.[BASE]}
                           total={currentVolumeInfo?.total}
                         />
                       )}
@@ -559,7 +559,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Open Interest`}
-                          arbitrumValue={positionStatsInfo?.[ARBITRUM].openInterest}
+                          baseValue={positionStatsInfo?.[BASE].openInterest}
                           total={positionStatsInfo?.totalOpenInterest}
                         />
                       )}
@@ -583,7 +583,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Long Positions`}
-                          arbitrumValue={positionStatsInfo?.[ARBITRUM].totalLongPositionSizes}
+                          baseValue={positionStatsInfo?.[BASE].totalLongPositionSizes}
                           total={positionStatsInfo?.totalLongPositionSizes}
                         />
                       )}
@@ -607,7 +607,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Short Positions`}
-                          arbitrumValue={positionStatsInfo?.[ARBITRUM].totalShortPositionSizes}
+                          baseValue={positionStatsInfo?.[BASE].totalShortPositionSizes}
                           total={positionStatsInfo?.totalShortPositionSizes}
                         />
                       )}
@@ -627,7 +627,7 @@ export default function DashboardV2() {
                         renderContent={() => (
                           <ChainsStatsTooltipRow
                             title={t`Fees`}
-                            arbitrumValue={currentFees?.[ARBITRUM]}
+                            baseValue={currentFees?.[BASE]}
                             total={currentFees?.total}
                           />
                         )}
@@ -655,7 +655,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Total Fees`}
-                          arbitrumValue={totalFees?.[ARBITRUM]}
+                          baseValue={totalFees?.[BASE]}
                           total={totalFees?.total}
                           decimalsForConversion={0}
                         />
@@ -675,7 +675,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Total Volume`}
-                          arbitrumValue={totalVolume?.[ARBITRUM]}
+                          baseValue={totalVolume?.[BASE]}
                           total={totalVolume?.total}
                         />
                       )}
@@ -694,7 +694,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <ChainsStatsTooltipRow
                           title={t`Total Users`}
-                          arbitrumValue={uniqueUsers?.[ARBITRUM]}
+                          baseValue={uniqueUsers?.[BASE]}
                           total={uniqueUsers?.total}
                           showDollar={false}
                           shouldFormat={false}
@@ -717,24 +717,24 @@ export default function DashboardV2() {
               <Trans>Tokens</Trans> <img src={currentIcons.network} width="24" alt="Network Icon" />
             </div>
             <div className="Page-description">
-              <Trans>Platform, GLP and GM tokens.</Trans>
+              <Trans>Platform, ELP and EM tokens.</Trans>
             </div>
           </div>
           <div className="DashboardV2-token-cards">
-            <div className="stats-wrapper stats-wrapper--gmx">
+            <div className="stats-wrapper stats-wrapper--eddx">
               <div className="App-card">
                 <div className="stats-block">
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
-                        <img src={currentIcons.gmx} width="40" alt="GMX Token Icon" />
+                        <img src={currentIcons.eddx} width="40" alt="EDDX Token Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">GMX</div>
-                        <div className="App-card-title-mark-subtitle">GMX</div>
+                        <div className="App-card-title-mark-title">EDDX</div>
+                        <div className="App-card-title-mark-subtitle">EDDX</div>
                       </div>
                       <div>
-                        <AssetDropdown assetSymbol="GMX" />
+                        <AssetDropdown assetSymbol="EDDX" />
                       </div>
                     </div>
                   </div>
@@ -745,22 +745,22 @@ export default function DashboardV2() {
                         <Trans>Price</Trans>
                       </div>
                       <div>
-                        {!gmxPrice && "..."}
-                        {gmxPrice && (
+                        {!eddxPrice && "..."}
+                        {eddxPrice && (
                           <TooltipComponent
                             position="right-bottom"
                             className="nowrap"
-                            handle={"$" + formatAmount(gmxPrice, USD_DECIMALS, 2, true)}
+                            handle={"$" + formatAmount(eddxPrice, USD_DECIMALS, 2, true)}
                             renderContent={() => (
                               <>
                                 <StatsTooltipRow
-                                  label={t`Price on Arbitrum`}
-                                  value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 2, true)}
+                                  label={t`Price on Base`}
+                                  value={formatAmount(eddxPriceFromBase, USD_DECIMALS, 2, true)}
                                   showDollar={true}
                                 />
                                 <StatsTooltipRow
                                   label={t`Price on Avalanche`}
-                                  value={formatAmount(gmxPriceFromAvalanche, USD_DECIMALS, 2, true)}
+                                  value={formatAmount(eddxPriceFromAvalanche, USD_DECIMALS, 2, true)}
                                   showDollar={true}
                                 />
                               </>
@@ -773,7 +773,7 @@ export default function DashboardV2() {
                       <div className="label">
                         <Trans>Supply</Trans>
                       </div>
-                      <div>{formatAmount(totalGmxSupply, GMX_DECIMALS, 0, true)} GMX</div>
+                      <div>{formatAmount(totalEddxSupply, EDDX_DECIMALS, 0, true)} EDDX</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
@@ -783,14 +783,14 @@ export default function DashboardV2() {
                         <TooltipComponent
                           position="right-bottom"
                           className="nowrap"
-                          handle={`$${formatAmount(stakedGmxSupplyUsd, USD_DECIMALS, 0, true)}`}
+                          handle={`$${formatAmount(stakedEddxSupplyUsd, USD_DECIMALS, 0, true)}`}
                           renderContent={() => (
                             <ChainsStatsTooltipRow
                               title={t`Staked`}
-                              arbitrumValue={arbitrumStakedGmx}
-                              avaxValue={avaxStakedGmx}
-                              total={totalStakedGmx}
-                              decimalsForConversion={GMX_DECIMALS}
+                              baseValue={baseStakedEddx}
+                              avaxValue={avaxStakedEddx}
+                              total={totalStakedEddx}
+                              decimalsForConversion={EDDX_DECIMALS}
                               showDollar={false}
                             />
                           )}
@@ -801,15 +801,15 @@ export default function DashboardV2() {
                       <div className="label">
                         <Trans>Market Cap</Trans>
                       </div>
-                      <div>${formatAmount(gmxMarketCap, USD_DECIMALS, 0, true)}</div>
+                      <div>${formatAmount(eddxMarketCap, USD_DECIMALS, 0, true)}</div>
                     </div>
                   </div>
                 </div>
-                <div className="stats-piechart" onMouseLeave={onGMXDistributionChartLeave}>
-                  {gmxDistributionData.length > 0 && (
+                <div className="stats-piechart" onMouseLeave={onEDDXDistributionChartLeave}>
+                  {eddxDistributionData.length > 0 && (
                     <PieChart width={210} height={210}>
                       <Pie
-                        data={gmxDistributionData}
+                        data={eddxDistributionData}
                         cx={100}
                         cy={100}
                         innerRadius={73}
@@ -819,23 +819,23 @@ export default function DashboardV2() {
                         startAngle={90}
                         endAngle={-270}
                         paddingAngle={2}
-                        onMouseEnter={onGMXDistributionChartEnter}
-                        onMouseOut={onGMXDistributionChartLeave}
-                        onMouseLeave={onGMXDistributionChartLeave}
+                        onMouseEnter={onEDDXDistributionChartEnter}
+                        onMouseOut={onEDDXDistributionChartLeave}
+                        onMouseLeave={onEDDXDistributionChartLeave}
                       >
-                        {gmxDistributionData.map((entry, index) => (
+                        {eddxDistributionData.map((entry, index) => (
                           <Cell
                             key={`cell-${index}`}
                             fill={entry.color}
                             style={{
                               filter:
-                                gmxActiveIndex === index
+                                eddxActiveIndex === index
                                   ? `drop-shadow(0px 0px 6px ${hexToRgba(entry.color, 0.7)})`
                                   : "none",
                               cursor: "pointer",
                             }}
                             stroke={entry.color}
-                            strokeWidth={gmxActiveIndex === index ? 1 : 1}
+                            strokeWidth={eddxActiveIndex === index ? 1 : 1}
                           />
                         ))}
                       </Pie>
@@ -852,14 +852,14 @@ export default function DashboardV2() {
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
-                        <img src={currentIcons.glp} width="40" alt="GLP Icon" />
+                        <img src={currentIcons.elp} width="40" alt="ELP Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">GLP</div>
-                        <div className="App-card-title-mark-subtitle">GLP</div>
+                        <div className="App-card-title-mark-title">ELP</div>
+                        <div className="App-card-title-mark-subtitle">ELP</div>
                       </div>
                       <div>
-                        <AssetDropdown assetSymbol="GLP" />
+                        <AssetDropdown assetSymbol="ELP" />
                       </div>
                     </div>
                   </div>
@@ -869,25 +869,25 @@ export default function DashboardV2() {
                       <div className="label">
                         <Trans>Price</Trans>
                       </div>
-                      <div>${formatAmount(glpPrice, USD_DECIMALS, 3, true)}</div>
+                      <div>${formatAmount(elpPrice, USD_DECIMALS, 3, true)}</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
                         <Trans>Supply</Trans>
                       </div>
-                      <div>{formatAmount(glpSupply, GLP_DECIMALS, 0, true)} GLP</div>
+                      <div>{formatAmount(elpSupply, ELP_DECIMALS, 0, true)} ELP</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
                         <Trans>Total Staked</Trans>
                       </div>
-                      <div>${formatAmount(glpMarketCap, USD_DECIMALS, 0, true)}</div>
+                      <div>${formatAmount(elpMarketCap, USD_DECIMALS, 0, true)}</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
                         <Trans>Market Cap</Trans>
                       </div>
-                      <div>${formatAmount(glpMarketCap, USD_DECIMALS, 0, true)}</div>
+                      <div>${formatAmount(elpMarketCap, USD_DECIMALS, 0, true)}</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
@@ -897,11 +897,11 @@ export default function DashboardV2() {
                     </div>
                   </div>
                 </div>
-                <div className="stats-piechart" onMouseOut={onGLPPoolChartLeave}>
-                  {glpPool.length > 0 && (
+                <div className="stats-piechart" onMouseOut={onELPPoolChartLeave}>
+                  {elpPool.length > 0 && (
                     <PieChart width={210} height={210}>
                       <Pie
-                        data={glpPool}
+                        data={elpPool}
                         cx={100}
                         cy={100}
                         innerRadius={73}
@@ -910,29 +910,29 @@ export default function DashboardV2() {
                         dataKey="value"
                         startAngle={90}
                         endAngle={-270}
-                        onMouseEnter={onGLPPoolChartEnter}
-                        onMouseOut={onGLPPoolChartLeave}
-                        onMouseLeave={onGLPPoolChartLeave}
+                        onMouseEnter={onELPPoolChartEnter}
+                        onMouseOut={onELPPoolChartLeave}
+                        onMouseLeave={onELPPoolChartLeave}
                         paddingAngle={2}
                       >
-                        {glpPool.map((entry, index) => (
+                        {elpPool.map((entry, index) => (
                           <Cell
                             key={`cell-${index}`}
-                            fill={GLP_POOL_COLORS[entry.name]}
+                            fill={ELP_POOL_COLORS[entry.name]}
                             style={{
                               filter:
-                                glpActiveIndex === index
-                                  ? `drop-shadow(0px 0px 6px ${hexToRgba(GLP_POOL_COLORS[entry.name], 0.7)})`
+                                elpActiveIndex === index
+                                  ? `drop-shadow(0px 0px 6px ${hexToRgba(ELP_POOL_COLORS[entry.name], 0.7)})`
                                   : "none",
                               cursor: "pointer",
                             }}
-                            stroke={GLP_POOL_COLORS[entry.name]}
-                            strokeWidth={glpActiveIndex === index ? 1 : 1}
+                            stroke={ELP_POOL_COLORS[entry.name]}
+                            strokeWidth={elpActiveIndex === index ? 1 : 1}
                           />
                         ))}
                       </Pie>
                       <text x={"50%"} y={"50%"} fill="white" textAnchor="middle" dominantBaseline="middle">
-                        GLP Pool
+                        ELP Pool
                       </text>
                       <Tooltip content={<CustomTooltip />} />
                     </PieChart>
@@ -944,7 +944,7 @@ export default function DashboardV2() {
               <>
                 <div className="token-table-wrapper App-card">
                   <div className="App-card-title">
-                    <Trans>GLP Index Composition</Trans>{" "}
+                    <Trans>ELP Index Composition</Trans>{" "}
                     <img src={currentIcons.network} width="16" alt="Network Icon" />
                   </div>
                   <div className="App-card-divider"></div>
@@ -1054,8 +1054,8 @@ export default function DashboardV2() {
                   </table>
                 </div>
 
-                <div className="Page-title Tab-title-section glp-composition-small">
-                  <Trans>GLP Index Composition</Trans>{" "}
+                <div className="Page-title Tab-title-section elp-composition-small">
+                  <Trans>ELP Index Composition</Trans>{" "}
                   <img className="title-icon" src={currentIcons.network} width="24" alt="Network Icon" />
                 </div>
 

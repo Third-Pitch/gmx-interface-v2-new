@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { arrayURLFetcher } from "lib/fetcher";
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+const ACTIVE_CHAIN_IDS = [BASE];
 
 export function useFeesSummary() {
   const { data: feesSummary } = useSWR(

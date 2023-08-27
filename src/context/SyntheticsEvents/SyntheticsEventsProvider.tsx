@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro";
 import { useWeb3React } from "@web3-react/core";
 import EventEmitter from "abis/EventEmitter.json";
-import { GmStatusNotification } from "components/Synthetics/StatusNotification/GmStatusNotification";
+import { EmStatusNotification } from "components/Synthetics/StatusNotification/EmStatusNotification";
 import { OrderStatusNotification } from "components/Synthetics/StatusNotification/OrderStatusNotification";
 import { getContract } from "config/contracts";
 import { isDevelopment } from "config/env";
@@ -541,7 +541,7 @@ export function SyntheticsEventsProvider({ children }: { children: ReactNode }) 
         const toastId = Date.now();
 
         helperToast.success(
-          <GmStatusNotification
+          <EmStatusNotification
             pendingDepositData={data}
             marketsInfoData={marketsInfoData}
             tokensData={tokensData}
@@ -557,7 +557,7 @@ export function SyntheticsEventsProvider({ children }: { children: ReactNode }) 
         const toastId = Date.now();
 
         helperToast.success(
-          <GmStatusNotification
+          <EmStatusNotification
             pendingWithdrawalData={data}
             marketsInfoData={marketsInfoData}
             tokensData={tokensData}

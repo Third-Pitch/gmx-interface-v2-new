@@ -2,7 +2,7 @@ import { Trans } from "@lingui/macro";
 import SEO from "components/Common/SEO";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import Footer from "components/Footer/Footer";
-import { GmSwapBox, Mode, Operation } from "components/Synthetics/GmSwap/GmSwapBox/GmSwapBox";
+import { EmSwapBox, Mode, Operation } from "components/Synthetics/EmSwap/EmSwapBox/EmSwapBox";
 import { MarketStats } from "components/Synthetics/MarketStats/MarketStats";
 import { getSyntheticsDepositMarketKey } from "config/localStorage";
 import { useMarketTokensData, useMarketsInfo } from "domain/synthetics/markets";
@@ -14,7 +14,7 @@ import { useState } from "react";
 import { getTokenData } from "domain/synthetics/tokens";
 import { getByKey } from "lib/objects";
 import "./MarketPoolsPage.scss";
-import { GmList } from "components/Synthetics/GmList/GmList";
+import { EmList } from "components/Synthetics/EmList/EmList";
 import { useMarketTokensAPR } from "domain/synthetics/markets/useMarketTokensAPR";
 
 type Props = {
@@ -62,7 +62,7 @@ export function MarketPoolsPage(p: Props) {
             </div>
             <div className="Page-description">
               <Trans>
-                Purchase <ExternalLink href="https://docs.gmx.io/docs/providing-liquidity/v2">GM Tokens</ExternalLink>{" "}
+                Purchase <ExternalLink href="https://docs.eddx.io/docs/providing-liquidity/v2">EM Tokens</ExternalLink>{" "}
                 to earn fees from swaps and leverage trading.
               </Trans>
               <br />
@@ -74,7 +74,7 @@ export function MarketPoolsPage(p: Props) {
           <MarketStats marketsTokensAPRData={marketsTokensAPRData} marketInfo={marketInfo} marketToken={marketToken} />
 
           <div className="MarketPoolsPage-swap-box">
-            <GmSwapBox
+            <EmSwapBox
               onConnectWallet={p.connectWallet}
               selectedMarketAddress={selectedMarketKey}
               markets={markets}
@@ -96,7 +96,7 @@ export function MarketPoolsPage(p: Props) {
             <Trans>Select a Market</Trans>
           </div>
         </div>
-        <GmList
+        <EmList
           marketsTokensAPRData={marketsTokensAPRData}
           marketTokensData={depositMarketTokensData}
           marketsInfoData={marketsInfoData}

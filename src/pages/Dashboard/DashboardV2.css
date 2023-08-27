@@ -61,7 +61,7 @@
   margin-left: 1.5rem;
 }
 
-.stats-block--glp .stats-label {
+.stats-block--elp .stats-label {
   grid-row-gap: 0;
 }
 
@@ -133,7 +133,7 @@
   margin-right: 0.8rem;
 }
 
-.glp-composition-small {
+.elp-composition-small {
   display: none;
 }
 
@@ -157,7 +157,7 @@
   .stats-wrapper {
     margin-bottom: 0;
   }
-  .glp-composition-small {
+  .elp-composition-small {
     display: block;
   }
 }

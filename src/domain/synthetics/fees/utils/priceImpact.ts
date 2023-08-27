@@ -315,7 +315,7 @@ export function getNextPoolAmountsParams(p: {
 }
 
 /**
- * @see https://github.com/gmx-io/gmx-synthetics/blob/updates/contracts/pricing/SwapPricingUtils.sol
+ * @see https://github.com/eddx-io/eddx-synthetics/blob/updates/contracts/pricing/SwapPricingUtils.sol
  */
 export function getPriceImpactUsd(p: {
   currentLongUsd: BigNumber;
@@ -369,7 +369,7 @@ export function getPriceImpactUsd(p: {
 }
 
 /**
- *  @see https://github.com/gmx-io/gmx-synthetics/blob/5fd9991ff2c37ae5f24f03bc9c132730b012ebf2/contracts/pricing/PricingUtils.sol
+ *  @see https://github.com/eddx-io/eddx-synthetics/blob/5fd9991ff2c37ae5f24f03bc9c132730b012ebf2/contracts/pricing/PricingUtils.sol
  */
 export function calculateImpactForSameSideRebalance(p: {
   currentDiff: BigNumber;
@@ -389,7 +389,7 @@ export function calculateImpactForSameSideRebalance(p: {
 }
 
 /**
- *  @see  https://github.com/gmx-io/gmx-synthetics/blob/5fd9991ff2c37ae5f24f03bc9c132730b012ebf2/contracts/pricing/PricingUtils.sol
+ *  @see  https://github.com/eddx-io/eddx-synthetics/blob/5fd9991ff2c37ae5f24f03bc9c132730b012ebf2/contracts/pricing/PricingUtils.sol
  */
 export function calculateImpactForCrossoverRebalance(p: {
   currentDiff: BigNumber;

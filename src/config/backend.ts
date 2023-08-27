@@ -1,11 +1,11 @@
-import { ARBITRUM } from "./chains";
+import { BASE } from "./chains";
 
-export const GMX_STATS_API_URL = "https://stats.gmx.io/api";
+export const EDDX_STATS_API_URL = "http://192.168.1.118:3113/api";
 
 const BACKEND_URLS = {
-  default: "https://gmx-server-mainnet.uw.r.appspot.com",
+  default: "http://loca192.168.1.118lhost:3123/api",
 
-  [ARBITRUM]: "https://gmx-server-mainnet.uw.r.appspot.com",
+  [BASE]: "http://192.168.1.118:3123/api",
 };
 
 export function getServerBaseUrl(chainId: number) {

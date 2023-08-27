@@ -10,7 +10,7 @@ import Modal from "components/Modal/Modal";
 import Footer from "components/Footer/Footer";
 
 import Token from "abis/Token.json";
-import Vester from "abis/Vester.json";
+import Vester from "abis/VesterV2.json";
 import RewardTracker from "abis/RewardTracker.json";
 import RewardRouter from "abis/RewardRouter.json";
 
@@ -50,45 +50,45 @@ export default function BeginAccountTransfer(props) {
     parsedReceiver = receiver;
   }
 
-  const gmxAddress = getContract(chainId, "GMX");
-  const gmxVesterAddress = getContract(chainId, "GmxVester");
-  const glpVesterAddress = getContract(chainId, "GlpVester");
+  const eddxAddress = getContract(chainId, "EDDX");
+  const eddxVesterAddress = getContract(chainId, "EddxVester");
+  const elpVesterAddress = getContract(chainId, "ElpVester");
 
   const rewardRouterAddress = getContract(chainId, "RewardRouter");
 
-  const { data: gmxVesterBalance } = useSWR(active && [active, chainId, gmxVesterAddress, "balanceOf", account], {
+  const { data: eddxVesterBalance } = useSWR(active && [active, chainId, eddxVesterAddress, "balanceOf", account], {
     fetcher: contractFetcher(library, Token),
   });
 
-  const { data: glpVesterBalance } = useSWR(active && [active, chainId, glpVesterAddress, "balanceOf", account], {
+  const { data: elpVesterBalance } = useSWR(active && [active, chainId, elpVesterAddress, "balanceOf", account], {
     fetcher: contractFetcher(library, Token),
   });
 
-  const stakedGmxTrackerAddress = getContract(chainId, "StakedGmxTracker");
-  const { data: cumulativeGmxRewards } = useSWR(
-    [active, chainId, stakedGmxTrackerAddress, "cumulativeRewards", parsedReceiver],
+  const stakedEddxTrackerAddress = getContract(chainId, "StakedEddxTracker");
+  const { data: cumulativeEddxRewards } = useSWR(
+    [active, chainId, stakedEddxTrackerAddress, "cumulativeRewards", parsedReceiver],
     {
       fetcher: contractFetcher(library, RewardTracker),
     }
   );
 
-  const stakedGlpTrackerAddress = getContract(chainId, "StakedGlpTracker");
-  const { data: cumulativeGlpRewards } = useSWR(
-    [active, chainId, stakedGlpTrackerAddress, "cumulativeRewards", parsedReceiver],
+  const stakedElpTrackerAddress = getContract(chainId, "StakedElpTracker");
+  const { data: cumulativeElpRewards } = useSWR(
+    [active, chainId, stakedElpTrackerAddress, "cumulativeRewards", parsedReceiver],
     {
       fetcher: contractFetcher(library, RewardTracker),
     }
   );
 
-  const { data: transferredCumulativeGmxRewards } = useSWR(
-    [active, chainId, gmxVesterAddress, "transferredCumulativeRewards", parsedReceiver],
+  const { data: transferredCumulativeEddxRewards } = useSWR(
+    [active, chainId, eddxVesterAddress, "transferredCumulativeRewards", parsedReceiver],
     {
       fetcher: contractFetcher(library, Vester),
     }
   );
 
-  const { data: transferredCumulativeGlpRewards } = useSWR(
-    [active, chainId, glpVesterAddress, "transferredCumulativeRewards", parsedReceiver],
+  const { data: transferredCumulativeElpRewards } = useSWR(
+    [active, chainId, elpVesterAddress, "transferredCumulativeRewards", parsedReceiver],
     {
       fetcher: contractFetcher(library, Vester),
     }
@@ -101,41 +101,41 @@ export default function BeginAccountTransfer(props) {
     }
   );
 
-  const { data: gmxAllowance } = useSWR(
-    active && [active, chainId, gmxAddress, "allowance", account, stakedGmxTrackerAddress],
+  const { data: eddxAllowance } = useSWR(
+    active && [active, chainId, eddxAddress, "allowance", account, stakedEddxTrackerAddress],
     {
       fetcher: contractFetcher(library, Token),
     }
   );
 
-  const { data: gmxStaked } = useSWR(
-    active && [active, chainId, stakedGmxTrackerAddress, "depositBalances", account, gmxAddress],
+  const { data: eddxStaked } = useSWR(
+    active && [active, chainId, stakedEddxTrackerAddress, "depositBalances", account, eddxAddress],
     {
       fetcher: contractFetcher(library, RewardTracker),
     }
   );
 
-  const needApproval = gmxAllowance && gmxStaked && gmxStaked.gt(gmxAllowance);
+  const needApproval = eddxAllowance && eddxStaked && eddxStaked.gt(eddxAllowance);
 
-  const hasVestedGmx = gmxVesterBalance && gmxVesterBalance.gt(0);
-  const hasVestedGlp = glpVesterBalance && glpVesterBalance.gt(0);
-  const hasStakedGmx =
-    (cumulativeGmxRewards && cumulativeGmxRewards.gt(0)) ||
-    (transferredCumulativeGmxRewards && transferredCumulativeGmxRewards.gt(0));
-  const hasStakedGlp =
-    (cumulativeGlpRewards && cumulativeGlpRewards.gt(0)) ||
-    (transferredCumulativeGlpRewards && transferredCumulativeGlpRewards.gt(0));
+  const hasVestedEddx = eddxVesterBalance && eddxVesterBalance.gt(0);
+  const hasVestedElp = elpVesterBalance && elpVesterBalance.gt(0);
+  const hasStakedEddx =
+    (cumulativeEddxRewards && cumulativeEddxRewards.gt(0)) ||
+    (transferredCumulativeEddxRewards && transferredCumulativeEddxRewards.gt(0));
+  const hasStakedElp =
+    (cumulativeElpRewards && cumulativeElpRewards.gt(0)) ||
+    (transferredCumulativeElpRewards && transferredCumulativeElpRewards.gt(0));
   const hasPendingReceiver = pendingReceiver && pendingReceiver !== ethers.constants.AddressZero;
 
   const getError = () => {
     if (!account) {
       return t`Wallet is not connected`;
     }
-    if (hasVestedGmx) {
-      return t`Vested GMX not withdrawn`;
+    if (hasVestedEddx) {
+      return t`Vested EDDX not withdrawn`;
     }
-    if (hasVestedGlp) {
-      return t`Vested GLP not withdrawn`;
+    if (hasVestedElp) {
+      return t`Vested ELP not withdrawn`;
     }
     if (!receiver || receiver.length === 0) {
       return t`Enter Receiver Address`;
@@ -143,7 +143,7 @@ export default function BeginAccountTransfer(props) {
     if (!ethers.utils.isAddress(receiver)) {
       return t`Invalid Receiver Address`;
     }
-    if (hasStakedGmx || hasStakedGlp) {
+    if (hasStakedEddx || hasStakedElp) {
       return t`Invalid Receiver`;
     }
     if ((parsedReceiver || "").toString().toLowerCase() === (account || "").toString().toLowerCase()) {
@@ -178,7 +178,7 @@ export default function BeginAccountTransfer(props) {
       return error;
     }
     if (needApproval) {
-      return t`Approve GMX`;
+      return t`Approve EDDX`;
     }
     if (isApproving) {
       return t`Approving...`;
@@ -195,8 +195,8 @@ export default function BeginAccountTransfer(props) {
       approveTokens({
         setIsApproving,
         library,
-        tokenAddress: gmxAddress,
-        spender: stakedGmxTrackerAddress,
+        tokenAddress: eddxAddress,
+        spender: stakedEddxTrackerAddress,
         chainId,
       });
       return;
@@ -243,9 +243,9 @@ export default function BeginAccountTransfer(props) {
           <Trans>
             Please only use this for full account transfers.
             <br />
-            This will transfer all your GMX, esGMX, GLP and Multiplier Points to your new account.
+            This will transfer all your EDDX, esEDDX, ELP and Multiplier Points to your new account.
             <br />
-            Transfers are only supported if the receiving account has not staked GMX or GLP tokens before.
+            Transfers are only supported if the receiving account has not staked EDDX or ELP tokens before.
             <br />
             Transfers are one-way, you will not be able to transfer staked tokens back to the sending account.
           </Trans>
@@ -274,17 +274,17 @@ export default function BeginAccountTransfer(props) {
             </div>
           </div>
           <div className="BeginAccountTransfer-validations">
-            <ValidationRow isValid={!hasVestedGmx}>
-              <Trans>Sender has withdrawn all tokens from GMX Vesting Vault</Trans>
+            <ValidationRow isValid={!hasVestedEddx}>
+              <Trans>Sender has withdrawn all tokens from EDDX Vesting Vault</Trans>
             </ValidationRow>
-            <ValidationRow isValid={!hasVestedGlp}>
-              <Trans>Sender has withdrawn all tokens from GLP Vesting Vault</Trans>
+            <ValidationRow isValid={!hasVestedElp}>
+              <Trans>Sender has withdrawn all tokens from ELP Vesting Vault</Trans>
             </ValidationRow>
-            <ValidationRow isValid={!hasStakedGmx}>
-              <Trans>Receiver has not staked GMX tokens before</Trans>
+            <ValidationRow isValid={!hasStakedEddx}>
+              <Trans>Receiver has not staked EDDX tokens before</Trans>
             </ValidationRow>
-            <ValidationRow isValid={!hasStakedGlp}>
-              <Trans>Receiver has not staked GLP tokens before</Trans>
+            <ValidationRow isValid={!hasStakedElp}>
+              <Trans>Receiver has not staked ELP tokens before</Trans>
             </ValidationRow>
           </div>
           <div className="input-row">

@@ -42,6 +42,7 @@ export function useInfoTokens(
     }
   );
 
+
   const indexPricesUrl = getServerUrl(chainId, "/prices");
 
   const { data: indexPrices } = useSWR([indexPricesUrl], {

@@ -1,10 +1,10 @@
 import useSWR from "swr";
 import { getTotalVolumeSum } from "lib/legacy";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { getServerUrl } from "config/backend";
 import { bigNumberify } from "lib/numbers";
 import { arrayURLFetcher } from "lib/fetcher";
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+const ACTIVE_CHAIN_IDS = [BASE];
 
 export function useTotalVolume() {
   const { data: totalVolume } = useSWR<any>(

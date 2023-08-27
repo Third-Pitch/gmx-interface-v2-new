@@ -1,28 +1,28 @@
-import { ARBITRUM } from "config/chains";
-import arbitrum from "img/ic_arbitrum_24.svg";
-import gmxIcon from "img/ic_gmx_40.svg";
-import gmxOutlineIcon from "img/ic_gmxv1flat.svg";
-import glpIcon from "img/ic_glp_40.svg";
-import gmIcon from "img/gm_icon.svg";
-import gmArbitrum from "img/ic_gm_arbitrum.svg";
-import gmxArbitrum from "img/ic_gmx_arbitrum.svg";
-import glpArbitrum from "img/ic_glp_arbitrum.svg";
+import { BASE } from "config/chains";
+import base from "img/ic_base_24.svg";
+import eddxIcon from "img/ic_eddx_40.svg";
+import eddxOutlineIcon from "img/ic_eddxv1flat.svg";
+import elpIcon from "img/ic_elp_40.svg";
+import emIcon from "img/em_icon.svg";
+import emBase from "img/ic_em_base.svg";
+import eddxBase from "img/ic_eddx_base.svg";
+import elpBase from "img/ic_elp_base.svg";
 
 const ICONS = {
-  [ARBITRUM]: {
-    network: arbitrum,
-    gmx: gmxArbitrum,
-    glp: glpArbitrum,
-    gm: gmArbitrum,
+  [BASE]: {
+    network: base,
+    eddx: eddxBase,
+    elp: elpBase,
+    em: emBase,
   },
 
 
  
   common: {
-    gmx: gmxIcon,
-    gmxOutline: gmxOutlineIcon,
-    glp: glpIcon,
-    gm: gmIcon,
+    eddx: eddxIcon,
+    eddxOutline: eddxOutlineIcon,
+    elp: elpIcon,
+    em: emIcon,
   },
 };
 

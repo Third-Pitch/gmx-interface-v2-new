@@ -6,7 +6,7 @@ import {
   REFERRAL_CODE_QUERY_PARAM,
 } from "lib/legacy";
 import { getReferralCodeOwner, encodeReferralCode } from "domain/referrals";
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { bigNumberify, formatAmount, removeTrailingZeros } from "lib/numbers";
 import { t } from "@lingui/macro";
 import { getRootUrl } from "lib/url";
@@ -25,16 +25,16 @@ export function isRecentReferralCodeNotExpired(referralCodeInfo) {
 export async function getReferralCodeTakenStatus(account, referralCode, chainId) {
   const referralCodeBytes32 = encodeReferralCode(referralCode);
   const [ownerBase] = await Promise.all([
-    getReferralCodeOwner(ARBITRUM, referralCodeBytes32),
+    getReferralCodeOwner(BASE, referralCodeBytes32),
   ]);
 
   const takenOnBase =
-    !isAddressZero(ownerBase) && (ownerBase !== account || (ownerBase === account && chainId === ARBITRUM));
+    !isAddressZero(ownerBase) && (ownerBase !== account || (ownerBase === account && chainId === BASE));
   
   const referralCodeTakenInfo = {
-    [ARBITRUM]: takenOnBase,
+    [BASE]: takenOnBase,
     both: takenOnBase ,
-    ownerArbitrum: ownerBase,
+    ownerBase: ownerBase,
   };
 
   if (referralCodeTakenInfo.both) {
@@ -43,7 +43,7 @@ export async function getReferralCodeTakenStatus(account, referralCode, chainId)
   if (referralCodeTakenInfo[chainId]) {
     return { status: "current", info: referralCodeTakenInfo };
   }
-  if (referralCodeTakenInfo[ARBITRUM]) {
+  if (referralCodeTakenInfo[BASE]) {
     return { status: "other", info: referralCodeTakenInfo };
   }
   return { status: "none", info: referralCodeTakenInfo };
@@ -156,7 +156,7 @@ export function getReferralCodeTradeUrl(referralCode) {
 }
 
 export function getTwitterShareUrl(referralCode) {
-  const message = ["Trying out trading on @GMX_IO, up to 50x leverage on $BTC, $ETH 📈", "For fee discounts use:"];
+  const message = ["Trying out trading on @EDDX_IO, up to 50x leverage on $BTC, $ETH 📈", "For fee discounts use:"];
   const shareURL = getReferralCodeTradeUrl(referralCode);
 
   return getTwitterIntentURL(message, shareURL);

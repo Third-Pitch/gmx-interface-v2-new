@@ -6,7 +6,7 @@ import { RiFileDownloadLine } from "react-icons/ri";
 import { FiTwitter } from "react-icons/fi";
 import { useCopyToClipboard, useMedia } from "react-use";
 import Modal from "../Modal/Modal";
-import gmxLogo from "img/gmx-logo-with-name.svg";
+import eddxLogo from "img/eddx-logo-with-name.svg";
 import "./PositionShare.css";
 import { QRCodeSVG } from "qrcode.react";
 import { getHomeUrl, getRootShareApiUrl, getTwitterIntentURL, USD_DECIMALS } from "lib/legacy";
@@ -42,7 +42,7 @@ function PositionShare({ setIsPositionShareModalOpen, isPositionShareModalOpen, 
   const sharePositionBgImg = useLoadImage(shareBgImg);
   const positionRef = useRef();
   const tweetLink = getTwitterIntentURL(
-    `Latest $${positionToShare?.indexToken?.symbol} trade on @GMX_IO`,
+    `Latest $${positionToShare?.indexToken?.symbol} trade on @EDDX_IO`,
     getShareURL(uploadedImageInfo, userAffiliateCode)
   );
 
@@ -136,7 +136,7 @@ function PositionShareCard({
   return (
     <div className="relative">
       <div ref={positionRef} className="position-share" style={{ backgroundImage: `url(${sharePositionBgImg})` }}>
-        <img className="logo" src={gmxLogo} alt="GMX Logo" />
+        <img className="logo" src={eddxLogo} alt="EDDX Logo" />
         <ul className="info">
           <li className="side">{isLong ? "LONG" : "SHORT"}</li>
           <li>{formatAmount(leverage, 4, 2, true)}x&nbsp;</li>
@@ -164,7 +164,7 @@ function PositionShareCard({
                 <p className="code">{code}</p>
               </>
             ) : (
-              <p className="code">https://gmx.io</p>
+              <p className="code">https://eddx.io</p>
             )}
           </div>
         </div>

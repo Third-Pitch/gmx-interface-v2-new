@@ -1,6 +1,6 @@
 import { JsonRpcProvider, Web3Provider, WebSocketProvider } from "@ethersproject/providers";
 import {
-  ARBITRUM,
+  BASE,
   FALLBACK_PROVIDERS,
   getAlchemyWsUrl,
   getFallbackRpcUrl,
@@ -17,7 +17,6 @@ export function getProvider(library: Web3Provider | undefined, chainId: number) 
   }
 
   provider = getRpcUrl(chainId);
-
   return new ethers.providers.StaticJsonRpcProvider(
     provider,
     // @ts-ignore incorrect Network param types
@@ -30,7 +29,7 @@ export function getWsProvider(active: boolean, chainId: number) {
     return;
   }
 
-  if (chainId === ARBITRUM) {
+  if (chainId === BASE) {
     return new ethers.providers.WebSocketProvider(getAlchemyWsUrl());
   }
 

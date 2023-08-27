@@ -207,7 +207,7 @@ export type TradeFees = {
   swapProfitFee?: FeeItem;
 };
 
-export type GmSwapFees = {
+export type EmSwapFees = {
   totalFees?: FeeItem;
   swapFee?: FeeItem;
   swapPriceImpact?: FeeItem;

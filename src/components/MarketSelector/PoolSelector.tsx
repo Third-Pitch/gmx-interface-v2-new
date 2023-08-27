@@ -66,15 +66,15 @@ export function PoolSelector({
       .map((marketInfo) => {
         const poolName = getMarketPoolName(marketInfo);
         const marketToken = getByKey(marketTokensData, marketInfo.marketTokenAddress);
-        const gmBalance = marketToken?.balance;
-        const gmBalanceUsd = convertToUsd(marketToken?.balance, marketToken?.decimals, marketToken?.prices.minPrice);
+        const emBalance = marketToken?.balance;
+        const emBalanceUsd = convertToUsd(marketToken?.balance, marketToken?.decimals, marketToken?.prices.minPrice);
         const state = getMarketState?.(marketInfo);
 
         return {
           poolName,
           marketInfo,
-          balance: gmBalance || BigNumber.from(0),
-          balanceUsd: gmBalanceUsd || BigNumber.from(0),
+          balance: emBalance || BigNumber.from(0),
+          balanceUsd: emBalanceUsd || BigNumber.from(0),
           state,
         };
       });

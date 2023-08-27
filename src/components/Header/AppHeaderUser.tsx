@@ -6,7 +6,7 @@ import ConnectWalletButton from "../Common/ConnectWalletButton";
 
 import { Trans } from "@lingui/macro";
 import cx from "classnames";
-import { ARBITRUM, getChainName } from "config/chains";
+import { BASE, getChainName } from "config/chains";
 import { getIcon } from "config/icons";
 import { useChainId } from "lib/chains";
 import { getAccountUrl, isHomeSite } from "lib/legacy";
@@ -28,9 +28,9 @@ type Props = {
 
 const NETWORK_OPTIONS = [
   {
-    label: getChainName(ARBITRUM),
-    value: ARBITRUM,
-    icon: getIcon(ARBITRUM, "network"),
+    label: getChainName(BASE),
+    value: BASE,
+    icon: getIcon(BASE, "network"),
     color: "#264f79",
   },
 

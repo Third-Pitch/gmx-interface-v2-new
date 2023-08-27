@@ -1,8 +1,8 @@
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { TOKENS_BY_SYMBOL_MAP } from "./tokens";
 
 const oneInchTokensMap = {
-  [ARBITRUM]: {
+  [BASE]: {
     BTC: "WBTC",
   },
  
@@ -21,8 +21,8 @@ export function get1InchSwapUrl(chainId: number, from?: string, to?: string) {
 }
 
 export function getLeaderboardLink(chainId) {
-  if (chainId === ARBITRUM) {
-    return "https://www.gmx.house/arbitrum/leaderboard";
+  if (chainId === BASE) {
+    return "https://www.eddx.house/base/leaderboard";
   }
-  return "https://www.gmx.house";
+  return "https://www.eddx.house";
 }

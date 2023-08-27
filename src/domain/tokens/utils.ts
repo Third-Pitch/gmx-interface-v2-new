@@ -15,6 +15,7 @@ import {
 } from "lib/legacy";
 import { bigNumberify, expandDecimals } from "lib/numbers";
 import { InfoTokens, Token, TokenInfo, TokenPrices } from "./types";
+import { getAddress } from "ethers/lib/utils";
 const { AddressZero } = ethers.constants;
 
 export function getTokenUrl(chainId: number, address: string) {
@@ -134,26 +135,26 @@ export function getTokenInfo(
     return infoTokens[AddressZero];
   }
 
-  return infoTokens[tokenAddress];
+  return infoTokens[getAddress(tokenAddress)];
 }
 
-export function getLowestFeeTokenForBuyGlp(
+export function getLowestFeeTokenForBuyElp(
   chainId: number,
   toAmount: BigNumber,
-  glpPrice: BigNumber,
+  elpPrice: BigNumber,
   usdgSupply: BigNumber,
   totalTokenWeights: BigNumber,
   infoTokens: InfoTokens,
   fromTokenAddress: string,
   swapUsdMin: BigNumber
 ): { token: Token; fees: number; amountLeftToDeposit: BigNumber } | undefined {
-  if (!chainId || !toAmount || !infoTokens || !glpPrice || !usdgSupply || !totalTokenWeights || !swapUsdMin) {
+  if (!chainId || !toAmount || !infoTokens || !elpPrice || !usdgSupply || !totalTokenWeights || !swapUsdMin) {
     return;
   }
 
   const tokens = getVisibleV1Tokens(chainId);
 
-  const usdgAmount = toAmount.mul(glpPrice).div(PRECISION);
+  const usdgAmount = toAmount.mul(elpPrice).div(PRECISION);
 
   const tokensData = tokens.map((token) => {
     const fromToken = getTokenInfo(infoTokens, token.address);

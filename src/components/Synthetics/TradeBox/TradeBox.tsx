@@ -960,7 +960,7 @@ export function TradeBox(p: Props) {
               onSelectToken={(token) => onSelectFromTokenAddress(token.address)}
               tokens={swapTokens}
               infoTokens={infoTokens}
-              className="GlpSwap-from-token"
+              className="ElpSwap-from-token"
               showSymbolImage={true}
               showTokenImgInDropdown={true}
               extendedSortSequence={sortedLongAndShortTokens}
@@ -997,7 +997,7 @@ export function TradeBox(p: Props) {
                 onSelectToken={(token) => onSelectToTokenAddress(token.address)}
                 tokens={swapTokens}
                 infoTokens={infoTokens}
-                className="GlpSwap-from-token"
+                className="ElpSwap-from-token"
                 showSymbolImage={true}
                 showBalances={true}
                 showTokenImgInDropdown={true}
@@ -1032,7 +1032,7 @@ export function TradeBox(p: Props) {
                 onSelectToken={(token) => onSelectToTokenAddress(token.address)}
                 tokens={indexTokens}
                 infoTokens={infoTokens}
-                className="GlpSwap-from-token"
+                className="ElpSwap-from-token"
                 showSymbolImage={true}
                 showBalances={false}
                 showTokenImgInDropdown={true}

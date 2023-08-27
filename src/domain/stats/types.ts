@@ -1,9 +1,9 @@
-import { ARBITRUM } from "config/chains";
+import { BASE } from "config/chains";
 import { BigNumber } from "ethers";
 
 export type VolumeInfo = {
   totalVolume: BigNumber;
-  [ARBITRUM]: { totalVolume: BigNumber };
+  [BASE]: { totalVolume: BigNumber };
 };
 
 export type VolumeStat = {

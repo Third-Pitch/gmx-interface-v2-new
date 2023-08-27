@@ -9,7 +9,7 @@ import useSWR from "swr";
 import { BsArrowRight } from "react-icons/bs";
 import { IoMdSwap } from "react-icons/io";
 
-import { ARBITRUM, IS_NETWORK_DISABLED, getChainName, getConstant, isSupportedChain } from "config/chains";
+import { BASE, IS_NETWORK_DISABLED, getChainName, getConstant, isSupportedChain } from "config/chains";
 import { getContract } from "config/contracts";
 import * as Api from "domain/legacy";
 import {
@@ -1502,9 +1502,9 @@ export default function SwapBox(props) {
       sentMsg: `${longOrShortText} submitted.`,
       failMsg: `${longOrShortText} failed.`,
       successMsg,
-      // for Arbitrum, sometimes the successMsg shows after the position has already been executed
-      // hide the success message for Arbitrum as a workaround
-      hideSuccessMsg: chainId === ARBITRUM,
+      // for Base, sometimes the successMsg shows after the position has already been executed
+      // hide the success message for Base as a workaround
+      hideSuccessMsg: chainId === BASE,
     })
       .then(async () => {
         setIsConfirming(false);
@@ -2176,7 +2176,7 @@ export default function SwapBox(props) {
                 trigger orders. <br />
                 <br />
                 For screenshots and more information, please see the{" "}
-                <ExternalLink href="https://docs.gmx.io/docs/trading/v1#stop-loss--take-profit-orders">
+                <ExternalLink href="https://docs.eddx.io/docs/trading/v1#stop-loss--take-profit-orders">
                   docs
                 </ExternalLink>
                 .
@@ -2275,7 +2275,7 @@ export default function SwapBox(props) {
                           top right of the page after connecting your wallet.
                           <br />
                           <br />
-                          <ExternalLink href="https://docs.gmx.io/docs/trading/v1#opening-a-position">
+                          <ExternalLink href="https://docs.eddx.io/docs/trading/v1#opening-a-position">
                             More Info
                           </ExternalLink>
                         </Trans>
@@ -2304,7 +2304,7 @@ export default function SwapBox(props) {
                           This exit price will change with the price of the asset.
                           <br />
                           <br />
-                          <ExternalLink href="https://docs.gmx.io/docs/trading/v1#opening-a-position">
+                          <ExternalLink href="https://docs.eddx.io/docs/trading/v1#opening-a-position">
                             More Info
                           </ExternalLink>
                         </Trans>
@@ -2343,7 +2343,7 @@ export default function SwapBox(props) {
                           </div>
                         )}
                         <br />
-                        <ExternalLink href="https://docs.gmx.io/docs/trading/v1#opening-a-position">
+                        <ExternalLink href="https://docs.eddx.io/docs/trading/v1#opening-a-position">
                           <Trans>More Info</Trans>
                         </ExternalLink>
                       </div>

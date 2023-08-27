@@ -9,7 +9,7 @@ import Button from "components/Button/Button";
 import SlippageInput from "components/SlippageInput/SlippageInput";
 import ToggleSwitch from "components/ToggleSwitch/ToggleSwitch";
 import TokenSelector from "components/TokenSelector/TokenSelector";
-import { ARBITRUM, IS_NETWORK_DISABLED, getChainName, getConstant } from "config/chains";
+import { BASE, IS_NETWORK_DISABLED, getChainName, getConstant } from "config/chains";
 import { getContract } from "config/contracts";
 import { CLOSE_POSITION_RECEIVE_TOKEN_KEY, SLIPPAGE_BPS_KEY } from "config/localStorage";
 import { getPriceDecimals, getV1Tokens, getWrappedToken } from "config/tokens";
@@ -77,7 +77,7 @@ function applySpread(amount, spread) {
  Collateral Delta, Realized PnL and Fees for the position
 
  The backend logic can be found in reduceCollateral function at
- https://github.com/gmx-io/gmx-contracts/blob/master/contracts/core/Vault.sol#L992
+ https://github.com/eddx-io/eddx-contracts/blob/master/contracts/core/Vault.sol#L992
 */
 
 function calculateNextCollateralAndReceiveUsd(
@@ -120,7 +120,7 @@ function calculateNextCollateralAndReceiveUsd(
 
 function shouldSwap(collateralToken, receiveToken) {
   // If position collateral is WETH in contract, then position.collateralToken is { symbol: “ETH”, isNative: true, … }
-  // @see https://github.com/gmx-io/gmx-interface/blob/master/src/pages/Exchange/Exchange.js#L162
+  // @see https://github.com/eddx-io/eddx-interface/blob/master/src/pages/Exchange/Exchange.js#L162
   // meaning if collateralToken.isNative === true in reality position has WETH as a collateral
   // and if collateralToken.isNative === true and receiveToken.isNative === true then position’s WETH will be unwrapped and user will receive native ETH
   const isCollateralWrapped = collateralToken.isNative;
@@ -430,7 +430,7 @@ export default function PositionSeller(props) {
        generated will keep leverage the same.
        
        The backend logic can be found in reduceCollateral function at
-       https://github.com/gmx-io/gmx-contracts/blob/master/contracts/core/Vault.sol#L992
+       https://github.com/eddx-io/eddx-contracts/blob/master/contracts/core/Vault.sol#L992
       */
 
       if (nextHasProfit) {
@@ -828,7 +828,7 @@ export default function PositionSeller(props) {
 
     if (orderOption === STOP) {
       const triggerAboveThreshold = triggerPriceUsd.gt(position.markPrice);
-
+      console.log(99999);
       createDecreaseOrder(
         chainId,
         library,
@@ -911,9 +911,9 @@ export default function PositionSeller(props) {
       successMsg,
       failMsg: t`Close failed.`,
       setPendingTxns,
-      // for Arbitrum, sometimes the successMsg shows after the position has already been executed
-      // hide the success message for Arbitrum as a workaround
-      hideSuccessMsg: chainId === ARBITRUM,
+      // for Base, sometimes the successMsg shows after the position has already been executed
+      // hide the success message for Base as a workaround
+      hideSuccessMsg: chainId === BASE,
     })
       .then(async (res) => {
         setFromValue("");

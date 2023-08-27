@@ -110,7 +110,7 @@ export function useMarketTokensData(chainId: number, p: { isDeposit: boolean }):
           return marketTokensMap;
         }
 
-        const tokenConfig = getTokenBySymbol(chainId, "GM");
+        const tokenConfig = getTokenBySymbol(chainId, "EM");
 
         const minPrice = BigNumber.from(pricesData?.minPrice.returnValues[0]);
         const maxPrice = BigNumber.from(pricesData?.maxPrice.returnValues[0]);

@@ -423,7 +423,7 @@ export function PositionSeller(p: Props) {
               </div>
               <br />
               <br />
-              <ExternalLink href="https://docs.gmx.io/docs/trading/v2#stop-loss--take-profit-orders">
+              <ExternalLink href="https://docs.eddx.io/docs/trading/v2#stop-loss--take-profit-orders">
                 Read More
               </ExternalLink>
               .

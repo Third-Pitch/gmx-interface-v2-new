@@ -3,18 +3,18 @@ import { Trans, t } from "@lingui/macro";
 import Footer from "components/Footer/Footer";
 import "./Buy.css";
 import TokenCard from "components/TokenCard/TokenCard";
-import buyGMXIcon from "img/buy_gmx.svg";
+import buyEDDXIcon from "img/buy_eddx.svg";
 import SEO from "components/Common/SEO";
 import { getPageTitle } from "lib/legacy";
 
-export default function BuyGMXGLP() {
+export default function BuyEDDXELP() {
   return (
-    <SEO title={getPageTitle(t`Buy GLP or GMX`)}>
-      <div className="BuyGMXGLP page-layout">
-        <div className="BuyGMXGLP-container default-container">
+    <SEO title={getPageTitle(t`Buy ELP or EDDX`)}>
+      <div className="BuyEDDXELP page-layout">
+        <div className="BuyEDDXELP-container default-container">
           <div className="section-title-block">
             <div className="section-title-icon">
-              <img src={buyGMXIcon} alt="buyGMXIcon" />
+              <img src={buyEDDXIcon} alt="buyEDDXIcon" />
             </div>
             <div className="section-title-content">
               <div className="Page-title">

@@ -74,10 +74,10 @@ export function getErrorMessage(chainId: number, ex: TxError, txnMessage?: strin
     case NOT_ENOUGH_FUNDS:
       failMsg = (
         <Trans>
-          There is not enough ETH in your account on Arbitrum to send this transaction.
+          There is not enough ETH in your account on Base to send this transaction.
           <br />
           <br />
-          <ExternalLink href="https://arbitrum.io/bridge-tutorial/">Bridge ETH to Arbitrum</ExternalLink>
+          <ExternalLink href="https://base.io/bridge-tutorial/">Bridge ETH to Base</ExternalLink>
         </Trans>
       );
       break;
@@ -110,7 +110,7 @@ export function getErrorMessage(chainId: number, ex: TxError, txnMessage?: strin
             <br />
             <br />
             Please try changing the RPC url in your wallet settings.{" "}
-            <ExternalLink href="https://docs.gmx.io/docs/trading/v1#rpc-urls">More info</ExternalLink>
+            <ExternalLink href="https://docs.eddx.io/docs/trading/v1#rpc-urls">More info</ExternalLink>
           </Trans>
           <br />
           {originalError && <ToastifyDebug>{originalError}</ToastifyDebug>}

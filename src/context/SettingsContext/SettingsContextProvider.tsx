@@ -81,6 +81,5 @@ export function SettingsContextProvider({ children }: { children: ReactNode }) {
     oracleKeeperInstancesConfig,
     setOracleKeeperInstancesConfig,
   ]);
-
   return <SettingsContext.Provider value={contextState}>{children}</SettingsContext.Provider>;
 }
