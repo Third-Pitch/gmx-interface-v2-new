@@ -1329,7 +1329,6 @@ msgstr "手数料込損益の表示"
 msgid "Distribution"
 msgstr "分配"
 
-#: src/components/Header/AppHeaderLinks.tsx
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Docs"
 msgstr ""
@@ -1490,10 +1489,6 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 msgid "Earn"
 msgstr "報酬獲得"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Ecosystem"
-msgstr "エコシステム"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Ecosystem Projects"
@@ -1769,6 +1764,10 @@ msgstr ""
 
 #: src/domain/synthetics/orders/updateOrderTxn.ts
 msgid "Failed to update order"
+msgstr ""
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Faucet"
 msgstr ""
 
 #: src/components/Elp/ElpSwap.js
@@ -2485,7 +2484,6 @@ msgid "MARKET"
 msgstr ""
 
 #: src/components/BuyInputSection/BuyInputSection.tsx
-#: src/components/BuyInputSection/BuyInputSection.tsx
 #: src/components/InputSection/InputSection.js
 #: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "MAX"
@@ -2577,6 +2575,7 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Synthetics/PositionEditor/PositionEditor.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
+#: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -3972,6 +3971,10 @@ msgstr "ステークできませんでした"
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "ステークできませんでした。"
+
+#: src/pages/Stake/StakeV2.js
+msgid "Stake period"
+msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
@@ -5467,8 +5470,8 @@ msgid "{actionText} {increaseText} {positionText} {sizeDeltaText}, {pricePrefix}
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "{chainName} Total Stats start from {totalStatsStartDate}.<0/> For detailed stats:"
-msgstr "{chainName}の全統計の開始日は{totalStatsStartDate}です。<0/> より詳しい統計:"
+msgid "{chainName} Total Stats start from {totalStatsStartDate}."
+msgstr ""
 
 #: src/domain/synthetics/orders/cancelOrdersTxn.ts
 msgid "{count, plural, one {Order} other {# Orders}}"
@@ -5547,7 +5550,3 @@ msgstr ""
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
 msgstr "Base上の{title}"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "水龙头"
-msgstr ""

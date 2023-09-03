@@ -1329,7 +1329,6 @@ msgstr "Mostrar GyP después de comisiones"
 msgid "Distribution"
 msgstr "Distribución"
 
-#: src/components/Header/AppHeaderLinks.tsx
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Docs"
 msgstr "Documentos"
@@ -1490,10 +1489,6 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 msgid "Earn"
 msgstr "Ganar"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Ecosystem"
-msgstr "Ecosistema"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Ecosystem Projects"
@@ -1769,6 +1764,10 @@ msgstr ""
 
 #: src/domain/synthetics/orders/updateOrderTxn.ts
 msgid "Failed to update order"
+msgstr ""
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Faucet"
 msgstr ""
 
 #: src/components/Elp/ElpSwap.js
@@ -2485,7 +2484,6 @@ msgid "MARKET"
 msgstr ""
 
 #: src/components/BuyInputSection/BuyInputSection.tsx
-#: src/components/BuyInputSection/BuyInputSection.tsx
 #: src/components/InputSection/InputSection.js
 #: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "MAX"
@@ -2577,6 +2575,7 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Synthetics/PositionEditor/PositionEditor.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
+#: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -3972,6 +3971,10 @@ msgstr "Stakeo fallido"
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "Stake fallido."
+
+#: src/pages/Stake/StakeV2.js
+msgid "Stake period"
+msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
@@ -5467,8 +5470,8 @@ msgid "{actionText} {increaseText} {positionText} {sizeDeltaText}, {pricePrefix}
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "{chainName} Total Stats start from {totalStatsStartDate}.<0/> For detailed stats:"
-msgstr "{chainName} Las estadísticas totales comienzan a partir de {totalStatsStartDate}.<0/> Para obtener estadísticas detalladas:"
+msgid "{chainName} Total Stats start from {totalStatsStartDate}."
+msgstr ""
 
 #: src/domain/synthetics/orders/cancelOrdersTxn.ts
 msgid "{count, plural, one {Order} other {# Orders}}"
@@ -5547,7 +5550,3 @@ msgstr ""
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
 msgstr "{title} en Base:"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "水龙头"
-msgstr ""

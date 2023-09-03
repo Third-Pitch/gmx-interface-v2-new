@@ -231,17 +231,6 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
                 </div>
               </div>
             </div>
-            <div className="Home-cta-option Home-cta-option-ava">
-              <div className="Home-cta-option-icon">
-                <img src={avaxIcon} width="96" alt="Avalanche Icon" />
-              </div>
-              <div className="Home-cta-option-info">
-                <div className="Home-cta-option-title">Avalanche</div>
-                <div className="Home-cta-option-action">
-                  <LaunchExchangeButton />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

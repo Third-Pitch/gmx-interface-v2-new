@@ -1329,7 +1329,6 @@ msgstr "Display PnL after fees"
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/components/Header/AppHeaderLinks.tsx
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "Docs"
 msgstr "Docs"
@@ -1490,10 +1489,6 @@ msgstr "EM is the liquidity provider token for EDDX V2 markets. Accrues 63% of t
 #: src/pages/Stake/StakeV2.js
 msgid "Earn"
 msgstr "Earn"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "Ecosystem"
-msgstr "Ecosystem"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Ecosystem Projects"
@@ -1770,6 +1765,10 @@ msgstr "Failed to cancel {ordersText}"
 #: src/domain/synthetics/orders/updateOrderTxn.ts
 msgid "Failed to update order"
 msgstr "Failed to update order"
+
+#: src/components/Header/AppHeaderLinks.tsx
+msgid "Faucet"
+msgstr "Faucet"
 
 #: src/components/Elp/ElpSwap.js
 #: src/components/Elp/ElpSwap.js
@@ -2488,7 +2487,6 @@ msgid "MARKET"
 msgstr "MARKET"
 
 #: src/components/BuyInputSection/BuyInputSection.tsx
-#: src/components/BuyInputSection/BuyInputSection.tsx
 #: src/components/InputSection/InputSection.js
 #: src/pages/ClaimEsEddx/ClaimEsEddx.js
 msgid "MAX"
@@ -2580,6 +2578,7 @@ msgstr "Market Swap"
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Synthetics/PositionEditor/PositionEditor.tsx
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
+#: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -3975,6 +3974,10 @@ msgstr "Stake failed"
 #: src/pages/Stake/StakeV2.js
 msgid "Stake failed."
 msgstr "Stake failed."
+
+#: src/pages/Stake/StakeV2.js
+msgid "Stake period"
+msgstr "Stake period"
 
 #: src/pages/Stake/StakeV2.js
 msgid "Stake submitted!"
@@ -5473,8 +5476,8 @@ msgid "{actionText} {increaseText} {positionText} {sizeDeltaText}, {pricePrefix}
 msgstr "{actionText} {increaseText} {positionText} {sizeDeltaText}, {pricePrefix}: {0},  Market: {1}"
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "{chainName} Total Stats start from {totalStatsStartDate}.<0/> For detailed stats:"
-msgstr "{chainName} Total Stats start from {totalStatsStartDate}.<0/> For detailed stats:"
+msgid "{chainName} Total Stats start from {totalStatsStartDate}."
+msgstr "{chainName} Total Stats start from {totalStatsStartDate}."
 
 #: src/domain/synthetics/orders/cancelOrdersTxn.ts
 msgid "{count, plural, one {Order} other {# Orders}}"
@@ -5553,7 +5556,3 @@ msgstr "{positionText} {sizeDeltaText}, Price: {0}, Market: {1}"
 #: src/components/StatsTooltip/ChainsStatsTooltipRow.tsx
 msgid "{title} on Base:"
 msgstr "{title} on Base:"
-
-#: src/components/Header/AppHeaderLinks.tsx
-msgid "水龙头"
-msgstr "水龙头"
