@@ -1,4 +1,3 @@
-import { useWeb3React } from "@web3-react/core";
 import DataStore from "abis/DataStore.json";
 import SyntheticsReader from "abis/SyntheticsReader.json";
 import { getContract } from "config/contracts";
@@ -31,10 +30,10 @@ export function usePositions(
     marketsInfoData?: MarketsData;
     tokensData?: TokensData;
     pricesUpdatedAt?: number;
+    account: string | null | undefined;
   }
 ): PositionsResult {
-  const { marketsInfoData, tokensData, pricesUpdatedAt } = p;
-  const { account } = useWeb3React();
+  const { marketsInfoData, tokensData, pricesUpdatedAt, account } = p;
 
   // Use ref to cache data from previos key with old prices
   const positionsDataCache = useRef<PositionsData>();
@@ -98,7 +97,6 @@ export function usePositions(
     }),
     parseResponse: (res) => {
       const positions = res.data.reader.positions.returnValues;
-
       return positions.reduce((positionsMap: PositionsData, positionInfo, i) => {
         const { position, fees } = positionInfo;
         const { addresses, numbers, flags, data } = position;
@@ -136,6 +134,7 @@ export function usePositions(
     },
   });
 
+
   if (positionsData) {
     positionsDataCache.current = positionsData;
   }
@@ -164,7 +163,6 @@ function useKeysAndPricesParams(p: {
       contractPositionsKeys: [] as string[],
       marketsPrices: [] as ContractMarketPrices[],
     };
-
     if (!account || !marketsInfoData || !tokensData) {
       return values;
     }

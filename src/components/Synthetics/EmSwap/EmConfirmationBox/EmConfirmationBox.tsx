@@ -251,7 +251,6 @@ export function EmConfirmationBox({
     if (!account || !executionFee || !marketToken || !market || !marketTokenAmount || !tokensData) {
       return Promise.resolve();
     }
-    console.log(999999);
     return createDepositTxn(chainId, library, {
       account,
       initialLongTokenAddress: longToken?.address || market.longTokenAddress,

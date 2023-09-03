@@ -10,6 +10,7 @@ import ExternalLink from "components/ExternalLink/ExternalLink";
 import { BASE } from "config/chains";
 import { t } from "@lingui/macro";
 import { getIcon } from "config/icons";
+import PageTitle from "components/PageTitle/PageTitle";
 
 const NETWORK_ICONS = {
   [BASE]: getIcon(BASE, "network"),
@@ -422,7 +423,7 @@ export default function Ecosystem() {
       chainIds: [BASE],
     },
     {
-      title: "Beefy.com",
+      title: "Beefy",
       link: "https://app.beefy.com/",
       linkLabel: "beefy.com",
       about: t`ELP and EDDX autocompounding vaults`,
@@ -450,6 +451,14 @@ export default function Ecosystem() {
       link: "https://app.dolomite.io/balances",
       linkLabel: "dolomite.io",
       about: t`Decentralized Money Market`,
+
+      chainIds: [BASE],
+    },
+    {
+      title: "UniDex Leverage",
+      link: "https://leverage.unidex.exchange/",
+      linkLabel: "unidex.exchange",
+      about: t`Leverage Trading Terminal`,
 
       chainIds: [BASE],
     },
@@ -486,17 +495,7 @@ export default function Ecosystem() {
     <SEO title={getPageTitle(t`Ecosystem Projects`)}>
       <div className="default-container page-layout">
         <div>
-          <div className="section-title-block">
-            <div className="section-title-icon" />
-            <div className="section-title-content">
-              <div className="Page-title">
-                <Trans>EDDX Pages</Trans>
-              </div>
-              <div className="Page-description">
-                <Trans>EDDX ecosystem pages.</Trans>
-              </div>
-            </div>
-          </div>
+          <PageTitle showNetworkIcon={false} isTop title={t`EDDX Pages`} subtitle={t`EDDX ecosystem pages.`} />
           <div className="Ecosystem-projects">
             {eddxPages.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;
@@ -531,18 +530,18 @@ export default function Ecosystem() {
               );
             })}
           </div>
-          <div className="Tab-title-section">
-            <div className="Page-title">
-              <Trans>Community Projects</Trans>
-            </div>
-            <div className="Page-description">
+
+          <PageTitle
+            showNetworkIcon={false}
+            title={t`Community Projects`}
+            subtitle={
               <Trans>
                 Projects developed by the EDDX community. <br />
                 Please exercise caution when interacting with any app, apps are fully maintained by community
                 developers.
               </Trans>
-            </div>
-          </div>
+            }
+          />
           <div className="Ecosystem-projects">
             {communityProjects.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;
@@ -585,14 +584,7 @@ export default function Ecosystem() {
               );
             })}
           </div>
-          <div className="Tab-title-section">
-            <div className="Page-title">
-              <Trans>Dashboards</Trans>
-            </div>
-            <div className="Page-description">
-              <Trans>EDDX dashboards and analytics.</Trans>
-            </div>
-          </div>
+          <PageTitle showNetworkIcon={false} title={t`Dashboards`} subtitle={t`EDDX dashboards and analytics.`} />
           <div className="Ecosystem-projects">
             {dashboardProjects.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;
@@ -636,14 +628,11 @@ export default function Ecosystem() {
               );
             })}
           </div>
-          <div className="Tab-title-section">
-            <div className="Page-title">
-              <Trans>Partnerships and Integrations</Trans>
-            </div>
-            <div className="Page-description">
-              <Trans>Projects integrated with EDDX.</Trans>
-            </div>
-          </div>
+          <PageTitle
+            showNetworkIcon={false}
+            title={t`Partnerships and Integrations`}
+            subtitle={t`Projects integrated with EDDX.`}
+          />
           <div className="Ecosystem-projects">
             {integrations.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;
@@ -678,14 +667,7 @@ export default function Ecosystem() {
               );
             })}
           </div>
-          <div className="Tab-title-section">
-            <div className="Page-title">
-              <Trans>Telegram Groups</Trans>
-            </div>
-            <div className="Page-description">
-              <Trans>Community-led Telegram groups.</Trans>
-            </div>
-          </div>
+          <PageTitle showNetworkIcon={false} title={t`Telegram Groups`} subtitle={t`Community-led Telegram groups.`} />
           <div className="Ecosystem-projects">
             {telegramGroups.map((item) => {
               const linkLabel = item.linkLabel ? item.linkLabel : item.link;

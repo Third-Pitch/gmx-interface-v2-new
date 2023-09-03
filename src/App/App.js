@@ -600,7 +600,7 @@ function FullApp() {
               <Route exact path="/jobs">
                 <Jobs />
               </Route>
-              <Route exact path="/slt">
+              <Route exact path="/faucet">
                 <Slt />
               </Route>
               <Route exact path="/buy_eddx">

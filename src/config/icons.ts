@@ -1,8 +1,11 @@
 import { BASE } from "config/chains";
 import base from "img/ic_base_24.svg";
+
 import eddxIcon from "img/ic_eddx_40.svg";
 import eddxOutlineIcon from "img/ic_eddxv1flat.svg";
 import elpIcon from "img/ic_elp_40.svg";
+import esEDDXIcon from "img/ic_eseddx_40.svg";
+import esEDDXBaseIcon from "img/ic_eseddx_base.svg";
 import emIcon from "img/em_icon.svg";
 import emBase from "img/ic_em_base.svg";
 import eddxBase from "img/ic_eddx_base.svg";
@@ -13,15 +16,14 @@ const ICONS = {
     network: base,
     eddx: eddxBase,
     elp: elpBase,
+    eseddx: esEDDXBaseIcon,
     em: emBase,
   },
-
-
- 
   common: {
     eddx: eddxIcon,
     eddxOutline: eddxOutlineIcon,
     elp: elpIcon,
+    eseddx: esEDDXIcon,
     em: emIcon,
   },
 };

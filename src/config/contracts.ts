@@ -41,19 +41,19 @@ const CONTRACTS = {
     PositionRouter: '0xCf67dd61bA0B6f6E85aFa3D7A9F4550c2FF0AD94',
     PositionManager: '0x8475Fbe5BcCF02c66c386dD8AAf251005e4b0cC8',
 
-    
+
     UniswapEddxEthPool: "0xeCFE3eb24C91E45C54FF7C7b55B5f7960E773Fc2",
     ReferralStorage: "0x681e4284DaD7Ac26D9a9e32dfed4dc1b9B231580",
     ReferralReader: "0x15ac0392fd77EF200bbb5F4a29008Fc0baAaa060",
 
-    // Synthetics
+    // v2 start
     DataStore: '0x7EeDd02679062843f374e9697070Bf937Ae77F8a',
     EventEmitter: '0x0aeEB00C1e4a9811ddcA2c5b789c94af737ed908',
     ExchangeRouter: '0xFC891CEC03Ab4e7aF3D148b00a915725B912B24d',
     DepositVault: '0x59A12ed8b69bf40B95b78A0caA105cd5e3d091eE',
     WithdrawalVault: '0x63109f0F94Cb7Eb81Aef4FF72C0Ee248edfA7dAF',
     OrderVault: '0xe3fAeBcef1C68F25DD54Eb37d3D7eA0aDe1BC0B4',
-    SyntheticsReader: '0xF9e89ad76F7C2D000800Ed082df64871Fa9A3919',
+    SyntheticsReader: '0xE045283de32a2b3703767A02bD1723322ef96186',
     SyntheticsRouter: '0x2794577d8D1e13d8f5cB052F85fE99789B2fDE3d',
     // v2 end
     Timelock: '0xC483851b72f5F0AfD1CC1AF807105Bc818f0072f',

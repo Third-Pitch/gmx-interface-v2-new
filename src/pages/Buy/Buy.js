@@ -1,27 +1,18 @@
 import React from "react";
-import { Trans, t } from "@lingui/macro";
+import { t } from "@lingui/macro";
 import Footer from "components/Footer/Footer";
 import "./Buy.css";
 import TokenCard from "components/TokenCard/TokenCard";
-import buyEDDXIcon from "img/buy_eddx.svg";
 import SEO from "components/Common/SEO";
 import { getPageTitle } from "lib/legacy";
+import PageTitle from "components/PageTitle/PageTitle";
 
 export default function BuyEDDXELP() {
   return (
     <SEO title={getPageTitle(t`Buy ELP or EDDX`)}>
       <div className="BuyEDDXELP page-layout">
         <div className="BuyEDDXELP-container default-container">
-          <div className="section-title-block">
-            <div className="section-title-icon">
-              <img src={buyEDDXIcon} alt="buyEDDXIcon" />
-            </div>
-            <div className="section-title-content">
-              <div className="Page-title">
-                <Trans>Buy Protocol Tokens</Trans>
-              </div>
-            </div>
-          </div>
+          <PageTitle showNetworkIcon={false} isTop title={t`Buy Protocol Tokens`} />
           <TokenCard />
         </div>
         <Footer />

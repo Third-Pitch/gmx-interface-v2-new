@@ -539,7 +539,6 @@ export function SyntheticsEventsProvider({ children }: { children: ReactNode }) 
       },
       setPendingDeposit: (data: PendingDepositData) => {
         const toastId = Date.now();
-
         helperToast.success(
           <EmStatusNotification
             pendingDepositData={data}

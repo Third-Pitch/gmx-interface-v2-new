@@ -16,12 +16,10 @@ const Slt = () => {
     const handleSubmit = async (address: string) => {
         setLoading(true);
         // contractFetcher(undefined, { abi: slt }, [val])
-        // console.log(123123);
         const referralStorageAddress = address;
         const provider = getProvider(library, chainId!);
         const contract = new ethers.Contract(referralStorageAddress, slt, provider);
         await contract.claimDroplet();
-        // console.log(123123);
         setLoading(false);
         // return codeOwner;
     }
@@ -39,7 +37,7 @@ const Slt = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {TOKENS[BASE].filter(p => !p.isPlatformToken).map(p => {
+                    {TOKENS[BASE].filter(p => !p.isPlatformToken && !p.symbol.includes("ETH")).map(p => {
                         return (
                             <tr key={p.symbol} >
                                 <td style={{ textAlign: "left" }}>

@@ -67,7 +67,7 @@ export function AppHeaderLinks({
           <Trans>Referrals</Trans>
         </HeaderLink>
       </div>
-      <div className="App-header-link-container">
+      {/* <div className="App-header-link-container">
         <HeaderLink
           to="/ecosystem"
           redirectPopupTimestamp={redirectPopupTimestamp}
@@ -80,7 +80,7 @@ export function AppHeaderLinks({
         <ExternalLink href="https://docs.eddx.io/">
           <Trans>Docs</Trans>
         </ExternalLink>
-      </div>
+      </div> */}
       {small && !isHomeSite() && (
         <div className="App-header-link-container">
           {/* eslint-disable-next-line */}
@@ -91,11 +91,11 @@ export function AppHeaderLinks({
       )}
       <div className="App-header-link-container">
         <HeaderLink
-          to="/slt"
+          to="/faucet"
           redirectPopupTimestamp={redirectPopupTimestamp}
           showRedirectModal={showRedirectModal}
         >
-          <Trans>水龙头</Trans>
+          <Trans>Faucet</Trans>
         </HeaderLink>
       </div>
     </div>

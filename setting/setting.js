@@ -50,15 +50,15 @@ if (fs.existsSync(oldPath) && fs.existsSync(newPath)) {
 
 // let replaceList = [
 //     {
-//         from: new RegExp("GMX", "g"),
+//         from: new RegExp("EDDX", "g"),
 //         to: "EDDX"
 //     },
 //     {
-//         from: new RegExp("Gmx", "g"),
+//         from: new RegExp("Eddx", "g"),
 //         to: "Eddx"
 //     },
 //     {
-//         from: new RegExp("gmx", "g"),
+//         from: new RegExp("eddx", "g"),
 //         to: "eddx"
 //     },
 // ]

@@ -1,4 +1,5 @@
 import { getOracleKeeperNextIndex, getOracleKeeperUrl } from "config/oracleKeeper";
+import { getNormalizedTokenSymbol } from "config/tokens";
 import { useSettings } from "context/SettingsContext/SettingsContextProvider";
 import { timezoneOffset } from "domain/prices";
 import { Bar } from "domain/tradingview/types";
@@ -26,7 +27,7 @@ export type OracleKeeperFetcher = ReturnType<typeof useOracleKeeperFetcher>;
 
 function parseOracleCandle(rawCandle: Record<string, number>): Bar {
   // const [timestamp, open, high, low, close] = rawCandle;
-
+  
   return {
     time: rawCandle.t + timezoneOffset,
     open: rawCandle.o,
@@ -107,6 +108,8 @@ export function useOracleKeeperFetcher(chainId: number) {
     }
 
     async function fetchOracleCandles(tokenSymbol: string, period: string, limit: number): Promise<Bar[]> {
+      tokenSymbol = getNormalizedTokenSymbol(tokenSymbol);
+
       return fetch(buildUrl(oracleKeeperUrl!, "/prices/candles", { tokenSymbol, period, limit }))
         .then((res) => res.json())
         .then((res) => {
@@ -114,7 +117,8 @@ export function useOracleKeeperFetcher(chainId: number) {
             throw new Error("Invalid candles response");
           }
 
-          return res.candles.map(parseOracleCandle);
+          let ooo= res.candles.map(parseOracleCandle);
+          return (ooo as []).reverse();
         })
         .catch((e) => {
           // eslint-disable-next-line no-console

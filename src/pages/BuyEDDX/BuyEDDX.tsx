@@ -22,10 +22,12 @@ import {
   EDDX_FROM_ANY_NETWORKS,
   TRANSFER_EXCHANGES,
 } from "./constants";
+import { getIcons } from "config/icons";
 
 export default function BuyEDDX() {
   const { chainId } = useChainId();
-  const isBase = chainId === BASE;
+  const icons = getIcons(chainId);
+  const chainName = getChainName(chainId);
   const { active } = useWeb3React();
   const nativeTokenSymbol = getConstant(chainId, "nativeTokenSymbol");
   const externalLinks = EXTERNAL_LINKS[chainId];
@@ -46,7 +48,8 @@ export default function BuyEDDX() {
         <div className="section-title-block">
           <div className="section-title-content">
             <div className="Page-title">
-              <Trans>Buy EDDX on {getChainName(chainId)}</Trans>
+              <Trans>Buy EDDX on {chainName}</Trans>
+              <img className="ml-xs Page-title-icon" src={icons.network} alt={chainName} />
             </div>
             <div className="Page-description">
               <Trans>Choose to buy from decentralized or centralized exchanges.</Trans>
@@ -63,29 +66,17 @@ export default function BuyEDDX() {
           <CentralisedExchanges chainId={chainId} />
         </div>
 
-        {isBase ? (
-          <div className="section-title-block mt-top">
-            <div className="section-title-content">
-              <div className="Page-title">
-                <Trans>Buy or Transfer ETH to Base</Trans>
-              </div>
-              <div className="Page-description">
-                <Trans>Buy ETH directly on Base or transfer it there.</Trans>
-              </div>
+        <div className="section-title-block mt-top">
+          <div className="section-title-content">
+            <div className="Page-title">
+              <Trans>Buy or Transfer ETH to Base</Trans>
+              <img className="ml-xs Page-title-icon" src={icons.network} alt={chainName} />
+            </div>
+            <div className="Page-description">
+              <Trans>Buy ETH directly on Base or transfer it there.</Trans>
             </div>
           </div>
-        ) : (
-          <div className="section-title-block mt-top">
-            <div className="section-title-content">
-              <div className="Page-title">
-                <Trans>Buy or Transfer AVAX to Avalanche</Trans>
-              </div>
-              <div className="Page-description">
-                <Trans>Buy AVAX directly to Avalanche or transfer it there.</Trans>
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
 
         <div className="cards-row">
           <Card title={t`Buy ${nativeTokenSymbol}`}>
@@ -222,7 +213,7 @@ function DecentralisedExchanges({ chainId, externalLinks }) {
             <Button
               variant="secondary"
               textAlign="left"
-              to={"https://app.bondprotocol.finance/#/issuers/EDDX"}
+              to="https://app.bondprotocol.finance/#/tokens/42161/0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a"
               imgInfo={{ src: bondProtocolIcon, alt: "Bond Protocol" }}
               newTab
             >
@@ -231,7 +222,7 @@ function DecentralisedExchanges({ chainId, externalLinks }) {
           </div>
         </div>
       </div>
-    </Card>
+    </Card >
   );
 }
 

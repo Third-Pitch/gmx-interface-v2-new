@@ -33,7 +33,7 @@ export function EmStatusNotification({
   tokensData,
 }: Props) {
   const { chainId } = useChainId();
-  const { depositStatuses, withdrawalStatuses, setDepositStatusViewed, setWithdrawalStatusViewed } =
+  const { depositStatuses, withdrawalStatuses, setDepositStatusViewed, setWithdrawalStatusViewed, ...other } =
     useSyntheticsEvents();
 
   const isDeposit = Boolean(pendingDepositData);
@@ -48,8 +48,6 @@ export function EmStatusNotification({
   const isCompleted = isDeposit ? Boolean(depositStatus?.executedTxnHash) : Boolean(withdrawalStatus?.executedTxnHash);
 
   const hasError = isDeposit ? Boolean(depositStatus?.cancelledTxnHash) : Boolean(withdrawalStatus?.cancelledTxnHash);
-
-  console.log(depositStatuses, withdrawalStatuses);
 
   const pendingDepositKey = useMemo(() => {
     if (pendingDepositData) {
@@ -121,7 +119,6 @@ export function EmStatusNotification({
 
     if (isDeposit) {
       text = t`Sending Buy request`;
-
       if (depositStatus?.createdTxnHash) {
         text = t`Buy request sent`;
         status = "success";
@@ -186,36 +183,35 @@ export function EmStatusNotification({
     return <TransactionStatus status={status} txnHash={txnHash} text={text} />;
   }, [depositStatus, isDeposit, withdrawalStatus]);
 
-  useEffect(
-    function getStatusKey() {
-      if (isDeposit) {
-        if (depositStatusKey) {
-          return;
-        }
-
-        const matchedStatusKey = Object.values(depositStatuses).find(
-          (status) => !status.isViewed && getPendingDepositKey(status.data) === pendingDepositKey
-        )?.key;
-
-        if (matchedStatusKey) {
-          setDepositStatusKey(matchedStatusKey);
-          setDepositStatusViewed(matchedStatusKey);
-        }
-      } else {
-        if (withdrawalStatusKey) {
-          return;
-        }
-
-        const matchedStatusKey = Object.values(withdrawalStatuses).find(
-          (status) => !status.isViewed && getPendingWithdrawalKey(status.data) === pendingWithdrawalKey
-        )?.key;
-
-        if (matchedStatusKey) {
-          setWithdrawalStatusKey(matchedStatusKey);
-          setWithdrawalStatusViewed(matchedStatusKey);
-        }
+  useEffect(() => {
+    if (isDeposit) {
+      if (depositStatusKey) {
+        return;
       }
-    },
+
+      const matchedStatusKey = Object.values(depositStatuses).find(
+        (status) => !status.isViewed && getPendingDepositKey(status.data) === pendingDepositKey
+      )?.key;
+
+      if (matchedStatusKey) {
+        setDepositStatusKey(matchedStatusKey);
+        setDepositStatusViewed(matchedStatusKey);
+      }
+    } else {
+      if (withdrawalStatusKey) {
+        return;
+      }
+
+      const matchedStatusKey = Object.values(withdrawalStatuses).find(
+        (status) => !status.isViewed && getPendingWithdrawalKey(status.data) === pendingWithdrawalKey
+      )?.key;
+
+      if (matchedStatusKey) {
+        setWithdrawalStatusKey(matchedStatusKey);
+        setWithdrawalStatusViewed(matchedStatusKey);
+      }
+    }
+  },
     [
       depositStatusKey,
       depositStatuses,
@@ -229,7 +225,7 @@ export function EmStatusNotification({
       withdrawalStatuses,
     ]
   );
-
+  
   useEffect(
     function autoClose() {
       let timerId;

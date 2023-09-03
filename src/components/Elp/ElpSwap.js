@@ -11,7 +11,7 @@ import {
   getSellElpToAmount,
   ELP_COOLDOWN_DURATION,
   ELP_DECIMALS,
-  importImage,
+  DUST_BNB,
   PLACEHOLDER_ACCOUNT,
   SECONDS_PER_YEAR,
   USD_DECIMALS,
@@ -49,12 +49,24 @@ import { useChainId } from "lib/chains";
 import { callContract, contractFetcher } from "lib/contracts";
 import { helperToast } from "lib/helperToast";
 import { useLocalStorageByChainId } from "lib/localStorage";
-import { bigNumberify, expandDecimals, formatAmount, formatAmountFree, formatKeyAmount, parseValue } from "lib/numbers";
+import {
+  bigNumberify,
+  expandDecimals,
+  formatAmount,
+  formatAmountFree,
+  formatKeyAmount,
+  limitDecimals,
+  parseValue,
+} from "lib/numbers";
 import AssetDropdown from "pages/Dashboard/AssetDropdown";
 import { IoChevronDownOutline } from "react-icons/io5";
 import StatsTooltipRow from "../StatsTooltip/StatsTooltipRow";
 import "./ElpSwap.css";
 import SwapErrorModal from "./SwapErrorModal";
+import TokenIcon from "components/TokenIcon/TokenIcon";
+import PageTitle from "components/PageTitle/PageTitle";
+import useIsMetamaskMobile from "lib/wallets/useIsMetamaskMobile";
+import { MAX_METAMASK_MOBILE_DECIMALS } from "config/ui";
 
 const { AddressZero } = ethers.constants;
 
@@ -108,6 +120,7 @@ export default function ElpSwap(props) {
   const history = useHistory();
   const swapLabel = isBuying ? "BuyElp" : "SellElp";
   const tabLabel = isBuying ? t`Buy ELP` : t`Sell ELP`;
+  const isMetamaskMobile = useIsMetamaskMobile();
   const { active, library, account } = useWeb3React();
   const { chainId } = useChainId();
   const tokens = getV1Tokens(chainId);
@@ -424,7 +437,19 @@ export default function ElpSwap(props) {
   const fillMaxAmount = () => {
     if (isBuying) {
       setAnchorOnSwapAmount(true);
-      setSwapValue(formatAmountFree(swapTokenBalance, swapToken.decimals, swapToken.decimals));
+      const maxAvailableAmount = swapToken.isNative
+        ? swapTokenBalance.sub(bigNumberify(DUST_BNB).mul(2))
+        : swapTokenBalance;
+
+      const formattedAmount = formatAmountFree(
+        maxAvailableAmount.gt(0) ? maxAvailableAmount : 0,
+        swapToken.decimals,
+        swapToken.decimals
+      );
+      const finalAmount = isMetamaskMobile
+        ? limitDecimals(formattedAmount, MAX_METAMASK_MOBILE_DECIMALS)
+        : formattedAmount;
+      setSwapValue(finalAmount);
       return;
     }
 
@@ -852,7 +877,10 @@ export default function ElpSwap(props) {
                 onClickMax={fillMaxAmount}
                 topLeftValue={payBalance}
               >
-                <div className="selected-token">ELP</div>
+                <div className="selected-token inline-items-center">
+                  <img className="mr-xs" width={20} src={elpIcon} alt="ELP" />
+                  ELP
+                </div>
               </BuyInputSection>
             )}
 
@@ -879,7 +907,10 @@ export default function ElpSwap(props) {
                 onInputValueChange={onElpValueChange}
                 defaultTokenName={"ELP"}
               >
-                <div className="selected-token">ELP</div>
+                <div className="selected-token inline-items-center">
+                  <img className="mr-xs" width={20} src={elpIcon} alt="ELP" />
+                  ELP
+                </div>
               </BuyInputSection>
             )}
 
@@ -964,27 +995,29 @@ export default function ElpSwap(props) {
           </form>
         </div>
       </div>
-      <div className="Tab-title-section">
-        <div className="Page-title">
-          <Trans>Save on Fees</Trans>
-        </div>
-        {isBuying && (
-          <div className="Page-description">
-            <Trans>
-              Fees may vary depending on which asset you use to buy ELP. <br />
-              Enter the amount of ELP you want to purchase in the order form, then check here to compare fees.
-            </Trans>
+      <PageTitle
+        title={t`Save on Fees`}
+        subtitle={
+          <div>
+            {isBuying && (
+              <div className="Page-description">
+                <Trans>
+                  Fees may vary depending on which asset you use to buy ELP. <br />
+                  Enter the amount of ELP you want to purchase in the order form, then check here to compare fees.
+                </Trans>
+              </div>
+            )}
+            {!isBuying && (
+              <div className="Page-description">
+                <Trans>
+                  Fees may vary depending on which asset you sell ELP for. <br />
+                  Enter the amount of ELP you want to redeem in the order form, then check here to compare fees.
+                </Trans>
+              </div>
+            )}
           </div>
-        )}
-        {!isBuying && (
-          <div className="Page-description">
-            <Trans>
-              Fees may vary depending on which asset you sell ELP for. <br />
-              Enter the amount of ELP you want to redeem in the order form, then check here to compare fees.
-            </Trans>
-          </div>
-        )}
-      </div>
+        }
+      />
       <div className="ElpSwap-token-list">
         {/* <div className="ElpSwap-token-list-content"> */}
         <table className="token-table">
@@ -1084,7 +1117,6 @@ export default function ElpSwap(props) {
               if (tokenInfo && tokenInfo.minPrice && tokenInfo.balance) {
                 balanceUsd = tokenInfo.balance.mul(tokenInfo.minPrice).div(expandDecimals(1, token.decimals));
               }
-              const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_40.svg");
               let isCapReached = tokenInfo.managedAmount?.gt(tokenInfo.maxUsdgAmount);
 
               let amountLeftToDeposit = bigNumberify(0);
@@ -1136,7 +1168,7 @@ export default function ElpSwap(props) {
                   <td>
                     <div className="App-card-title-info">
                       <div className="App-card-title-info-icon">
-                        <img src={tokenImage} alt={token.symbol} width="40" />
+                        <TokenIcon symbol={token.symbol} displaySize={40} importSize={40} />
                       </div>
                       <div className="App-card-title-info-text">
                         <div className="App-card-info-title">{token.name}</div>
@@ -1272,11 +1304,11 @@ export default function ElpSwap(props) {
                   return "";
               }
             }
-            const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_24.svg");
+
             return (
               <div className="App-card" key={token.symbol}>
                 <div className="mobile-token-card">
-                  <img src={tokenImage} alt={token.symbol} width="20px" />
+                  <TokenIcon symbol={token.symbol} displaySize={24} importSize={24} />
                   <div className="token-symbol-text">{token.symbol}</div>
                   <div>
                     <AssetDropdown assetSymbol={token.symbol} />

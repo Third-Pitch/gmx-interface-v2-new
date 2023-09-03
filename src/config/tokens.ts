@@ -94,7 +94,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       decimals: 18,
       isPlatformToken: true,
       imageUrl: "https://assets.coingecko.com/coins/images/18323/small/arbit.png?1631532468",
-      coingeckoUrl: "https://www.coingecko.com/en/coins/gmx",
+      coingeckoUrl: "https://www.coingecko.com/en/coins/eddx",
       explorerUrl: "https://arbiscan.io/address/0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
     },
     {
@@ -109,8 +109,8 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       symbol: "ELP",
       address: getContract(BASE, "ELP"),
       decimals: 18,
-      imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
-      reservesUrl: "https://portfolio.nansen.ai/dashboard/gmx?chain=ARBITRUM",
+      imageUrl: "https://github.com/eddx-io/eddx-assets/blob/main/EDDX-Assets/PNG/ELP_LOGO%20ONLY.png?raw=true",
+      reservesUrl: "https://portfolio.nansen.ai/dashboard/eddx?chain=BASE",
       isPlatformToken: true,
     },
     {
@@ -118,7 +118,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       symbol: "EM",
       address: "<market-token-address>",
       decimals: 18,
-      imageUrl: "https://raw.githubusercontent.com/gmx-io/gmx-assets/main/GMX-Assets/PNG/GM_LOGO.png",
+      imageUrl: "https://raw.githubusercontent.com/eddx-io/eddx-assets/main/EDDX-Assets/PNG/EM_LOGO.png",
       isPlatformToken: true,
     },
   ],

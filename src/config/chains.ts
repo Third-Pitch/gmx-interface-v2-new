@@ -139,10 +139,10 @@ export function getAlchemyHttpUrl() {
 }
 
 export function getAlchemyWsUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
-    return "wss://arb-mainnet.g.alchemy.com/v2/RcaXYTizJs51m-w9SnRyDrxSZhE5H9Mf";
-  }
-  return "wss://arb-mainnet.g.alchemy.com/v2/hxBqIr-vfpJ105JPYLei_ibbJLe66k46";
+  // if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
+  //   return "wss://base-goerli.blastapi.io/55793450-d607-48e4-be85-ad99bcef0a63";
+  // }
+  return "wss://base-goerli.blastapi.io/55793450-d607-48e4-be85-ad99bcef0a63";
 }
 
 export function getExplorerUrl(chainId) {

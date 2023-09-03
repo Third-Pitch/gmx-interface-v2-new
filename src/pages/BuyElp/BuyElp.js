@@ -5,10 +5,11 @@ import ElpSwap from "components/Elp/ElpSwap";
 import Footer from "components/Footer/Footer";
 import "./BuyElp.css";
 
-import { Trans } from "@lingui/macro";
+import { Trans, t } from "@lingui/macro";
 import { getNativeToken } from "config/tokens";
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
+import PageTitle from "components/PageTitle/PageTitle";
 
 export default function BuyElp(props) {
   const { chainId } = useChainId();
@@ -24,23 +25,26 @@ export default function BuyElp(props) {
 
   return (
     <div className="default-container page-layout">
-      <div className="section-title-block">
-        <div className="section-title-content">
-          <div className="Page-title">
-            <Trans>Buy / Sell ELP</Trans>
-          </div>
-          <div className="Page-description">
+      <PageTitle
+        title={t`Buy / Sell ELP`}
+        isTop
+        subtitle={
+          <div>
             <Trans>
               Purchase <ExternalLink href="https://docs.eddx.io/docs/providing-liquidity/v1">ELP tokens</ExternalLink> to
               earn {nativeTokenSymbol} fees from swaps and leverage trading.
             </Trans>
             <br />
             <Trans>
-              View <Link to="/earn">staking</Link> page.
+              View{" "}
+              <Link className="link-underline" to="/earn">
+                staking
+              </Link>{" "}
+              page.
             </Trans>
           </div>
-        </div>
-      </div>
+        }
+      />
       <ElpSwap {...props} isBuying={isBuying} setIsBuying={setIsBuying} />
       <Footer />
     </div>

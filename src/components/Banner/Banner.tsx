@@ -14,7 +14,7 @@ function Banner({ className }) {
         className="Banner-link Banner-action items-center justify-space-between"
         target="_blank"
         rel="noreferrer"
-        href="https://gmxio.substack.com/p/gmx-v2-beta-is-now-live"
+        href="https://eddxio.substack.com/p/eddx-v2-beta-is-now-live"
       >
         <div>What’s new in V2?</div>
         <FiChevronRight fontSize={16} />
