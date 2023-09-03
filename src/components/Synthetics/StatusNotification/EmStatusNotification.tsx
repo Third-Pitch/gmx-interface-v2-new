@@ -44,9 +44,12 @@ export function EmStatusNotification({
   const depositStatus = getByKey(depositStatuses, depositStatusKey);
   const withdrawalStatus = getByKey(withdrawalStatuses, withdrawalStatusKey);
 
+
   const isCompleted = isDeposit ? Boolean(depositStatus?.executedTxnHash) : Boolean(withdrawalStatus?.executedTxnHash);
 
   const hasError = isDeposit ? Boolean(depositStatus?.cancelledTxnHash) : Boolean(withdrawalStatus?.cancelledTxnHash);
+
+  console.log(depositStatuses, withdrawalStatuses);
 
   const pendingDepositKey = useMemo(() => {
     if (pendingDepositData) {

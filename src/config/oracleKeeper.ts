@@ -2,7 +2,7 @@ import { sample, random } from "lodash";
 import { BASE } from "./chains";
 
 const ORACLE_KEEPER_URLS = {
-  [BASE]: ["http://192.168.1.118:3123/api", "http://192.168.1.118:3123/api"],
+  [BASE]: ["http://192.168.1.117:3123/api", "http://192.168.1.117:3123/api"],
 
 };
 

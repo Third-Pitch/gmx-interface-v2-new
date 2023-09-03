@@ -169,7 +169,6 @@ export function EmConfirmationBox({
   const isAllowanceLoaded = Boolean(tokensAllowanceData);
 
   const submitButtonState = (function getSubmitButtonState() {
-    console.log(777666);
     if (payTokenAddresses.length > 0 && !isAllowanceLoaded) {
       return {
         text: t`Loading...`,

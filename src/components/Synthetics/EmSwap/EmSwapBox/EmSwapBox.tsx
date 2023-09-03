@@ -387,7 +387,6 @@ export function EmSwapBox(p: Props) {
     fees?.swapPriceImpact?.deltaUsd.lt(0) && fees.swapPriceImpact.bps.abs().gte(HIGH_PRICE_IMPACT_BPS);
 
   const submitState = useMemo(() => {
-    console.log(9888888)
     const commonError = getCommonError({
       chainId,
       isConnected: true,
