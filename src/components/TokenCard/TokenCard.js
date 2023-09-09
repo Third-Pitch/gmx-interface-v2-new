@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { isHomeSite } from "lib/legacy";
 
 import { useWeb3React } from "@web3-react/core";
+import {
+  EXTERNAL_LINKS
+} from "../../pages/BuyEDDX/constants";
 
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import { BASE } from "config/chains";
@@ -75,9 +78,16 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              <BuyLink to="/buy_eddx" className="default-btn" network={BASE}>
-                <Trans>Buy on Base</Trans>
-              </BuyLink>
+              {/* <BuyLink to="/buy_eddx" className="default-btn" network={BASE}> */}
+              {/* <BuyLink onClick={() => {
+                 window.open(EXTERNAL_LINKS[chainId].buyEddx.uniswap)
+               }} className="default-btn" network={BASE}> */}
+              <span onClick={() => {
+                window.open(EXTERNAL_LINKS[chainId].buyEddx.uniswap)
+              }} className="default-btn" >
+                <Trans >Buy on Base</Trans>
+              </span>
+              {/* // </BuyLink> */}
             </div>
             <ExternalLink href="https://docs.eddx.io/docs/category/tokenomics" className="default-btn read-more">
               <Trans>Read more</Trans>

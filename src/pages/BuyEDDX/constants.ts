@@ -13,7 +13,9 @@ export const EXTERNAL_LINKS = {
   [BASE]: {
     networkWebsite: "https://base.io/",
     buyEddx: {
-      uniswap: `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${BASE_EDDX}`,
+      /// TOOD 测试环境
+      // uniswap: `https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=${BASE_EDDX}`,
+      uniswap: `https://testnet.dackieswap.xyz/swap?chain=baseGoerli&outputCurrency=${BASE_EDDX}`,
     },
   },
 

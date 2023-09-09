@@ -33,7 +33,7 @@ export function EmStatusNotification({
   tokensData,
 }: Props) {
   const { chainId } = useChainId();
-  const { depositStatuses, withdrawalStatuses, setDepositStatusViewed, setWithdrawalStatusViewed, ...other } =
+  const { depositStatuses, withdrawalStatuses, setDepositStatusViewed, setWithdrawalStatusViewed } =
     useSyntheticsEvents();
 
   const isDeposit = Boolean(pendingDepositData);
@@ -225,7 +225,7 @@ export function EmStatusNotification({
       withdrawalStatuses,
     ]
   );
-  
+
   useEffect(
     function autoClose() {
       let timerId;

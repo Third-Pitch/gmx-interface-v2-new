@@ -1,4 +1,4 @@
-"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 function getPoFiles(dir, files) {
@@ -10,7 +10,10 @@ function getPoFiles(dir, files) {
             getPoFiles(filePath, files);
         }
         else {
-            files.push(filePath);
+            // 判断是不是js、ts、tsx
+            var reg = /\.(js|ts|tsx)$/;
+            if (reg.test(file))
+                files.push(filePath);
         }
     });
     return files;
@@ -31,7 +34,7 @@ if (fs.existsSync(oldPath) && fs.existsSync(newPath)) {
             var keyNew = _a[0], valueNew = _a[1];
             if (key === keyNew && value !== valueNew) {
                 replaceList.push({
-                    from: new RegExp(value, "g"),
+                    from: new RegExp(value, "gi"),
                     to: valueNew
                 });
             }

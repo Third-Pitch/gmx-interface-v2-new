@@ -43,6 +43,7 @@ export function EmList({
 }: Props) {
   const { chainId } = useChainId();
   const currentIcons = getIcons(chainId);
+  console.log(33333,marketsInfoData)
   const sortedMarketTokens = useMemo(() => {
     if (!marketsInfoData) {
       return [];

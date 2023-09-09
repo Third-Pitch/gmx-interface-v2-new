@@ -1,4 +1,3 @@
-import React from "react";
 import { FiX } from "react-icons/fi";
 import { Trans } from "@lingui/macro";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { Link } from "react-router-dom";
 import { HeaderLink } from "./HeaderLink";
 import "./Header.css";
 import { isHomeSite } from "lib/legacy";
-import ExternalLink from "components/ExternalLink/ExternalLink";
 import logoImg from "img/logo_EDDX.svg";
 
 type Props = {

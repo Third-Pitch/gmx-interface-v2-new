@@ -209,15 +209,16 @@ function setTokenUsingIndexPrices(
   const spread = token.maxPrice!.sub(token.minPrice!);
   const spreadBps = spread.mul(BASIS_POINTS_DIVISOR).div(token.maxPrice!.add(token.minPrice!).div(2));
 
-  if (spreadBps.gt(MAX_PRICE_DEVIATION_BASIS_POINTS - 50)) {
-    // only set one of the values as there will be a spread between the index price and the Chainlink price
-    if (indexPriceBn.gt(token.minPrimaryPrice!)) {
-      token.maxPrice = indexPriceBn;
-    } else {
-      token.minPrice = indexPriceBn;
-    }
-    return;
-  }
+  // TODO: 手续费差距
+  // if (spreadBps.gt(MAX_PRICE_DEVIATION_BASIS_POINTS - 50)) {
+  //   // only set one of the values as there will be a spread between the index price and the Chainlink price
+  //   if (indexPriceBn.gt(token.minPrimaryPrice!)) {
+  //     token.maxPrice = indexPriceBn;
+  //   } else {
+  //     token.minPrice = indexPriceBn;
+  //   }
+  //   return;
+  // }
 
   const halfSpreadBps = spreadBps.div(2).toNumber();
   token.maxPrice = indexPriceBn.mul(BASIS_POINTS_DIVISOR + halfSpreadBps).div(BASIS_POINTS_DIVISOR);
