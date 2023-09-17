@@ -4,12 +4,12 @@ import { getSubgraphUrlKey } from "./localStorage";
 
 const SUBGRAPH_URLS = {
   [BASE]: {
-    stats: "https://api.studio.thegraph.com/query/45535/test-stats/version/latest",
-    referrals: "https://api.studio.thegraph.com/query/45535/test-referrals/version/latest",
+    stats: "https://testgraph.eddx.io/subgraphs/name/test-stats",
+    referrals: "https://testgraph.eddx.io/subgraphs/name/test-referrals",
     // stats: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/eddx/eddx-base-stats/api",
     // referrals: "https://subgraph.satsuma-prod.com/3b2ced13c8d9/eddx/eddx-base-referrals/api",
     nissohVault: "https://api.thegraph.com/subgraphs/name/nissoh/eddx-vault",
-    syntheticsStats: "https://api.studio.thegraph.com/query/45535/test-synthetics-stat/version/latest",
+    syntheticsStats: "https://testgraph.eddx.io/subgraphs/name/test-synthetics-stat",
   },
 
   common: {

@@ -43,7 +43,6 @@ export function EmList({
 }: Props) {
   const { chainId } = useChainId();
   const currentIcons = getIcons(chainId);
-  console.log(33333,marketsInfoData)
   const sortedMarketTokens = useMemo(() => {
     if (!marketsInfoData) {
       return [];
@@ -77,6 +76,7 @@ export function EmList({
         acc = acc.add(totalSupplyUsd || 0);
         return acc;
       }, bigNumberify(0)!);
+
 
       return totalMarketSupplyA.gt(totalMarketSupplyB) ? -1 : 1;
     });
@@ -163,7 +163,6 @@ export function EmList({
 
                 const totalSupply = token?.totalSupply;
                 const totalSupplyUsd = convertToUsd(totalSupply, token?.decimals, token?.prices?.minPrice);
-
                 return (
                   <tr key={token.address}>
                     <td>
@@ -233,18 +232,16 @@ export function EmList({
                       <Button
                         className="EmList-action"
                         variant="secondary"
-                        to={`/pools?operation=${Operation.Deposit}&market=${token.address}&scroll=${
-                          shouldScrollToTop ? "1" : "0"
-                        }`}
+                        to={`/pools?operation=${Operation.Deposit}&market=${token.address}&scroll=${shouldScrollToTop ? "1" : "0"
+                          }`}
                       >
                         <Trans>Buy</Trans>
                       </Button>
                       <Button
                         className="EmList-action EmList-last-action"
                         variant="secondary"
-                        to={`/pools?operation=${Operation.Withdrawal}&market=${token.address}&scroll=${
-                          shouldScrollToTop ? "1" : "0"
-                        }`}
+                        to={`/pools?operation=${Operation.Withdrawal}&market=${token.address}&scroll=${shouldScrollToTop ? "1" : "0"
+                          }`}
                       >
                         <Trans>Sell</Trans>
                       </Button>
@@ -370,17 +367,15 @@ export function EmList({
                     <div className="App-card-buttons m-0">
                       <Button
                         variant="secondary"
-                        to={`/pools?operation=${Operation.Deposit}&market=${token.address}&scroll=${
-                          shouldScrollToTop ? "1" : "0"
-                        }`}
+                        to={`/pools?operation=${Operation.Deposit}&market=${token.address}&scroll=${shouldScrollToTop ? "1" : "0"
+                          }`}
                       >
                         <Trans>Buy</Trans>
                       </Button>
                       <Button
                         variant="secondary"
-                        to={`/pools?operation=${Operation.Withdrawal}&market=${token.address}&scroll=${
-                          shouldScrollToTop ? "1" : "0"
-                        }`}
+                        to={`/pools?operation=${Operation.Withdrawal}&market=${token.address}&scroll=${shouldScrollToTop ? "1" : "0"
+                          }`}
                       >
                         <Trans>Sell</Trans>
                       </Button>

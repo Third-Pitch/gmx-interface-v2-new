@@ -1,11 +1,11 @@
 import { BASE } from "./chains";
 
-export const EDDX_STATS_API_URL = "http://192.168.1.117:3113/api";
+export const EDDX_STATS_API_URL = "https://teststat.eddx.io/api";
 
 const BACKEND_URLS = {
-  default: "http://192.168.1.117:3123/api",
+  default: "https://testapi.eddx.io/api",
 
-  [BASE]: "http://192.168.1.117:3123/api",
+  [BASE]: "https://testapi.eddx.io/api",
 };
 
 export function getServerBaseUrl(chainId: number) {
@@ -26,3 +26,5 @@ export function getServerBaseUrl(chainId: number) {
 export function getServerUrl(chainId: number, path: string) {
   return `${getServerBaseUrl(chainId)}${path}`;
 }
+
+
