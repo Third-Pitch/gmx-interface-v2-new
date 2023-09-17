@@ -421,12 +421,12 @@ export function PositionSeller(p: Props) {
               >
                 Set Trigger Order for this position.
               </div>
-              <br />
+              {/* <br />
               <br />
               <ExternalLink href="https://docs.eddx.io/docs/trading/v2#stop-loss--take-profit-orders">
                 More Info
               </ExternalLink>
-              .
+              . */}
             </Trans>
           </div>
         )}

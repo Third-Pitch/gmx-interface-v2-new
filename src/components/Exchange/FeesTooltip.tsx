@@ -122,11 +122,11 @@ function FeesTooltip({
             <StatsTooltipRow key={label} label={label} showDollar={false} value={value} />
           ))}
           <br />
-          <div className="PositionSeller-fee-item">
+          {/* <div className="PositionSeller-fee-item">
             <Trans>
               <ExternalLink href="https://docs.eddx.io/docs/trading/v1#fees">More Info</ExternalLink> about fees.
             </Trans>
-          </div>
+          </div> */}
         </div>
       )}
     />

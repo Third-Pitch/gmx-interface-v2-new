@@ -349,11 +349,11 @@ export default function DashboardV2() {
                 </div>
               )}
               <br />
-              <div>
+              {/* <div>
                 <ExternalLink href="https://docs.eddx.io/docs/providing-liquidity/v1">
                   <Trans>More Info</Trans>
                 </ExternalLink>
-              </div>
+              </div> */}
             </>
           );
         }}

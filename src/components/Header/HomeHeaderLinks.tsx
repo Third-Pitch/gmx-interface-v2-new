@@ -23,22 +23,22 @@ export function HomeHeaderLinks({ small, clickCloseIcon, redirectPopupTimestamp,
       isHomeLink: true,
       link: "/trade",
     },
-    {
-      label: t`Protocol`,
-      link: "https://github.com/eddx-io",
-    },
-    {
-      label: t`Governance`,
-      link: "https://gov.eddx.io/",
-    },
-    {
-      label: t`Voting`,
-      link: "https://snapshot.org/#/eddx.eth",
-    },
-    {
-      label: t`Docs`,
-      link: "https://docs.eddx.io/",
-    },
+    // {
+    //   label: t`Protocol`,
+    //   link: "https://github.com/eddx-io",
+    // },
+    // {
+    //   label: t`Governance`,
+    //   link: "https://gov.eddx.io/",
+    // },
+    // {
+    //   label: t`Voting`,
+    //   link: "https://snapshot.org/#/eddx.eth",
+    // },
+    // {
+    //   label: t`Docs`,
+    //   link: "https://docs.eddx.io/",
+    // },
   ];
   return (
     <div className="App-header-links">

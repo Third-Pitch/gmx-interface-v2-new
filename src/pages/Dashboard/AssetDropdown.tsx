@@ -46,7 +46,7 @@ function AssetDropdown({ assetSymbol, token: propsToken, tooltipPosition = "righ
           <FiChevronDown size={20} />
         </Menu.Button>
         <Menu.Items as="div" className={cx("asset-menu-items", { "position-left": tooltipPosition === "left" })}>
-          <Menu.Item>
+          {/* <Menu.Item>
             <>
               {token.reservesUrl && (
                 <ExternalLink href={token.reservesUrl} className="asset-item">
@@ -81,7 +81,7 @@ function AssetDropdown({ assetSymbol, token: propsToken, tooltipPosition = "righ
                 </ExternalLink>
               )}
             </>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item>
             <>
               {active && !token.isNative && (

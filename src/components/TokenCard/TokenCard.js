@@ -89,9 +89,9 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
               </span>
               {/* // </BuyLink> */}
             </div>
-            <ExternalLink href="https://docs.eddx.io/docs/category/tokenomics" className="default-btn read-more">
+            {/* <ExternalLink href="https://docs.eddx.io/docs/category/tokenomics" className="default-btn read-more">
               <Trans>Read more</Trans>
-            </ExternalLink>
+            </ExternalLink> */}
           </div>
         </div>
       </div>
@@ -114,14 +114,14 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
                 <Trans>Buy on Base</Trans>
               </BuyLink>
             </div>
-            <a
+            {/* <a
               href="https://docs.eddx.io/docs/providing-liquidity/v1"
               target="_blank"
               rel="noreferrer"
               className="default-btn read-more"
             >
               <Trans>Read more</Trans>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
@@ -143,14 +143,14 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
                 <Trans>Buy on Base</Trans>
               </BuyLink>
             </div>
-            <a
+            {/* <a
               href="https://docs.eddx.io/docs/providing-liquidity/v2"
               target="_blank"
               rel="noreferrer"
               className="default-btn read-more"
             >
               <Trans>Read more</Trans>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

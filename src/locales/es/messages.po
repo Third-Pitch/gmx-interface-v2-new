@@ -45,10 +45,6 @@ msgstr ""
 msgid "<0>Insufficient liquidity to execute the order</0><1>The mark price which is an aggregate of exchange prices did not reach the specified price</1><2>The specified price was reached but not long enough for it to be executed</2><3>No keeper picked up the order for execution</3>"
 msgstr "<0>Liquidez insuficiente para ejecutar la orden</0><1>El precio de referencia, que es un agregado de precios de mercado, no alcanzó el precio especificado</1><2>Se alcanzó el precio especificado pero no lo suficiente como para ejecutarlo</2><3>Ningún guardián recogió la orden para ejecutarla</3>"
 
-#: src/components/Exchange/FeesTooltip.tsx
-msgid "<0>More Info</0> about fees."
-msgstr "<0>Más Info</0> acerca de las comisiones."
-
 #: src/pages/PageNotFound/PageNotFound.js
 msgid "<0>Return to </0><1>Homepage</1> <2>or </2> <3>Trade</3>"
 msgstr "<0>Volver a </0><1>Página inicial</1> <2>o </2> <3>Operar</3>"
@@ -122,7 +118,7 @@ msgid "APRs are updated weekly on Wednesday and will depend on the fees collecte
 msgstr "Los APRs se actualizan semanalmente en Miércoles, y dependerán de las comisiones cobradas en la semana."
 
 #: src/pages/Stake/StakeV2.js
-msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week. <0/><1/>Historical ELP APRs can be checked in this <2>community dashboard</2>."
+msgid "APRs are updated weekly on Wednesday and will depend on the fees collected for the week. <0/><1/>Historical ELP APRs can be checked in this"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -438,8 +434,8 @@ msgid "Boost Percentage"
 msgstr "Porcentaje de Aumento"
 
 #: src/pages/Stake/StakeV2.js
-msgid "Boost your rewards with Multiplier Points. <0>More info</0>."
-msgstr "Aumenta tus recompensas con los Puntos Multiplicadores. <0>Más información</0>."
+msgid "Boost your rewards with Multiplier Points."
+msgstr ""
 
 #: src/components/Exchange/FeesTooltip.tsx
 #: src/components/Exchange/NetValueTooltip.tsx
@@ -1329,10 +1325,6 @@ msgstr "Mostrar GyP después de comisiones"
 msgid "Distribution"
 msgstr "Distribución"
 
-#: src/components/Header/HomeHeaderLinks.tsx
-msgid "Docs"
-msgstr "Documentos"
-
 #: src/components/ModalViews/RedirectModal.js
 msgid "Don't show this message again for 30 days."
 msgstr "No muestres este mensaje de nuevo en los próximos 30 días."
@@ -1927,10 +1919,6 @@ msgstr "Generando imagen para compartir..."
 msgid "Get fee discounts and earn rebates through the EDDX referral program.<0/>For more information, please read the <1>referral program details</1>."
 msgstr ""
 
-#: src/components/Header/HomeHeaderLinks.tsx
-msgid "Governance"
-msgstr "Gobernanza"
-
 #: src/components/Exchange/SwapBox.js
 msgid "High Slippage, Swap Anyway"
 msgstr "Alto Deslizamiento, Intercambiar de todos modos"
@@ -1945,12 +1933,12 @@ msgid "I am aware of the trigger orders"
 msgstr "Soy consciente de las órdenes de activación"
 
 #: src/components/Synthetics/MarketCard/MarketCard.tsx
-msgid "If you have an existing position, the position will be closed at a reference price of {0}, not accounting for price impact.<0/><1/>This exit price will change with the price of the asset.<2/><3/><4>More Info</4>"
+msgid "If you have an existing position, the position will be closed at a reference price of {0}, not accounting for price impact.<0/><1/>This exit price will change with the price of the asset."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
-msgid "If you have an existing position, the position will be closed at {0} USD.<0/><1/>This exit price will change with the price of the asset.<2/><3/><4>More Info</4>"
-msgstr "Si tienes una posicion existente, la posicion se cerrará a {0} USD.<0/><1/>Este precio de salida cambiará con el precio del activo.<2/><3/><4>Más Info</4>"
+msgid "If you have an existing position, the position will be closed at {0} USD.<0/><1/>This exit price will change with the price of the asset.<2/><3/>"
+msgstr ""
 
 #: src/components/Exchange/PositionShare.js
 msgid "Image generation error, please refresh and try again."
@@ -2816,11 +2804,6 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
-#: src/components/Exchange/SwapBox.js
-#: src/pages/Dashboard/DashboardV2.js
-msgid "More Info"
-msgstr "Más Info"
-
 #: src/components/NetworkDropdown/NetworkDropdown.tsx
 msgid "More Options"
 msgstr "Más Opciones"
@@ -2962,14 +2945,6 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 msgid "Open a position"
 msgstr "Abre una posición"
-
-#: src/pages/Dashboard/AssetDropdown.tsx
-msgid "Open in Coingecko"
-msgstr "Abrir en Coingecko"
-
-#: src/pages/Dashboard/AssetDropdown.tsx
-msgid "Open in Explorer"
-msgstr "Abrir en el Explorador"
 
 #: src/pages/Home/Home.js
 msgid "Open positions through a simple swap interface. Conveniently swap from any supported asset into the position of your choice."
@@ -3391,14 +3366,6 @@ msgstr ""
 msgid "Projects integrated with EDDX."
 msgstr "Proyectos integrados con EDDX."
 
-#: src/pages/Dashboard/AssetDropdown.tsx
-msgid "Proof of Reserves"
-msgstr "Prueba de reservas"
-
-#: src/components/Header/HomeHeaderLinks.tsx
-msgid "Protocol"
-msgstr ""
-
 #: src/pages/Ecosystem/Ecosystem.js
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "Protocol analytics"
@@ -3419,12 +3386,6 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 msgid "Purchase Insurance"
 msgstr "Comprar Seguro"
-
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-#: src/components/TokenCard/TokenCard.js
-msgid "Read more"
-msgstr "Leer más"
 
 #: src/components/Exchange/PositionSeller.js
 msgid "Realized PnL insufficient for Fees"
@@ -4187,7 +4148,7 @@ msgid "TOTAL SUPPLY"
 msgstr ""
 
 #: src/components/Synthetics/PositionSeller/PositionSeller.tsx
-msgid "Take-Profit and Stop-Loss orders are created in the main Tradebox.<0/><1/><2>Set Trigger Order for this position.</2><3/><4/><5>More Info</5>."
+msgid "Take-Profit and Stop-Loss orders are created in the main Tradebox.<0/><1/><2>Set Trigger Order for this position.</2>"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
@@ -4297,12 +4258,12 @@ msgid "The pending borrow fee will be charged on this transaction."
 msgstr ""
 
 #: src/components/Synthetics/MarketCard/MarketCard.tsx
-msgid "The position will be opened at a reference price of {0}, not accounting for price impact, with a max slippage of {1}%.<0/><1/>The slippage amount can be configured under Settings, found by clicking on your address at the top right of the page after connecting your wallet.<2/><3/><4>More Info</4>"
+msgid "The position will be opened at a reference price of {0}, not accounting for price impact, with a max slippage of {1}%.<0/><1/>The slippage amount can be configured under Settings, found by clicking on your address at the top right of the page after connecting your wallet."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
-msgid "The position will be opened at {0} USD with a max slippage of {1}%.<0/><1/>The slippage amount can be configured under Settings, found by clicking on your address at the top right of the page after connecting your wallet.<2/><3/><4>More Info</4>"
-msgstr "La posición se abrirá a {0} USD con un deslizamiento máximo de {1}%.<0/><1/>La cantidad de deslizamiento se puede configurar desde Ajustes, que se encuentra haciendo clic en tu dirección en la esquina superior derecha de la página después de conectar tu monedero.<2/><3/><4>Más Info</4>"
+msgid "The position will be opened at {0} USD with a max slippage of {1}%.<0/><1/>The slippage amount can be configured under Settings, found by clicking on your address at the top right of the page after connecting your wallet.<2/><3/>"
+msgstr ""
 
 #: src/components/Exchange/OrdersList.js
 msgid "The price that the order can be executed at may differ slightly from the chart price as market orders can change the price while limit / trigger orders cannot."
@@ -4916,10 +4877,6 @@ msgstr "Volumen negociado por esta cuenta con un código de referido activo."
 #: src/components/Referrals/AffiliatesStats.tsx
 msgid "Volume traded by your referred traders."
 msgstr "Volumen negociado por sus traders referidos."
-
-#: src/components/Header/HomeHeaderLinks.tsx
-msgid "Voting"
-msgstr ""
 
 #: src/components/Elp/ElpSwap.js
 #: src/components/Synthetics/EmList/EmList.tsx

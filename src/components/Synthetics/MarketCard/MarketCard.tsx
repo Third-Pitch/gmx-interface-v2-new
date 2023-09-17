@@ -70,9 +70,9 @@ export function MarketCard({ marketInfo, allowedSlippage, isLong, isIncrease }: 
                   <br />
                   The slippage amount can be configured under Settings, found by clicking on your address at the top
                   right of the page after connecting your wallet.
+                  {/* <br />
                   <br />
-                  <br />
-                  <ExternalLink href="https://docs.eddx.io/docs/trading/v2#opening-a-position">More Info</ExternalLink>
+                  <ExternalLink href="https://docs.eddx.io/docs/trading/v2#opening-a-position">More Info</ExternalLink> */}
                 </Trans>
               )}
             />
@@ -96,9 +96,9 @@ export function MarketCard({ marketInfo, allowedSlippage, isLong, isIncrease }: 
                   <br />
                   <br />
                   This exit price will change with the price of the asset.
+                  {/* <br />
                   <br />
-                  <br />
-                  <ExternalLink href="https://docs.eddx.io/docs/trading/v2#opening-a-position">More Info</ExternalLink>
+                  <ExternalLink href="https://docs.eddx.io/docs/trading/v2#opening-a-position">More Info</ExternalLink> */}
                 </Trans>
               )}
             />

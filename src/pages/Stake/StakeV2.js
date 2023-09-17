@@ -1411,10 +1411,10 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
           return (
             <Trans>
               Boost your rewards with Multiplier Points.&nbsp;
-              <ExternalLink href="https://docs.eddx.io/docs/tokenomics/rewards#multiplier-points">
+              {/* <ExternalLink href="https://docs.eddx.io/docs/tokenomics/rewards#multiplier-points">
                 More info
-              </ExternalLink>
-              .
+              </ExternalLink> */}
+              {/* . */}
             </Trans>
           );
         }}
@@ -1910,10 +1910,10 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
                             <br />
                             <br />
                             Historical ELP APRs can be checked in this{" "}
-                            <ExternalLink href="https://dune.com/saulius/eddx-analytics">
+                            {/* <ExternalLink href="https://dune.com/saulius/eddx-analytics">
                               community dashboard
                             </ExternalLink>
-                            .
+                            . */}
                           </Trans>
                         </>
                       );
