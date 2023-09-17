@@ -1229,7 +1229,7 @@ export function getHomeUrl() {
     return "http://localhost:3010";
   }
 
-  return "https://eddx.io";
+  return "https://test.eddx.io";
 }
 
 export function getAppBaseUrl() {
@@ -1237,7 +1237,7 @@ export function getAppBaseUrl() {
     return "http://localhost:3011/#";
   }
 
-  return "https://app.eddx.io/#";
+  return "https://testapp.eddx.io/#";
 }
 
 export function getRootShareApiUrl() {
@@ -1245,7 +1245,7 @@ export function getRootShareApiUrl() {
     return "https://eddxs.vercel.app";
   }
 
-  return "https://share.eddx.io";
+  return "https://test.eddx.io";
 }
 
 export function getTradePageUrl() {
@@ -1253,7 +1253,7 @@ export function getTradePageUrl() {
     return "http://localhost:3011/#/trade";
   }
 
-  return "https://app.eddx.io/#/trade";
+  return "https://testapp.eddx.io/#/trade";
 }
 
 export function importImage(name) {

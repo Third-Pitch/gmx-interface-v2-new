@@ -28,7 +28,7 @@ export const homeEventsData: EventData[] = [
       },
       {
         text: "Use V2",
-        link: "https://app.eddx.io/#/v2?no_redirect",
+        link: "https://testapp.eddx.io/#/v2?no_redirect",
       },
     ],
   },
@@ -49,7 +49,7 @@ export const appEventsData: EventData[] = [
       },
       {
         text: "Use V2",
-        link: "https://app.eddx.io/#/v2?no_redirect",
+        link: "https://testapp.eddx.io/#/v2?no_redirect",
       },
     ],
   },
